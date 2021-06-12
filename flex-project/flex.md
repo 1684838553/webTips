@@ -2,6 +2,7 @@
 
 [flex 语法篇](http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html)
 [flex 实例篇](http://www.ruanyifeng.com/blog/2015/07/flex-examples.html)
+[flex 完整指南](https://css-tricks.com/snippets/css/a-guide-to-flexbox/)
 
 #### 容器属性（6 个）
 
@@ -26,7 +27,3 @@
 5. flex flex-shrink 和 flex-basis 的简写，默认值为 0 1 auto
 6. align-slef 允许单个项目有与其他项目不一样的对齐方式
    > auto | flex-start | flex-end | center | baseline | stretch > 除了 auto，其他都与 align-items 属性完全一致
-
-### flex 实例
-
-    <code src="./flex-first.html"></code>
