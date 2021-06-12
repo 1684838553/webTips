@@ -238,6 +238,8 @@
    </html>
    ```
 
+   ![image-20210613014618284](/Users/apple/Library/Application Support/typora-user-images/image-20210613014618284.png)
+
 5. grid-auto-flow 属性
 
    > 相当于 flex-direction 属性，设置主轴，在 grid 中，grid-auto-flow 默认容器中元素先占满第一行，即先行后列
