@@ -27,3 +27,6 @@
 5. flex flex-shrink 和 flex-basis 的简写，默认值为 0 1 auto
 6. align-slef 允许单个项目有与其他项目不一样的对齐方式
    > auto | flex-start | flex-end | center | baseline | stretch > 除了 auto，其他都与 align-items 属性完全一致
+
+#### 面试题
+    flex的flex属性的伸缩长度如何计算？

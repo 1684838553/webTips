@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>下拉列表</title>
+    <style>
+        .input_search{
+            width: 200px;
+            height: 32px;
+            /* border-radius: 5px; */
+        }
+        .dataList{
+            display: none;
+        }
+        .result{
+            /* position: absolute; */
+            width: 200px;
+            list-style-type: none;
+            background: #fff;
+            border: 1px solid #999;
+            display: inline-block;
+            padding-left: 0;
+            margin: 0;
+            /* text-align: center; */
+        }
+        li{
+            height: 20px;
+            line-height: 20px;
+            padding: 5px;
+            color: #999;
+        }
+        li:hover{
+            background: #ededed;
+        }
+        .input_search:focus ~ .dataList{
+            display: block;
+        }
+    </style>
+</head>
+<body>
+   <input type="search" class="input_search" placeholder="请选择"> 
+   <div class="dataList">
+       <ul class="result">
+           <li>搜索结果1</li>
+           <li>搜索结果2</li>
+           <li>搜索结果3</li>
+           <li>搜索结果4</li>
+           <li>搜索结果5</li>
+       </ul>
+   </div>
+</body>
+</html>
