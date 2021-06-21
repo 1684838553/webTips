@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>对齐居中或边缘，定位实现有脸面</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        body{
+           background: #ededed;
+        }
+        .title{
+            text-align: center;
+        }
+        .one{
+            position: absolute;
+        }
+        .container{
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            align-items: flex-start;
+            width: 600px;
+            height: 100vh;
+            margin: auto;
+            background: #fff;
+            padding: 20px;
+        }
+        .item{
+            width: 170px;
+            height: 100px;
+            border: 1px solid #666;
+            box-shadow: 2px 2px #ededed;
+        }
+    </style>
+</head>
+<body>
+    <!-- 给文本title设置text-align:center后，在设置子元素绝对定位（子元素不设置也能水平居中，设置后所在高度位置改变？？？） -->
+    <div class="title">
+        <span class="one">
+                hello china
+        </span>
+    </div>
+    <div class="container">
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+    </div>
+</body>
+</html>
