@@ -25,16 +25,58 @@
 #### 3. jsx背后的功能模块是什么，这个功能模块都做了那些事情
 
 
-### 2、React组件的声明周期
+### 2、React15组件的声明周期
 
 [react组件更新脑图](https://naotu.baidu.com/file/852133c6a8787c66b58809e4528f92eb)
 
 - 渲染工作流：指的是组件数据改变到组件实际更新发生的过程（该过程离不开render）
 
-#### React15的声明周期流程
+#### React 15 的声明周期流程
 [react15 生命周期](./react15 组件生命周期.png)
 
 
 1. 组件初始化渲染（挂载）
 
+### 3、React 16 组件生命周期
+[getDerivedStateFromPeops](https://zh-hans.reactjs.org/blog/2018/06/07/you-probably-dont-need-derived-state.html)
+### fiber
 
+ 1. 同步渲染和异步渲染？？？
+
+ 2. fiber架构的重要特征是可以被打断的异步渲染模式，根据“能否被打断”这一标准，React 16的生命周期分为render和commit两个阶段
+
+ ### 4、 数据是如何在React组件之间流动的
+
+ **React是数据驱动视图，即UI=render(data)或UI=f(data),React的视图随数据变化而变化**
+
+1. 单向数据流
+ > 当前组件的state以props的形式流动时，只能六项组件树中比自己层级更低的组件
+
+ - 1. 父子通信
+
+    > 父组件直接将this.props传入子组件，实现父子通信
+
+ - 2. 子父通信
+
+    > React是单向数据流，子组件不能直接给父组件传递信息。
+    > 父组件传递给子组件的是一个绑定了自身上下文的函数，那么，子组件在调用该函数时，就可以将想要的父组件的数据以函数入参的形式给出
+
+ - 3. 兄弟之间通信
+
+    > 将信息传给父组件，在由父组件传递信息给兄弟组件
+
+2. 层层传递props要不得，那么怎么解决这个问题呢
+
+    - 1. 发布-订阅模式 ？？？ 
+    > socket.io模块是典型的跨端发布-订阅模式的实现
+
+    target.addEventListner(type,lister,useCaptrue)  // 通过addEventListner创建事件监听器，这个动作是订阅
+
+    el.addEventListner('click',func,false)  //事件被触发时，事件被func发布出去
+
+    事件监听（订阅）和事件触发（发布）
+    对应两个方法：1、on()  负责注册事件的监听器指定事件触发时的回调函数
+    2、emit()  负责触发事件，可通过传参使其在触发时携带数据
+    3、off()  负责监听器的删除
+
+    优点：监听事件的位置和触发事件的位置不受限制（在同一个上下文）
