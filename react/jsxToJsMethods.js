@@ -1,6 +1,6 @@
 // type 用于标记节点类型 比如 ul div ...
 // config 以对象形式传入，组件所有属性都会以键值对的形式存储在config对象中
-// children 以对象形式传入，记录钻进标签之间的嵌套关系
+// children 以对象形式传入，记录传进标签之间的嵌套关系
 //  React.createElement对jsx进行数据处理、清洗
 export function createElement(type, config, children) {
   // propName 变量用于储存后面需要用到的元素属性
