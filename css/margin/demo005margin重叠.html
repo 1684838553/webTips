@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>margin重叠</title>
+    <style>
+      .box {
+        height: 100px;
+        background: #ededed;
+      }
+      .top {
+        margin-bottom: 20px;
+      }
+      .bottom {
+        margin-top: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <!--第一种情况：兄弟margin重叠  -->
+    <div>
+      <div class="top box"></div>
+      <div class="bottom box"></div>
+    </div>
+  </body>
+  <!-- 第二种情况：父子margin重叠 -->
+  <div class="father box" style="background-color: blueviolet">
+    <div class="son box"></div>
+  </div>
+  <div class="father box" style="background-color: blueviolet">
+    <div class="son box"></div>
+  </div>
+  <div class="father box" style="background-color: blueviolet">
+    <div class="son box"></div>
+  </div>
+</html>
