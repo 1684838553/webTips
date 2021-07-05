@@ -19,3 +19,33 @@
    > promise 接收一个执行器函数作为参数，该函数有两个参数
    > resolve 返回成功状态
    > reject 返回失败状态
+
+   ```javascript
+   class MyPromise {
+   construtor (executor) {
+      // 执行器
+      executor(this.resolve, this.reject)
+   }
+   // 成功返回值
+   value = null
+   // 失败返回值
+   reason = null
+
+   // 修改 Promise 状态，并定义成功返回值
+   resolve = value => {
+     if (this.status === STATUS.PENDING) {
+       this.status = STATUS.FULFILLED
+       this.value = value
+     }
+   }
+
+   // 修改 Promise 状态，并定义失败返回值
+   	reject = () => {
+       if (this.status === STATUS.PENDING) {
+         this.status = STATUS.REJECTED
+         this.reason = value
+       }
+     }
+   }
+   
+```
