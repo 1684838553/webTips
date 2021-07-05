@@ -1,12 +1,12 @@
 ### 1、jsx代码如何摇身一变成为dom
 
 #### 1. jsx的本质是什么，和js之间有什么关系
-   
+
  > 本质：JavaScript的语法扩展
  > 官网：jsx是javascript的一种语法扩展，它和模板语言很接近，但是它充分具备JavaScript的能力
 
  ##### 1.1 jsx语法如何在JavaScript中生效?什么是babel?
-    
+
  > 认识babel babel如何编译jsx?bable具备将jsx语法转换成JavaScript代码的能力
  > jsx会被编译为React.createElement(),React.createElement()将返回一个叫作ReactElement的js对象
 
@@ -80,3 +80,19 @@
     3、off()  负责监听器的删除
 
     优点：监听事件的位置和触发事件的位置不受限制（在同一个上下文）
+
+### 理解虚拟dom及key属性的作用
+
+> jsx的运行基础：virtual DOM  复杂度O(n)
+
+<font color="red">diff算法</font>
+
+**广度优先，分层比较**
+
+<img src="/Users/apple/Desktop/IMG_20210703_202745.jpg" alt="IMG_20210703_202745" style="zoom:33%;" />
+
+从根节点比较，如果没有变化，不做任何修改，到下一层，A节点和B节点顺序发生变化（<font color="red">如何知道两者之间发生变化，依靠每个节点的唯一标识</font>），在这一层，A和B交换位置，在第三层，F节点变为C节点，会把整个F节点删掉，创建一个C节点
+
+<font color="red">key值</font>
+
+作为组件的唯一标识，对性能的提升有很大用处，方便组件的新增，修改，删除等操作
