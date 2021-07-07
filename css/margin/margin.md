@@ -88,60 +88,62 @@
 1. 前提：块元素
 
 2. 场景：给一个 div 设置宽度为 500px，该行还有剩余空间，auto 就是为了这个剩余空间设置的
+
    > `auto 是为了分配剩余空间的`
 
-```
-div{
-   width:500px;
-   margin-right:100px;
-   margin-left:auto;
-}
+   ```
+   div{
+      width:500px;
+      margin-right:100px;
+      margin-left:auto;
+   }
 
-//网页中的显示是 ： 空白 500px的div 100px的右边距
-```
+   //网页中的显示是 ： 空白 500px的div 100px的右边距
+   ```
 
 3. 为什么容器定高，元素定高，margin:auto 0 无法垂直居中？
+
    > 原因：子元素不设置高度也无法自动将高度设置为父元素高度，不会填充，那么不存在剩余空间，无法分配
 
-```
-.father{
-   height:200px;
-}
-.son{
-   height:100px;
-   margin:auto;
-}
-```
+   ```
+   .father{
+      height:200px;
+   }
+   .son{
+      height:100px;
+      margin:auto;
+   }
+   ```
 
 4. 怎么实现垂直居中
 
 - 设置 writing-mode(改变页面中流的方向)，修改后，可以垂直居中，无法水平居中
 
-```
-.father{
-   height:200px;
-   width:100%;
-   writing-mode:vertical-lr;
-}
-```
+  ```
+  .father{
+     height:200px;
+     width:100%;
+     writing-mode:vertical-lr;
+  }
+  ```
 
 - absolute 和 margin 居中
 
-```
-.father{
-   height:200px;
-   position:relative;
-}
-.son{
-   position:absolute;
-   width:500px;
-   margin:auto;
-   top:0;
-   left:0;
-   right:0;
-   bottom:0;
-}
-```
+  ```
+  .father{
+     height:200px;
+     position:relative;
+  }
+  .son{
+     position:absolute;
+     width:500px;
+     margin:auto;
+     top:0;
+     left:0;
+     right:0;
+     bottom:0;
+  }
+  ```
 
 #### 5、margin 负值下的两端对齐
 
