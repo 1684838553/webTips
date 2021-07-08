@@ -164,5 +164,5 @@
 #### 7、margin-start 和 margin-end
 
 1. 正常的流向，margin-start 等同于 margin-left，两者重叠不累加
-2. 如果水平流是葱油往左，margin-start 等同于 margin-right
+2. 如果水平流是从右往左，margin-start 等同于 margin-right
 3. 在垂直流下（writing-mode:vertical-\*）,margin-start 等同于 margin-top
