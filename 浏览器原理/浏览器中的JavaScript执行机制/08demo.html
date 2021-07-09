@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>在浏览器开发者工具sources中查看调用栈</title>
+  </head>
+  <body>
+    <script>
+      var a = 2;
+      function add(b, c) {
+        //查看add函数的函数调用关系
+        console.trace();
+        //或在这debugger
+        return b + c;
+      }
+      // console.log(result, 1);
+      function addAll(b, c) {
+        var d = 10;
+        // console.log(result, 2);
+        result = add(b, c);
+        console.log(result, 3);
+        return a + result + d;
+      }
+      addAll(3, 6);
+    </script>
+  </body>
+</html>
