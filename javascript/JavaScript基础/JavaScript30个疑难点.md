@@ -100,8 +100,10 @@ function deepClone(startObj,endObj)){
 
 ```javascript
 JSON.parse(JSON.stringify(obj));
-```
 
+```
+   JSON.stringify(obj)的优缺点？
+   
 ### 4、开发中常见的数据类型转换有哪些
 
 1. undefined，NaN,0,null，'' 转为布尔值都为 false
