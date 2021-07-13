@@ -84,7 +84,7 @@ jsx 语法糖允许我们使用熟悉的类 HTML 标签语法来创建虚拟 dom
 
    优点：监听事件的位置和触发事件的位置不受限制（在同一个上下文）
 
-3. Context API三要素: React.createContext() 、 Provide 、 Consumer
+3. Context API 三要素: React.createContext() 、 Provide 、 Consumer
 
    ```react
    const AppContext = React.createContext(defaultValue)  //创建 createContext对象
@@ -94,8 +94,8 @@ jsx 语法糖允许我们使用熟悉的类 HTML 标签语法来创建虚拟 dom
    <Provide value={title:title,content:content}>
         <Title />
      	 <Content />
-   </Provide> 
-     
+   </Provide>
+
    // Consumer接收一个函数为子元素,当Provide没有传value时，Consumer中取默认的defaultValue值
    <Consumer>
      {
@@ -104,55 +104,53 @@ jsx 语法糖允许我们使用熟悉的类 HTML 标签语法来创建虚拟 dom
    </Consumer>
    ```
 
-   **新的Context API解决了什么问题？**
+   **新的 Context API 解决了什么问题？**
 
    1. 代码不够优雅
 
    2. 无法保证数据在生产者和消费者之间及时同步
 
-      <font color="red">旧的Context：</font>如果组件提供的一个Context发生了变化，而中间父组件的shouldComponentUpdate返回fasle,那么使用到该值的后代组件不会进行更新。使用了Context的组件完全失控，所以基本上没办法能够可靠的更新Context.     ——React官方
+      <font color="red">旧的 Context：</font>如果组件提供的一个 Context 发生了变化，而中间父组件的 shouldComponentUpdate 返回 fasle,那么使用到该值的后代组件不会进行更新。使用了 Context 的组件完全失控，所以基本上没办法能够可靠的更新 Context. ——React 官方
 
-      <font color="red">新的Context：</font>即使组件的shouldComponentUpdate返回fasle，它仍然可以**穿透**组件继续向后代组件进行传播，进而保证数据在生产者和消费者之间的一致性
+      <font color="red">新的 Context：</font>即使组件的 shouldComponentUpdate 返回 fasle，它仍然可以**穿透**组件继续向后代组件进行传播，进而保证数据在生产者和消费者之间的一致性
 
-4. 初探Redux<font color="red">存放公共数据的一个容器</font>
+4. 初探 Redux<font color="red">存放公共数据的一个容器</font>
 
-   Redux是JavaScript状态容器，它提供可预测的状态管理（**不只是在React中能使用，可在vue或原生js等中使用**）
+   Redux 是 JavaScript 状态容器，它提供可预测的状态管理（**不只是在 React 中能使用，可在 vue 或原生 js 等中使用**）
 
-   <font color="red">在redux整个工作过程中，数据流严格单向的</font>`如图redux数据流向.jpg`
+   <font color="red">在 redux 整个工作过程中，数据流严格单向的</font>`如图redux数据流向.jpg`
 
-   - store是一个单一的数据源，而且是只读的
-   - action是对变化的描述
-   - reducer负责对变化进行分发和处理，将新的数据返回store
+   - store 是一个单一的数据源，而且是只读的
+   - action 是对变化的描述
+   - reducer 负责对变化进行分发和处理，将新的数据返回 store
 
    ```react
    //引入redux
    import {createStore} from 'redux'
-   
+
    //创建store
    const store = createStore(
    	reducer,
      initial_state,
      applyMiddleware(Middleware1,Middleware2,...)
    )
-     
-     
-    //reducer 
+
+
+    //reducer
    const reducer = (state,action)=>{
      //...逻辑
    	return new_state
    }
-   
+
    // action 通知reducer状态的改变
    const action = {
      type:'ADD_ITEM',  //type 是必传的
      payload:'<li>text</li>'
    }
-   
+
    //使用dispatch派发action，action会进入到reducer里触发对应的更新
    store.dispatch(action)
    ```
-
-   
 
 ## 5、理解虚拟 dom 及 key 属性的作用
 
@@ -170,33 +168,32 @@ jsx 语法糖允许我们使用熟悉的类 HTML 标签语法来创建虚拟 dom
 
 作为组件的唯一标识，对性能的提升有很大用处，方便组件的新增，修改，删除等操作
 
-## 6、react-hooks设计动机与工作模式
+## 6、react-hooks 设计动机与工作模式
 
 1. 类组件和函数组件
 
    - 函数组件
 
-     <font color="red">函数组件会捕获render内部的状态UI=render(data)</font>
+     <font color="red">函数组件会捕获 render 内部的状态 UI=render(data)</font>
 
-     > 早期，函数组件中无法维护state,即无状态组件
+     > 早期，函数组件中无法维护 state,即无状态组件
      >
      > 函数组件把数据和渲染绑定到了一起
 
    - 类组件与函数组件之间的不同
 
-     1、类组件需要继承class,函数组件不需要
+     1、类组件需要继承 class,函数组件不需要
 
      2、类组件可以访问生命周期方法，函数组件不能
 
-     3、类组件可以获取实例化后的this,并基于这个this做各种各样的事情，函数组件不能
+     3、类组件可以获取实例化后的 this,并基于这个 this 做各种各样的事情，函数组件不能
 
-     4、类组件可以定义并维护state，函数组件不能
+     4、类组件可以定义并维护 state，函数组件不能
 
    - 类组件
 
      面向对象编程思想的一种表征
 
-     封装：将一类属性和方法，聚拢到一个Class中
+     封装：将一类属性和方法，聚拢到一个 Class 中
 
-     继承：新的class可以通过继承现有class实现对某一类属性和方法的复用
-
+     继承：新的 class 可以通过继承现有 class 实现对某一类属性和方法的复用
