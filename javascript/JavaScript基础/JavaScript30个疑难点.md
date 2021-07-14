@@ -102,8 +102,8 @@ function deepClone(startObj,endObj)){
 JSON.parse(JSON.stringify(obj));
 
 ```
-   JSON.stringify(obj)的优缺点？
-   
+   JSON.stringify(obj)的优缺点？缺点：无法拷贝函数
+
 ### 4、开发中常见的数据类型转换有哪些
 
 1. undefined，NaN,0,null，'' 转为布尔值都为 false
@@ -128,7 +128,7 @@ JSON.parse(JSON.stringify(obj));
     > - function add(num1,num2){
         m = Math.pow(10,2)
         return (num1*m+num2*m)/m
-    }
+      }
 
 ### 6、for 循环优化
 
@@ -162,7 +162,7 @@ var a = new Number(2);
 
    ```javascript
    var objNum = new Number(123); //object
-
+   
    objNum.valueOf(); // 123 number
    ```
 
@@ -175,12 +175,12 @@ var a = new Number(2);
 
    ```javascript
    objNum.valueOf(); // 123 number
-
+   
    objNum.toString(); // '123'
-
+   
    var a = 1;
    a.valueOf(); // 1
-
+   
    a.toString(); // '1'
    ```
 
