@@ -14,3 +14,6 @@
 [数组](https://naotu.baidu.com/file/96acc86fd12d29f514004b5f6968c2de)
 
 [TypeScript 手册指南](https://www.tslang.cn/docs/handbook/basic-types.html)
+
+[javascript隐式转换](https://jsisweird.com/)
+
