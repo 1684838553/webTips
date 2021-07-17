@@ -1,6 +1,6 @@
 const p = new Promise((resolve, reject) => {
-  resolve(1);
+  resolve({});
 });
 p.then((res) => {
-  console.log(res); //1
+  console.log(res); //{}
 });

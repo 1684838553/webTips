@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>模拟数据请求</title>
+  </head>
+  <body>
+    <div id="name"></div>
+    <script>
+      fetch("./data.json")
+        .then((response) => response.json())
+        .then((res) => {
+          console.log(res);
+          const { data, success } = res;
+          if (success) {
+            console.log(data, "data");
+            document.getElementById("name").innerHTML =
+              data.records[0].baseResponse.phone;
+          }
+        });
+    </script>
+  </body>
+</html>

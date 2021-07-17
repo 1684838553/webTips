@@ -1,0 +1,360 @@
+{
+    "errorCode": "0",
+    "errorMsg": "success",
+    "success": true,
+    "data": {
+        "records": [{
+            "baseResponse": {
+                "id": 14991,
+                "resourceName": null,
+                "phone": "173****7781",
+                "stockCode": null,
+                "allocatedTime": "2021-07-08 14:59:23",
+                "isInvestor": null,
+                "isHaveWx": 1,
+                "talkResult": null,
+                "commitTime": "2021-07-09 16:06:09",
+                "commitStatus": 1,
+                "customerType": null,
+                "asset": "0.00",
+                "wechatName": null,
+                "wxExternalUserList": [{
+                    "userId": 16,
+                    "nickName": "格式化",
+                    "avatar": "http://wx.qlogo.cn/mmhead/Q3auHgzwzM7AYC7Hh1ujWk8nE9CyiapoqtGiaDIzypnGiaMvmfiaxFYib2g/0",
+                    "platformId": null,
+                    "platformName": null,
+                    "wxNumber": null,
+                    "isBound": true
+                }, {
+                    "userId": 1010,
+                    "nickName": "JohnnyLiang",
+                    "avatar": "http://wx.qlogo.cn/mmhead/Q3auHgzwzM5gLkJX1svvp8kcyKWsykBHWrZgmUjGxfvXFLPL3GKib7w/0",
+                    "platformId": null,
+                    "platformName": null,
+                    "wxNumber": null,
+                    "isBound": true
+                }, {
+                    "userId": 1013,
+                    "nickName": "Ding.",
+                    "avatar": "http://wx.qlogo.cn/mmhead/Q3auHgzwzM7Tb5NaiaOKia3XcFYBOCtKralQpWbicdj6Nn00CUlG6mfTw/0",
+                    "platformId": null,
+                    "platformName": null,
+                    "wxNumber": null,
+                    "isBound": true
+                }, {
+                    "userId": 2318,
+                    "nickName": "辛雪",
+                    "avatar": "https://wework.qpic.cn/wwhead/duc2TvpEgST9hicuyypLEKDg1ztm9X9bEj8SRuS4JCDmZ1ibSW6yRh3MBMY1vtWLoIicr8LP9uIcKo/0",
+                    "platformId": null,
+                    "platformName": null,
+                    "wxNumber": null,
+                    "isBound": true
+                }],
+                "remark": null,
+                "type": 3,
+                "sourceId": null,
+                "sourceName": "手工录入",
+                "promoteTypeSettingsId": null,
+                "invitationStrategyId": null
+            },
+            "managerResponse": {
+                "isAllocated": 1,
+                "allocatorName": "hahahah",
+                "receiverId": 9503,
+                "receiverName": "天相销售",
+                "receiverDepartmentName": "合规部"
+            }
+        }, {
+            "baseResponse": {
+                "id": 14990,
+                "resourceName": null,
+                "phone": "173****7782",
+                "stockCode": null,
+                "allocatedTime": "2021-07-08 14:46:38",
+                "isInvestor": null,
+                "isHaveWx": null,
+                "talkResult": null,
+                "commitTime": null,
+                "commitStatus": 0,
+                "customerType": null,
+                "asset": null,
+                "wechatName": null,
+                "wxExternalUserList": [],
+                "remark": null,
+                "type": 3,
+                "sourceId": null,
+                "sourceName": "手工录入",
+                "promoteTypeSettingsId": null,
+                "invitationStrategyId": null
+            },
+            "managerResponse": {
+                "isAllocated": 1,
+                "allocatorName": "hahahah",
+                "receiverId": 9503,
+                "receiverName": "天相销售",
+                "receiverDepartmentName": "合规部"
+            }
+        }, {
+            "baseResponse": {
+                "id": 14979,
+                "resourceName": "萌萌哒\uD83D\uDC31",
+                "phone": "157****9999",
+                "stockCode": null,
+                "allocatedTime": "2021-07-07 15:33:02",
+                "isInvestor": 1,
+                "isHaveWx": 1,
+                "talkResult": 0,
+                "commitTime": "2021-07-09 11:27:35",
+                "commitStatus": 1,
+                "customerType": {
+                    "code": 0,
+                    "label": "A",
+                    "value": 0
+                },
+                "asset": "0.00",
+                "wechatName": null,
+                "wxExternalUserList": [{
+                    "userId": 17,
+                    "nickName": "音速青年",
+                    "avatar": "http://wx.qlogo.cn/mmhead/Q3auHgzwzM77gmagceibS3DFsFV8YbmI1sOboUQaQ8uJHTUuWPCRQJA/0",
+                    "platformId": null,
+                    "platformName": null,
+                    "wxNumber": null,
+                    "isBound": true
+                }],
+                "remark": null,
+                "type": 3,
+                "sourceId": null,
+                "sourceName": "手工录入",
+                "promoteTypeSettingsId": null,
+                "invitationStrategyId": null
+            },
+            "managerResponse": {
+                "isAllocated": 1,
+                "allocatorName": "hahahah",
+                "receiverId": 9503,
+                "receiverName": "天相销售",
+                "receiverDepartmentName": "合规部"
+            }
+        }, {
+            "baseResponse": {
+                "id": 1591,
+                "resourceName": "客户367",
+                "phone": "151****1008",
+                "stockCode": null,
+                "allocatedTime": "2021-07-05 11:07:53",
+                "isInvestor": null,
+                "isHaveWx": null,
+                "talkResult": null,
+                "commitTime": "2021-07-08 14:42:32",
+                "commitStatus": 0,
+                "customerType": null,
+                "asset": "0.00",
+                "wechatName": null,
+                "wxExternalUserList": [],
+                "remark": null,
+                "type": 3,
+                "sourceId": null,
+                "sourceName": "手工录入",
+                "promoteTypeSettingsId": null,
+                "invitationStrategyId": null
+            },
+            "managerResponse": {
+                "isAllocated": 1,
+                "allocatorName": "hahahah",
+                "receiverId": 9503,
+                "receiverName": "天相销售",
+                "receiverDepartmentName": "合规部"
+            }
+        }, {
+            "baseResponse": {
+                "id": 1590,
+                "resourceName": "客户531",
+                "phone": "151****1007",
+                "stockCode": null,
+                "allocatedTime": "2021-07-05 11:07:53",
+                "isInvestor": null,
+                "isHaveWx": 1,
+                "talkResult": null,
+                "commitTime": "2021-07-07 14:43:51",
+                "commitStatus": 1,
+                "customerType": null,
+                "asset": "0.00",
+                "wechatName": null,
+                "wxExternalUserList": [],
+                "remark": null,
+                "type": 3,
+                "sourceId": null,
+                "sourceName": "手工录入",
+                "promoteTypeSettingsId": null,
+                "invitationStrategyId": null
+            },
+            "managerResponse": {
+                "isAllocated": 1,
+                "allocatorName": "hahahah",
+                "receiverId": 9503,
+                "receiverName": "天相销售",
+                "receiverDepartmentName": "合规部"
+            }
+        }, {
+            "baseResponse": {
+                "id": 1589,
+                "resourceName": "客户607",
+                "phone": "151****1006",
+                "stockCode": null,
+                "allocatedTime": "2021-07-05 11:07:53",
+                "isInvestor": null,
+                "isHaveWx": null,
+                "talkResult": null,
+                "commitTime": null,
+                "commitStatus": 0,
+                "customerType": null,
+                "asset": null,
+                "wechatName": null,
+                "wxExternalUserList": [],
+                "remark": null,
+                "type": 3,
+                "sourceId": null,
+                "sourceName": "手工录入",
+                "promoteTypeSettingsId": null,
+                "invitationStrategyId": null
+            },
+            "managerResponse": {
+                "isAllocated": 1,
+                "allocatorName": "hahahah",
+                "receiverId": 9503,
+                "receiverName": "天相销售",
+                "receiverDepartmentName": "合规部"
+            }
+        }, {
+            "baseResponse": {
+                "id": 1588,
+                "resourceName": "客户494",
+                "phone": "151****1003",
+                "stockCode": null,
+                "allocatedTime": "2021-07-05 11:07:52",
+                "isInvestor": null,
+                "isHaveWx": null,
+                "talkResult": null,
+                "commitTime": null,
+                "commitStatus": 0,
+                "customerType": null,
+                "asset": null,
+                "wechatName": null,
+                "wxExternalUserList": [],
+                "remark": null,
+                "type": 3,
+                "sourceId": null,
+                "sourceName": "手工录入",
+                "promoteTypeSettingsId": null,
+                "invitationStrategyId": null
+            },
+            "managerResponse": {
+                "isAllocated": 1,
+                "allocatorName": "hahahah",
+                "receiverId": 9503,
+                "receiverName": "天相销售",
+                "receiverDepartmentName": "合规部"
+            }
+        }, {
+            "baseResponse": {
+                "id": 1587,
+                "resourceName": "客户392",
+                "phone": "151****1000",
+                "stockCode": null,
+                "allocatedTime": "2021-07-05 11:07:52",
+                "isInvestor": null,
+                "isHaveWx": null,
+                "talkResult": null,
+                "commitTime": null,
+                "commitStatus": 0,
+                "customerType": null,
+                "asset": null,
+                "wechatName": null,
+                "wxExternalUserList": [],
+                "remark": null,
+                "type": 3,
+                "sourceId": null,
+                "sourceName": "手工录入",
+                "promoteTypeSettingsId": null,
+                "invitationStrategyId": null
+            },
+            "managerResponse": {
+                "isAllocated": 1,
+                "allocatorName": "hahahah",
+                "receiverId": 9503,
+                "receiverName": "天相销售",
+                "receiverDepartmentName": "合规部"
+            }
+        }, {
+            "baseResponse": {
+                "id": 1586,
+                "resourceName": "客户512",
+                "phone": "151****1005",
+                "stockCode": null,
+                "allocatedTime": "2021-07-05 11:07:52",
+                "isInvestor": null,
+                "isHaveWx": null,
+                "talkResult": null,
+                "commitTime": null,
+                "commitStatus": 0,
+                "customerType": null,
+                "asset": null,
+                "wechatName": null,
+                "wxExternalUserList": [],
+                "remark": null,
+                "type": 3,
+                "sourceId": null,
+                "sourceName": "手工录入",
+                "promoteTypeSettingsId": null,
+                "invitationStrategyId": null
+            },
+            "managerResponse": {
+                "isAllocated": 1,
+                "allocatorName": "hahahah",
+                "receiverId": 9503,
+                "receiverName": "天相销售",
+                "receiverDepartmentName": "合规部"
+            }
+        }, {
+            "baseResponse": {
+                "id": 1585,
+                "resourceName": "客户918",
+                "phone": "151****1004",
+                "stockCode": null,
+                "allocatedTime": "2021-07-05 11:07:52",
+                "isInvestor": null,
+                "isHaveWx": null,
+                "talkResult": null,
+                "commitTime": null,
+                "commitStatus": 0,
+                "customerType": null,
+                "asset": null,
+                "wechatName": null,
+                "wxExternalUserList": [],
+                "remark": null,
+                "type": 3,
+                "sourceId": null,
+                "sourceName": "手工录入",
+                "promoteTypeSettingsId": null,
+                "invitationStrategyId": null
+            },
+            "managerResponse": {
+                "isAllocated": 1,
+                "allocatorName": "hahahah",
+                "receiverId": 9503,
+                "receiverName": "天相销售",
+                "receiverDepartmentName": "合规部"
+            }
+        }],
+        "total": 340,
+        "size": 10,
+        "current": 1,
+        "orders": [],
+        "hitCount": false,
+        "isExport": 1,
+        "searchCount": true,
+        "pages": 34
+    }
+}

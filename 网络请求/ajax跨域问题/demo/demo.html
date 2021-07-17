@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <title>跨域请求</title>
+  </head>
+  <body>
+    <script>
+      axios({ method: "get", url: "./data.json" }).then((res) => {
+        const { data } = res;
+        console.log(data);
+      });
+
+      let url =
+        "http://daily.api.beicaizs.com/compliance/contract/managementList";
+      let param = {
+        current: 1,
+        pageSize: 100,
+      };
+      let token = "801870169d084282bf6180215055c2e8";
+      axios({
+        method: "post",
+        url: url,
+        // dataType: "jsonp",
+        data: param,
+        headers: { token: token },
+      }).then((res) => {
+        console.log(res, "ll");
+      });
+    </script>
+  </body>
+</html>
