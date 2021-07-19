@@ -166,13 +166,14 @@ var a = new Number(2);
    objNum.valueOf(); // 123 number
    ```
 
-   > 实现原理：
+   > 实现原理：[数据类型转换](./数据类型转换.md)
+   >
    > js 有 toPrimitive(input,type) // input 传入的值 type 值类型
    > 第一步：input 判断是否为原始类型，是原始类型，直接返回
    > 不是原始类型，调用 input.valueOf() 在做判断，是原始类型，返回该值
    > 不是原始类型，调用 input.toString() 在做判断，是原始类型，返回该值
    > 不是原始类型，报错
-
+   
    ```javascript
    objNum.valueOf(); // 123 number
    
@@ -183,9 +184,9 @@ var a = new Number(2);
    
    a.toString(); // '1'
    ```
-
+   
    **面试题：(`要执行拆箱操作，调用toPrimitive方法`)**
-
+   
    > - 1、两个空数组相加 console.log([] + []) // ''
    > - 2、[] + {}
    > - 3、console.log([])
@@ -386,28 +387,27 @@ location={
 
 Object.is()判断两个值是否为同一个值。返回布尔值
 
-1. 满足一下条件，返回true
+1. 满足一下条件，返回 true
 
-    > - 都是 [`undefined`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/undefined)
-    > - 都是 [`null`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/null)
-    > - 都是 `true` 或 `false`
-    > - 都是相同长度的字符串且相同字符按相同顺序排列
-    > - 都是相同对象（意味着每个对象有同一个引用）
-    > - 都是数字且
-    >   - 都是 `+0`
-    >   - 都是 `-0`
-    >   - 都是 [`NaN`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/NaN)
-    >   - 或都是非零而且非 [`NaN`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/NaN) 且为同一个值
+   > - 都是 [`undefined`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/undefined)
+   > - 都是 [`null`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/null)
+   > - 都是 `true` 或 `false`
+   > - 都是相同长度的字符串且相同字符按相同顺序排列
+   > - 都是相同对象（意味着每个对象有同一个引用）
+   > - 都是数字且
+   >   - 都是 `+0`
+   >   - 都是 `-0`
+   >   - 都是 [`NaN`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/NaN)
+   >   - 或都是非零而且非 [`NaN`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/NaN) 且为同一个值
 
 2. 与 == 之间的不同
 
-    > `==` 运算符在判断相等前对两边的变量(如果它们不是同一类型) 进行强制转换 (这种行为的结果会将 `"" == false` 判断为 `true`), 而 `Object.is`不会强制转换两边的值
+   > `==` 运算符在判断相等前对两边的变量(如果它们不是同一类型) 进行强制转换 (这种行为的结果会将 `"" == false` 判断为 `true`), 而 `Object.is`不会强制转换两边的值
 
 3. 与 === 之间的不同
 
-   >  `===` 运算符 (也包括 `==` 运算符) 将数字 `-0` 和 `+0` 视为相等 ，而将[`Number.NaN`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Number/NaN) 与[`NaN`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/NaN)视为不相等.
+   > `===` 运算符 (也包括 `==` 运算符) 将数字 `-0` 和 `+0` 视为相等 ，而将[`Number.NaN`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Number/NaN) 与[`NaN`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/NaN)视为不相等.
 
 **注意点：**
 
 <font color="red"> 1.Object.is(NaN,NaN) === true      2.Object.is(+0,-0) === false</font>
-
