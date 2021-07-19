@@ -100,9 +100,9 @@ function deepClone(startObj,endObj)){
 
 ```javascript
 JSON.parse(JSON.stringify(obj));
-
 ```
-   JSON.stringify(obj)的优缺点？缺点：无法拷贝函数
+
+JSON.stringify(obj)的优缺点？缺点：无法拷贝函数
 
 ### 4、开发中常见的数据类型转换有哪些
 
@@ -128,7 +128,7 @@ JSON.parse(JSON.stringify(obj));
     > - function add(num1,num2){
         m = Math.pow(10,2)
         return (num1*m+num2*m)/m
-      }
+        }
 
 ### 6、for 循环优化
 
@@ -216,60 +216,59 @@ arr.shift()[(1, 2, 3)];
 
 模拟队列：push，shift
 
-
-### 10、sort的排序方式
+### 10、sort 的排序方式
 
 ```javascript
 var arr = [1, 2, 3];
-arr.sort() //未指明compareFunction(比较器函数)，即传一个回调函数
+arr.sort(); //未指明compareFunction(比较器函数)，即传一个回调函数
 ```
 
 sort：
-1. 默认升序
-2. 排序元素会转为字符串，['1','2','3'],找到对应字符串的unicode码表
 
+1. 默认升序
+2. 排序元素会转为字符串，['1','2','3'],找到对应字符串的 unicode 码表
 
 ```javascript
 var arr = [1, 2, 3];
 
-arr.sort((a,b)=>{
-    return a-b   //升序
-})
+arr.sort((a, b) => {
+  return a - b; //升序
+});
 
-arr.sort((a,b)=>{
-    return b-a   //降序
-})
+arr.sort((a, b) => {
+  return b - a; //降序
+});
 ```
 
-### 11、Date对象中的getMonth()注意点
+### 11、Date 对象中的 getMonth()注意点
 
 ```javascript
-var now = new Date()
-now.getTime()  //时间戳
-now.getDay()  //星期
-now.getDate()  //本月几号
-now.getMonth() + 1  // 第几月
+var now = new Date();
+now.getTime(); //时间戳
+now.getDay(); //星期
+now.getDate(); //本月几号
+now.getMonth() + 1; // 第几月
 ```
-
 
 ### 12、开发中编码和解码使用场景有哪些
-```javascript
-var url = 'https://www.baidu.com?key=hello&name=张三'
 
-var es = escape(url)  //转码
-var unes = unescape(es)  //解码
+```javascript
+var url = "https://www.baidu.com?key=hello&name=张三";
+
+var es = escape(url); //转码
+var unes = unescape(es); //解码
 ```
 
-1. encodeURL() 对拼接在url上的中文参数进行转码  decodeURL() 解码
-2. escape()  对字符串进行编码  unescape() `已废弃`
-3. encodeURLComponent() 不转义的字符：A-Z a-z 0-9 - _ . ! ~ * ' ( ) ,剩下的字符都会转义 deCodeURLComponent()
+1. encodeURL() 对拼接在 url 上的中文参数进行转码 decodeURL() 解码
+2. escape() 对字符串进行编码 unescape() `已废弃`
+3. encodeURLComponent() 不转义的字符：A-Z a-z 0-9 - \_ . ! ~ \* ' ( ) ,剩下的字符都会转义 deCodeURLComponent()
 
 `encodeURIComponent() 和 encodeURI 有以下几个不同点：`
 
 ```javascript
-var set1 = ";,/?:@&=+$";  // 保留字符
-var set2 = "-_.!~*'()";   // 不转义字符
-var set3 = "#";           // 数字标志
+var set1 = ";,/?:@&=+$"; // 保留字符
+var set2 = "-_.!~*'()"; // 不转义字符
+var set3 = "#"; // 数字标志
 var set4 = "ABC abc 123"; // 字母数字字符和空格
 
 console.log(encodeURI(set1)); // ;,/?:@&=+$
@@ -283,26 +282,28 @@ console.log(encodeURIComponent(set3)); // %23
 console.log(encodeURIComponent(set4)); // ABC%20abc%20123 (the space gets encoded as %20)
 ```
 
+### 13、dom 树的加载过程
 
-### 13、dom树的加载过程
-1. 浏览器输入url --》 DNS域名解析（获取ip）  --》向服务器发送请求
+1. 浏览器输入 url --》 DNS 域名解析（获取 ip） --》向服务器发送请求
 2. 服务器返回数据，浏览器接受文件(html,css,js,img...),二进制文件
- - 构建dom树
- 解析:1、遇到link的外部css,遇到css的代码，会进行css的加载，并行
-      2、遇到script标签，先执行js内容，至脚本执行完成，然后继续dom渲染
- - 构建css树
-    每个css文件解析为样式表对象cssstylesheet,生成(cssom),css对象模型
- - 构建render树
-    渲染树 = dom树+ cssom
+
+- 构建 dom 树
+  解析:1、遇到 link 的外部 css,遇到 css 的代码，会进行 css 的加载，并行
+  2、遇到 script 标签，先执行 js 内容，至脚本执行完成，然后继续 dom 渲染
+- 构建 css 树
+  每个 css 文件解析为样式表对象 cssstylesheet,生成(cssom),css 对象模型
+- 构建 render 树
+  渲染树 = dom 树+ cssom
+
 3. 回流(reflow)：元素属性改变且影响布局，产生回流，相当于刷新页面
    重绘(repaint):元素属性改变且不影响布局，产生重绘
    `重绘不一定引起回流，回流一定会重绘`
 
 ### 14、三种事件绑定的异同
 
-**html事件 demo0级事件（事件绑定）demo2级事件（事件监听）**
+**html 事件 demo0 级事件（事件绑定）demo2 级事件（事件监听）**
 
-1. HTML事件:在HTML上直接绑定一个事件，目前不常见
+1. HTML 事件:在 HTML 上直接绑定一个事件，目前不常见
 
 ```javascript
 <input type="button" value="html事件" onClick="fun()">
@@ -313,7 +314,8 @@ console.log(encodeURIComponent(set4)); // ABC%20abc%20123 (the space gets encode
 </script>
 ```
 
-2. demo0级事件（事件绑定）：js获取dom绑定事件
+2. demo0 级事件（事件绑定）：js 获取 dom 绑定事件
+
 ```javascript
 <input type="button" value="html事件" id="btn">
 <script>
@@ -327,7 +329,8 @@ console.log(encodeURIComponent(set4)); // ABC%20abc%20123 (the space gets encode
 //同一个dom多次绑定事件，执行最后一次绑定事件，前面的被覆盖掉了
 ```
 
-3. demo2级事件（事件监听）
+3. demo2 级事件（事件监听）
+
 ```javascript
 <input type="button" value="html事件" id="btn">
 <script>
@@ -336,27 +339,30 @@ console.log(encodeURIComponent(set4)); // ABC%20abc%20123 (the space gets encode
     })
 </script>
 ```
+
 > ele.addEventListener(event,function,useCapture)
-> event:事件名 function：回调函数  useCapture：指定事件是在捕获还是冒泡阶段执行 true捕获 false冒泡 ，默认false
+> event:事件名 function：回调函数 useCapture：指定事件是在捕获还是冒泡阶段执行 true 捕获 false 冒泡 ，默认 false
 > ele.attachEvent(event,function)
 
 **事件监听的优点：可绑定多个事件，常规的事件绑定只执行最后一个绑定事件**
-原因：js不支持事件重载，事件绑定相当于一个变量存储在函数的地址，如果在绑定一个事件，相当于变量指向另一个函数地址，事件监听相当于订阅发布，改变了数据，触发了事件，订阅这个事件的函数被执行
+原因：js 不支持事件重载，事件绑定相当于一个变量存储在函数的地址，如果在绑定一个事件，相当于变量指向另一个函数地址，事件监听相当于订阅发布，改变了数据，触发了事件，订阅这个事件的函数被执行
 
 ### 16、阻止默认事件
+
 （让链接不跳转或按钮不提交）
-1. e.preventDefault()  低版本浏览器e.retrunValue
-2. return false 
 
+1. e.preventDefault() 低版本浏览器 e.retrunValue
+2. return false
 
-### 17、history和location问题
+### 17、history 和 location 问题
+
 ```javascript
 window.history  指向history对象，表示当前窗口浏览器历史
 History.back()  返回，相当于history.go(-1)
 History.forward()  在浏览器记录中前往下一页，相当于history.go(1)
 History.go()
 history.pushState()  按指定的名称和url，将数据push进会话历史栈（更新历史栈上最新的入口）
-history.replaceState()  
+history.replaceState()
 
 location   window.location和document.location可拿到这个对象
 
@@ -375,4 +381,33 @@ location={
     origin //url协议，主机名，端口
 }
 ```
+
+### 17、Object.is()
+
+Object.is()判断两个值是否为同一个值。返回布尔值
+
+1. 满足一下条件，返回true
+
+    > - 都是 [`undefined`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/undefined)
+    > - 都是 [`null`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/null)
+    > - 都是 `true` 或 `false`
+    > - 都是相同长度的字符串且相同字符按相同顺序排列
+    > - 都是相同对象（意味着每个对象有同一个引用）
+    > - 都是数字且
+    >   - 都是 `+0`
+    >   - 都是 `-0`
+    >   - 都是 [`NaN`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/NaN)
+    >   - 或都是非零而且非 [`NaN`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/NaN) 且为同一个值
+
+2. 与 == 之间的不同
+
+    > `==` 运算符在判断相等前对两边的变量(如果它们不是同一类型) 进行强制转换 (这种行为的结果会将 `"" == false` 判断为 `true`), 而 `Object.is`不会强制转换两边的值
+
+3. 与 === 之间的不同
+
+   >  `===` 运算符 (也包括 `==` 运算符) 将数字 `-0` 和 `+0` 视为相等 ，而将[`Number.NaN`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Number/NaN) 与[`NaN`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/NaN)视为不相等.
+
+**注意点：**
+
+<font color="red"> 1.Object.is(NaN,NaN) === true      2.Object.is(+0,-0) === false</font>
 

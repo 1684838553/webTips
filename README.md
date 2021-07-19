@@ -15,5 +15,10 @@
 
 [TypeScript 手册指南](https://www.tslang.cn/docs/handbook/basic-types.html)
 
-[javascript隐式转换](https://jsisweird.com/)
+[javascript 隐式转换](https://jsisweird.com/)
 
+[RESTful Web API 设计](https://docs.microsoft.com/en-us/azure/architecture/best-practices/api-design#conform-to-http-semantics)
+
+[ECMA Script 规范文档](https://262.ecma-international.org/)
+
+[javascript 学习文档](https://sinaad.github.io/)
