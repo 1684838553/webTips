@@ -1,3 +1,5 @@
+[WeakSet,WeakMap 学习视频](https://www.youtube.com/watch?v=MQsUiqVCJMc)
+
 ### WeakSet 和 Set 的不同点（Map 和 WeakMap 不同点一样）
 
 1. WeakSet 只能存对象，Set 可以存任意类型的值
