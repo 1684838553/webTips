@@ -687,3 +687,46 @@ Person.prototype.run = function(){
 var p1 = new Person('张三',18) // 实例化 p1.__proto__
 js中__proto__都是js的内部属性，相当于[[scope]]，js中所有对象都会携带__proto__
  `p1.__proto__ === Person.prototype`
+
+> 1. 挂载在函数内部的方法，实例化对象会复制构造函数的方法，挂载在原型上的方法，不会复制。
+> 2. 内部和原型上的方法实例化都可以去调用
+> 3. 一般来说，需要访问构造函数内部的私有变量，可定义在函数内部，其它情况定义在原型上
+
+`总结`
+1. 所有对象都会携带__proto__属性
+2. p1.__proto__ , Person.prototype
+3.  Person.prototype.constructor === Person
+
+**如图：prototype,__proto__,constructor关系图，构造函数与函数之间的关系图**
+
+**三个方法：**
+1. hasOwnPrototype 
+    `obj.hasOwnPrototype('属性名')  返回true/false`
+
+2. isPrototypeOf
+    `用来判断指定对象obj1是否存在于另一个对象obj2的原型链中，返回true/false`
+
+3. getPrototypeOf
+    `用来得到obj对象的原型对象的标准方法`
+
+
+### 27、Object.defineProperty方法
+
+`Object.defineProperty(obj,prop,descriptor) //指定对象 需定义的属性 属性描述符`  **返回值：返回该对象** 
+
+```javascript
+var descriptor = {
+    // 数据描述符
+    configurable:false,  // 是否能用delete删除
+    writable:false,  //是否可写
+    enumerable:false,  // 是否可枚举
+    value:'hello',  // 属性值
+    //访问器描述符（writable为true时才能使用）
+    get,  //在读取属性时调用的函数，默认值为undefined
+    set,  //在写入...
+}
+
+
+Object.defineProperty(obj,'MOOC',descriptor)
+console.log(obj.MOOC)  // hello
+```
