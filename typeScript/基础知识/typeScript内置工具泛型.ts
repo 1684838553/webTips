@@ -140,5 +140,8 @@ function foo(param: B1) {
 }
 
 function foo1(param: B1): param is string {
-  return typeof param === "string";
+  return typeof param === "number";
+  // return 123
 }
+
+var ai = foo1(1);
