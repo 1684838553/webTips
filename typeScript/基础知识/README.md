@@ -8,6 +8,8 @@
 
 [04ts 类型表达中常用的关键字](./04ts类型表达中常用的关键字.md)
 
+[05ts 中类型保护](./05ts中类型保护.md)
+
 [TypeScript 内置工具泛型](https://github.com/chenxiaochun/blog/issues/67)
 
 [typescript 高级技巧](https://shanyue.tech/post/ts-tips.html#_03-condition-type)
