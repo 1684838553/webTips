@@ -1,16 +1,20 @@
 ## TypeScript 知识点
 
-[01ts 理论基础和工作流程](./01ts理论基础和工作流程.md)
-
 [02ts 的基础知识](./02ts的基础知识.md)
-
-[03ts 的面向对象](./03ts的面向对象.md)
 
 [04ts 类型表达中常用的关键字](./04ts类型表达中常用的关键字.md)
 
+[ts 中的符号 demo](./ts中的符号.ts)
+
 [05ts 中类型保护](./05ts中类型保护.md)
 
+[06 关于 typeScript 的一些问题](./06关于typeScript的一些问题.md)
+
+[typeScript 高级技巧 demo](./typeScript高级技巧.md)
+
 [TypeScript 内置工具泛型](https://github.com/chenxiaochun/blog/issues/67)
+
+[typeScript 内置工具泛型 demo](./typeScript内置工具泛型.md)
 
 [typescript 高级技巧](https://shanyue.tech/post/ts-tips.html#_03-condition-type)
 
@@ -23,3 +27,5 @@
 [慕课教程](http://www.imooc.com/wiki/typescriptlesson/is.html)
 
 [TypeScript 中的六个知识盲区](https://zhuanlan.zhihu.com/p/260213914)
+
+[TypeScript 学习指南 阿宝哥](https://segmentfault.com/a/1190000024458956)

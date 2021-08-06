@@ -22,3 +22,11 @@
 [ECMA Script 规范文档](https://262.ecma-international.org/)
 
 [javascript 学习文档](https://sinaad.github.io/)
+
+### 推荐学习网站
+
+[https://medium.com](https://medium.com)
+
+[https://stackoverflow.com](https://stackoverflow.com)
+
+[https://twitter.com](https://twitter.com)

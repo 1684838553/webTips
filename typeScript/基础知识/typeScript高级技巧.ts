@@ -15,7 +15,7 @@ let uncertain: unknown = "Hello"!;
 uncertain = 12;
 uncertain = { hello: () => "Hello!" };
 
-function foo(a: unknown, b: any) {
+function foo4(a: unknown, b: any) {
   (a as string).split("");
   b.split("");
 }
@@ -32,6 +32,55 @@ arr.pop();
 arr.pop();
 console.log(arr);
 
-enum State {}
+// 3. 枚举类型
+// 数字类型枚举能根据枚举值获取到枚举的键值
 
-console.log(State);
+enum State {
+  red = "red1",
+  blue = "blue1",
+}
+
+console.log(State["red"], State["blue"]);
+
+enum Enum {
+  A,
+  B,
+  C = "C",
+  D = "Da",
+  E = 8,
+  F,
+}
+console.log(Enum["A"], Enum[0], Enum["D"], Enum[9]);
+
+// 4. 赋值断言
+let x: number;
+initialize();
+// Variable 'x' is used before being assigned.(2454)
+console.log(2 * x); // Error
+
+function initialize() {
+  x = 10;
+}
+
+// 5. interface
+interface Name {
+  name: string;
+}
+type Person = {
+  age: number;
+};
+type User = Name & Person;
+
+let user: User = {
+  age: 1,
+  name: "",
+};
+
+//6. object Object {}
+let a: object;
+a = {};
+let b: Object;
+b.valueOf();
+
+const c = {};
+// c.name
