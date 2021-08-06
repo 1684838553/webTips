@@ -80,7 +80,7 @@ let user: User = {
 let a: object;
 a = {};
 // let b: Object;
-b.valueOf();
+// b.valueOf();
 
 const c = {};
 // c.name
