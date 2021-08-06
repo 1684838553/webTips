@@ -79,7 +79,7 @@ let user: User = {
 //6. object Object {}
 let a: object;
 a = {};
-let b: Object;
+// let b: Object;
 b.valueOf();
 
 const c = {};
