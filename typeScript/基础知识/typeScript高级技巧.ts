@@ -84,3 +84,19 @@ a = {};
 
 const c = {};
 // c.name
+
+const enum Colors {
+  red,
+  blue,
+}
+
+interface User1 {
+  name: string;
+  age: number;
+}
+
+interface User2 {
+  sex: string;
+}
+
+type User3 = User1 & User2;
