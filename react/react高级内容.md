@@ -145,9 +145,13 @@ export default Demo
 
 ```react
 生命周期函数 : 组件在某一时刻，组件会自动调用执行的函数
-// getDerivedStateFromProps 会在调用 render 方法之前调用，并且在初始挂载及后续更新时都会被调用。它应返回一个对象来更新 state，如果返回 null 则不更新任何内容。
+// getDerivedStateFromProps (static) 会在调用 render 方法之前调用，并且在初始挂载及后续更新时都会被调用。它应返回一个对象来更新 state，如果返回 null 则不更新任何内容。
+
+//getSnapshotBeforeUpdate(prevProps,prevState), 在最近一次渲染输出（提交到 DOM 节点）之前调用。它使得组件能在发生更改之前从 DOM 中捕获一些信息（例如，滚动位置）。此生命周期方法的任何返回值将作为参数传递给 componentDidUpdate()。
 
 挂载阶段： constructor() -> getDerivedStateFromProps()(用父组件传的props修改子组件state) -> render() -> componentDidMount()
+组件更新(父组件触发)： getDerivedStateFromProps() -> shouldComponentUpdate() -> render() -> getSnapshotBeforeUpdate() -> componentDidUpdate()
+组件更新(子组件触发)：shouldComponentUpdate() -> render() -> getSnapshotBeforeUpdate() -> componentDidUpdate()
 ```
 
 
