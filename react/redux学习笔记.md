@@ -1,12 +1,27 @@
-## redux学习笔记
+## redux 学习笔记
 
- redux是一个数据层的框架，把所有数据放在store中管理
+redux 是一个数据层的框架，把所有数据放在 store 中管理
 
-#### 1、redux设计理念：
+<font color="red">如果你不知道是否需要 Redux，那就是不需要它。只有遇到 React 实在解决不了的问题，你才需要 Redux 。</font>
 
-把所有数据放在store中管理，一个组件改变了store中数据的变化，其他组件监听到数据的变化，来获取新的数据
+[redux官方文档](https://redux.js.org/)
 
-#### 2、redux工作流程
+[redux学习视频前30集](https://egghead.io/courses/fundamentals-of-redux-course-from-dan-abramov-bd5cc867)
+
+[redux学习视频后30集](https://egghead.io/courses/building-react-applications-with-idiomatic-redux)
+
+> **以下场景，可考虑使用 redux:**
+>
+> - 某个组件的状态，需要共享
+> - 某个状态需要在任何地方都可以拿到
+> - 一个组件需要改变全局状态
+> - 一个组件需要改变另一个组件的状态
+
+#### 1、redux 设计理念：
+
+把所有数据放在 store 中管理，一个组件改变了 store 中数据的变化，其他组件监听到数据的变化，来获取新的数据
+
+#### 2、redux 工作流程
 
 ```react
 // store的创建（store 数据管理的仓库）
@@ -28,15 +43,85 @@ const getChangeData = () => {
     setList(store.getState().list);
   };
   store.subscribe(getChangeData);
+
+//Reducer 是一个函数，它接受 Action 和当前 State 作为参数，返回一个新的 State。
+import { DELETE_ITEM } from './actionType';
+// 创建reducer,reducer返回的必须是一个函数，reducer负责管理整个store中的数据
+// 默认值
+const defaultState = {
+  list: ['1', '2', 'fff'],
+  value: '',
+  words: [],
+};
+
+//reducer ,可以接受state，但绝不可以修改state
+export default (state = defaultState, action) => {
+  let newState;
+  try {
+    //不能直接修改state
+    newState = JSON.parse(JSON.stringify(state));
+  } catch (e) {
+    console.log(e, 'throw Error');
+  }
+  switch (action.type) {
+    case DELETE_ITEM:
+      newState.list.splice(action.value, 1);
+      return newState;
+  }
+  return state;
+};
+
 ```
 
-### 3、redux设计原则
+### 3、redux 设计原则
 
-1. store必须是唯一的
-2. 只有store能改变自己的数据，reducer将新的状态返回给store，store自己更新状态
-3. reducer必须是纯函数。**纯函数：给定固定的输入，就会有固定的输出，不依赖函数外部的任何状态或数据，没有副作用**
+1. store 必须是唯一的
+2. 只有 store 能改变自己的数据，reducer 将新的状态返回给 store，store 自己更新状态
+3. reducer 必须是纯函数。**纯函数：给定固定的输入，就会有固定的输出，不依赖函数外部的任何状态或数据，没有副作用**
 
-### 4、store例子
+### 4、纯函数
+
+纯函数是函数式编程的概念，必须遵守以下一些约束。
+
+> 1. 不得改写参数
+>
+> 2. 不能调用系统 I/O 的API
+>
+> 3. 不能调用`Date.now()`或者`Math.random()`等不纯的方法，因为每次会得到不一样的结果
+
+<font color="red">reducer是纯函数，该函数里面不能改变state，必须返回一个全新的对象。redux的state只能在store中修改，不能再reducer中修改。</font>
+
+Redux 提供了一个`combineReducers`方法，用于 Reducer 的拆分。你只要定义各个子 Reducer 函数，然后用这个方法，将它们合成一个大的 Reducer。
+
+```react
+import { combineReducers } from 'redux';
+
+const chatReducer = combineReducers({
+  chatLog,
+  statusMessage,
+  userName
+})
+
+export default todoApp;
+
+
+//下面是combineReducer的简单实现
+const combineReducers = reducers => {
+  return (state = {}, action) => {
+    return Object.keys(reducers).reduce(
+      (nextState, key) => {
+        nextState[key] = reducers[key](state[key], action);
+        return nextState;
+      },
+      {} 
+    );
+  };
+};
+```
+
+
+
+### 5、store 例子
 
 ```react
 //1. 创建store，index.ts文件
@@ -150,4 +235,3 @@ export default function TodoList(): React.ReactNode {
 }
 
 ```
-

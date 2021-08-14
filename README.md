@@ -15,6 +15,8 @@
 
 [javascript 学习文档](https://sinaad.github.io/)
 
+[阮一峰网站](https://www.ruanyifeng.com/)
+
 ### 推荐学习网站
 
 [https://medium.com](https://medium.com)
@@ -24,4 +26,3 @@
 [https://twitter.com](https://twitter.com)
 
 [真机调试 spy-debugger](https://github.com/wuchangming/spy-debugger)
-
