@@ -1,5 +1,8 @@
-[React题目](http://www.lucklnk.com/godaddy/details/aid/690502212)
-[react 系列一，react 虚拟 dom 如何转成真实的 dom](https://www.cnblogs.com/zhenfei-jiang/p/9682430.html)
+## 关于react中的一些问题
+
+[React性能优化技巧](https://www.infoq.cn/article/kve8xtrs-upphptq5luz)
+
+[React题目](http://www.lucklnk.com/godaddy/details/aid/690502212)[react 系列一，react 虚拟 dom 如何转成真实的 dom](https://www.cnblogs.com/zhenfei-jiang/p/9682430.html)
 [react+redux 基础用法](https://www.cnblogs.com/zhenfei-jiang/p/7280167.html)
 
 ### 1. angularjs 和 react 的区别
@@ -58,6 +61,11 @@ Redux thunk 是一个允许你编写返回一个函数而不是一个 action 的
 
 ### 3. redux 有什么缺点
 
+[redux有什么缺点](https://www.zhihu.com/question/263928256)
+
+1. 默认只支持同步处理，连作者创造的redux-thunk都是独立于redux之外的一个包
+2. 比较麻烦，为了一个功能，即要写reducer，又要写action,还有定义一个actionType,比较麻烦。但他的目的又是为了让代码更清晰明确
+
 一个组件所需要的数据，必须由父组件传过来，而不能像 flux 中直接从 store 取。
 当一个组件相关数据更新时，即使父组件不需要用到这个组件，父组件还是会重新 render，可能会有效率影响，或者需要写复杂的 shouldComponentUpdate 进行判断。
 
@@ -105,7 +113,192 @@ componentWillUnmount: 会在组件卸载及销毁之前直接调用。在此方�
  2.  componentDidCatch：此生命周期在后代组件抛出错误后被调用。 它接收两个参数：1. error —— 抛出的错误。2. info —— 带有 componentStack key 的对象，其中包含有关组件引发错误的栈信息。componentDidCatch 会在“提交”阶段被调用，因此允许执行副作用。 它应该用于记录错误之类的情况。
 ```
 
-### 6. react 性能优化是哪个周期函数
+### 6. react 性能优化是哪个生命周期函数
+
+1. **setState()函数在任何情况下都会导致组件重渲染吗？如果setState()中参数还是原来没有发生任何变化的state呢？**
+
+   state和props发生改变，都会导致组件重渲染
+
+   <font color="red">**没有导致state的值发生变化的setState是否会导致重渲染 ——【会！】**</font>
+
+   ```react
+   import React from 'react'
+   class Test extends React.Component{
+     constructor(props) {
+       super(props);
+       this.state = {
+         Number:1//设state中Number值为1
+       }
+     }
+     //这里调用了setState但是并没有改变setState中的值
+     handleClick = () => {
+        const preNumber = this.state.Number
+        this.setState({
+           Number:this.state.Number
+        })
+     }
+     
+     //加上该生命周期函数，该组件避免了不必要的重渲染
+     shouldComponentUpdate(nextProps,nextState){
+       // nextState.Number是最新的数据，this.state.Number是更新前的数据
+         if(nextState.Number == this.state.Number){
+           return false
+         }
+     }
+   
+     render(){
+       //当render函数被调用时，打印当前的Number
+       console.log(this.state.Number)
+       return(<h1 onClick = {this.handleClick} style ={{margin:30}}>
+                {this.state.Number}
+              </h1>)
+     }
+   }
+   export default Test
+   
+   //没有shouldComponentUpdate生命周期函数，点击1一共15次，其间demo没有发生任何变化 ,但是控制台打印15个1
+   ```
+
+   <font color="red">**这里状态没有发生任何改变，如何阻止重新渲染？  shouldComponentUpdate(nextProps,nextState) **,nextProps表示的是接收到新props内容，现有的props通过this.props拿到，由此感知到props的变化,nextState同理</font>
+
+   
+
+2. **组件的state没有变化，并且从父组件接受的props也没有变化，那它就还可能重渲染吗？——【可能！】**
+
+   ```react
+   import React from 'react'
+   
+   //子组件
+   class Son extends React.Component{
+     //shouldComponentUpdate(nextProps,nextState){
+       //   if(nextProps.number == this.props.number){
+       //     return false
+       //   }
+       //  return true
+    	// }
+     render(){
+       const {index,number,handleClick} = this.props
+       //在每次渲染子组件时，打印该子组件的数字内容
+       console.log(number);
+       return <h1 onClick ={() => handleClick(index)}>{number}</h1>
+     }
+   }
+   
+   
+   //父组件
+   class Father extends React.Component{
+     constructor(props) {
+       super(props);
+       this.state = {
+         numberArray:[0,1,2]
+       }
+     }
+     //点击后使numberArray中数组下标为index的数字值加一，重渲染对应的Son组件
+     handleClick = (index) => {
+        let preNumberArray = this.state.numberArray
+        preNumberArray[index] += 1;  //每次点击，被点击元素状态+1
+        this.setState({
+           numberArray:preNumberArray
+        })
+     }
+     render(){
+       return(<div style ={{margin:30}}>{
+                 this.state.numberArray.map(
+                   (number,key) => {
+                    return <Son
+                              key = {key}
+                              index = {key}
+                              number ={number}
+                              handleClick ={this.handleClick}/>
+                   }
+                   )
+                 }
+              </div>)
+     }
+   }
+   export default Father
+   
+   //点击1，控制台打印 1 1 2
+   //输出的（1，1，2），有我们从0变到1的数据，也有未发生变化的1和2。这说明Son又做了两次多余的重渲染，但是对于1和2来说，它们本身state没有变化（也没有设state）,同时父组件传达的props也没有变化，所以我们又做了无用功
+   
+   //怎么避免以上问题，关键还是在shouldComponentUpdate这个钩子函数上
+   //这时，只打印了数字发生改变的numberArray[0]对应的Son组件，说明numberArray[1]，numberArray[2]的重渲染被“过滤”了
+   ```
+
+   <font color="red">**总结：前后不改变state值的setState（理论上）和无数据交换的父组件的重渲染都会导致组件的重渲染，但你可以在shouldComponentUpdate这道两者必经的关口阻止这种浪费性能的行为**</font>
+
+   
+
+   <font color="blue">**数据变得复杂时，就会出现意外情况**</font>
+
+   ```react
+   import React from 'react'
+   class Son extends React.Component{
+     shouldComponentUpdate(nextProps,nextState){
+         if(nextProps.numberObject.number == this.props.numberObject.number){
+           return false
+         }
+         return true
+     }
+     render(){
+       const {index,numberObject,handleClick} = this.props
+       //在每次渲染子组件时，打印该子组件的数字内容
+       console.log(numberObject.number);
+       return <h1 onClick ={() => handleClick(index)}>{numberObject.number}</h1>
+     }
+   }
+   class Father extends React.Component{
+     constructor(props) {
+       super(props);
+       this.state = {
+         numberArray:[{number:0 /*对象中其他的属性*/},
+                      {number:1 /*对象中其他的属性*/},
+                      {number:2 /*对象中其他的属性*/}
+                      ]
+       }
+     }
+     //点击后使numberArray中数组下标为index的数字值加一，重渲染对应的Son组件
+     handleClick = (index) => {
+        let preNumberArray = this.state.numberArray
+        preNumberArray[index].number += 1;
+        this.setState({
+           numberArray:preNumberArray
+        })
+     }
+     render(){
+       return(<div style ={{margin:30}}>{
+                 this.state.numberArray.map(
+                   (numberObject,key) => {
+                    return <Son
+                              key = {key}
+                              index = {key}
+                              numberObject ={numberObject}
+                              handleClick ={this.handleClick}/>
+                   }
+                   )
+                 }
+              </div>)
+     }
+   }
+   export default Father
+   
+   //这个时候发现无论如何点击三个标题均无变化（没有数字改变），且控制台无输出
+   
+   我的代码结构明明没有任何变化啊，只是改传递数字为传递对象而已。嗯嗯，问题就出在这里，我们传递的是对象，关键在于nextProps.numberObject.number == this.props.numberObject.number这个判断条件，让我们思考，这与前面成功例子中的nextProps.number == this.props.number的区别：
+   
+   1. numberObject是一个对象
+   2. number是一个数字变量
+   3. 数字变量（number类型）和对象（Object类型）的内存存储机制不同
+   ```
+
+   <font color="blue">**解决方案：**</font>
+
+   [利用shouldComponentUpdate函数优化react性能](https://www.cnblogs.com/penghuwan/p/6707254.html)
+
+   1. **Object.assign()**
+   2. **深拷贝／浅拷贝或利用JSON.parse(JSON.stringify(data))**
+   3. **immutable.js//react官方推荐使用的第三方库，目前github上20K star,足见其火热**
+   4. **继承react的PureComponent组件**
 
 ### 7. 为什么虚拟 dom 会提高性能
 
@@ -265,11 +458,20 @@ Refs 可以用于获取一个 DOM 节点或者 React 组件的引用。何时使
 
 ### 26. 怎么阻止组件的渲染
 
-在组件的 render 方法中返回 null 并不会影响触发组件的生命周期方法
+在组件的 render 方法中返回 null 并不会影响触发组件的生命周
+
+**1、组件何时进行渲染**
+
+1. 第一次渲染，`componentWillMount` 调用结束。
+2. 调用 `componentWillUpdate` 结束后，再次渲染。
 
 ### 27. 当渲染一个组件时。何为 key？设置 key 的目的是什么
 
-<font color="red">保证 key 值在兄弟节点之间必须唯一</font>
+[深入解析用key做索引的负面影响](https://robinpokorny.medium.com/index-as-a-key-is-an-anti-pattern-e0349aece318)
+
+[深入解析key为什么是必须的](https://zh-hans.reactjs.org/docs/reconciliation.html#recursing-on-children)
+
+<font color="red">保证 key 值在兄弟节点之间必须唯一,不需要全局唯一</font>
 
 ```react
 // key(最好是独一无二的字符串) 帮助 React 识别哪些元素改变了，比如被添加或删除。因此你应当给数组中的每一个元素赋予一个确定的标识。
@@ -277,11 +479,17 @@ Refs 可以用于获取一个 DOM 节点或者 React 组件的引用。何时使
 //一个好的经验法则是：在 map() 方法中的元素需要设置 key 属性。
 
 //数组元素中使用的 key 在其兄弟节点之间应该是独一无二的。然而，它们不需要是全局唯一的。当我们生成两个不同的数组时，我们可以使用相同的 key 值。即保证 key 值在兄弟节点之间必须唯一
+
+// key值能增加树的转换效率
+
+//索引为key的组件进行重新排序时，组件 state 可能会遇到一些问题。由于组件实例是基于它们的 key 来决定是否更新以及复用，如果 key 是一个下标，那么修改顺序时会修改当前的 key，导致非受控组件的 state（比如输入框）可能相互篡改，会出现无法预期的变动。
 ```
 
+**什么时候可以用索引作为键？**
 
-
-Keys 会有助于 React 识别哪些 items 改变了，被添加了或者被移除了。Keys 应该被赋予数组内的元素以赋予(DOM)元素一个稳定的标识，选择一个 key 的最佳方法是使用一个字符串，该字符串能惟一地标识一个列表项。很多时候你会使用数据中的 IDs 作为 keys，当你没有稳定的 IDs 用于被渲染的 items 时，可以使用项目索引作为渲染项的 key，但这种方式并不推荐，如果 items 可以重新排序，就会导致 re-render 变慢。
+1. 列表和项目是静态的——它们不是计算出来的，也不会改变；
+2. 列表中的项目没有 ID；
+3. 该列表*永远不会*重新排序或过滤。
 
 ### 28. 何为 jsx
 
