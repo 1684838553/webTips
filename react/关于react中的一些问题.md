@@ -269,16 +269,137 @@ Refs 可以用于获取一个 DOM 节点或者 React 组件的引用。何时使
 
 ### 27. 当渲染一个组件时。何为 key？设置 key 的目的是什么
 
+<font color="red">保证 key 值在兄弟节点之间必须唯一</font>
+
+```react
+// key(最好是独一无二的字符串) 帮助 React 识别哪些元素改变了，比如被添加或删除。因此你应当给数组中的每一个元素赋予一个确定的标识。
+
+//一个好的经验法则是：在 map() 方法中的元素需要设置 key 属性。
+
+//数组元素中使用的 key 在其兄弟节点之间应该是独一无二的。然而，它们不需要是全局唯一的。当我们生成两个不同的数组时，我们可以使用相同的 key 值。即保证 key 值在兄弟节点之间必须唯一
+```
+
+
+
 Keys 会有助于 React 识别哪些 items 改变了，被添加了或者被移除了。Keys 应该被赋予数组内的元素以赋予(DOM)元素一个稳定的标识，选择一个 key 的最佳方法是使用一个字符串，该字符串能惟一地标识一个列表项。很多时候你会使用数据中的 IDs 作为 keys，当你没有稳定的 IDs 用于被渲染的 items 时，可以使用项目索引作为渲染项的 key，但这种方式并不推荐，如果 items 可以重新排序，就会导致 re-render 变慢。
 
 ### 28. 何为 jsx
 
 [什么是 jsx?如何使用 jsx？](https://www.cnblogs.com/Gabriel-Wei/p/6103155.html)
 
-1. JSX 实质上就是为了方便 React 将 View 层组件化，通过将 HTMl 语法加到 Javascript 代码中，以承担构建页面的职责。
+[JSX 语法](https://zhuanlan.zhihu.com/p/21246327)
 
+```react
+// jsx 将一段html代码赋值给一个变量
+
+1. JSX 实质上就是为了方便 React 将 View 层组件化，通过将 HTMl 语法加到 Javascript 代码中，以承担构建页面的职责。
 2. JSX 是 JavaScript 语法的一种语法扩展，并拥有 JavaScript 的全部功能。JSX 生产 React "元素"，你可以将任何的 JavaScript 表达式封装在花括号里，然后将其嵌入到 JSX 中。在编译完成之后，JSX 表达式就变成了常规的 JavaScript 对象，这意味着你可以在 if 语句和 for 循环内部使用 JSX，将它赋值给变量，接受它作为参数，并从函数中返回它。
+
+//jsx 组件
+1. jsx组件分为html组件和react组件
+		html组件就是html中的原生标签，react组件就是react自定义的组件
+
+2. 组件属性
+ function render() {
+   return  <p title="title" >hello, React, world </p>  // title 是属性
+ }
+
+
+function render() {
+    return <p> <CustomComponent customProps="data"/> </p>  // customProps 是属性
+  }
+
+3.jsx花括号
+（1）显示文本
+（2）运算
+（3）JSX注释
+
+
+// 限制规则
+1. render 方法返回的组件必须是有且只有一个根组件
+2. 组件命名空间
+		JSX 可以通过命名空间的方式使用组件, 通过命名空间的方式可以解决相同名称不同用途组件冲突的问题。
+  function render() {
+    return <p>
+           <CustomComponent1.SubElement/>
+           <CustomComponent2.SubElement/>
+           </p>
+  }
+
+```
+
+
 
 ### 29. 何为受控组件(controlled component)
 
-在 HTML 中，类似` <input>, <textarea> 和 <select>` 这样的表单元素会维护自身的状态，并基于用户的输入来更新。当用户提交表单时，前面提到的元素的值将随表单一起被发送。但在 React 中会有些不同，包含表单元素的组件将会在 state 中追踪输入的值，并且每次调用回调函数时，如 onChange 会更新 state，重新渲染组件。一个输入表单元素，它的值通过 React 的这种方式来控制，这样的元素就被称为"受控元素"。
+<font color="red">受控input一定是通过 onChange 和 setState 的组合方式来进行数值的更新, 而非受控的input就遵循DOM节点的方式进行数值更新.</font>
+
+[受控组件和非受控组件](https://juejin.cn/post/6858276396968951822)
+
+[论受控组件和非受控组件在React中的定义](https://zhuanlan.zhihu.com/p/146540113)
+
+```react
+// 在HTML的表单元素中，它们通常自己维护一套state，并随着用户的输入自己进行UI上的更新，这种行为是不被我们程序所管控的。而如果将React里的state属性和表单元素的值建立依赖关系，再通过onChange事件与setState()结合更新state属性，就能达到控制用户输入过程中表单发生的操作。被React以这种方式控制取值的表单输入元素就叫做受控组件。
+
+对于受控与非受控组件的讨论对应只有表单控件, 比如:
+- input
+- textarea
+- select
+- checkbox
+- radio
+之类的元素. 显然, 超出了这类表单元素的范围, 实际上同定义的受控和非受控的含义就不再成立了.
+
+接下来以input元素作为例子进行定义阐释.
+
+// 受控: the value of the input 被 React.Component 通过 setState 的形式进行赋值, 即这个value全程是被React组件所控制, 那就符合受控组件的定义.
+
+// 非受控: the value of the input 只通过DOM节点操作进行赋值和获取. 这种形式表现为React组件没有与之相关联的 state 或数据.
+
+
+import React, { useState, useRef } from 'react';
+import { Input, Card, Button } from 'antd';
+
+const InputWrapper = (): JSX.Element => {
+  const inputRef = useRef<any>();
+  const [value, setValue] = useState('');
+  const [value1, setValue1] = useState('');
+
+  const handleClick = () => {
+    console.log(inputRef);
+    setValue1(inputRef.current?.state.value);
+  };
+
+  return (
+    <>
+      <Card title="受控组件">
+        <Input
+          placeholder="受控组件"
+          value={value}
+          onChange={(e) => setValue(e.target.value)}
+          style={{ marginBottom: '24px', width: 500 }}
+        />
+        <div>{`受控组件的值(通过onChange获取)：${value}`}</div>
+      </Card>
+      <Card title="非受控组件" style={{ marginTop: '24px' }}>
+        <Input
+          placeholder="非受控组件"
+          style={{ marginBottom: '24px', width: 500 }}
+          ref={inputRef}
+        />
+        <Button onClick={handleClick}>点击</Button>
+        <div>{`非受控组件的值(通过ref获取)：${value1}`}</div>
+      </Card>
+    </>
+  );
+};
+
+export default InputWrapper;
+
+
+// 从上面的代码可以看到受控input一定是通过 onChange 和 setState 的组合方式来进行数值的更新, 而非受控的input就遵循DOM节点的方式进行数值更新.
+
+// 有一个小问题就是, 在当前代码的基础上, 无法准确的说出一个事情 - InputWrapper 是一个受控组件还是一个非受控组件, 只能描述成:InputWrapper 有一个受控表单控件和一个非受控表单控件.
+```
+
+
+

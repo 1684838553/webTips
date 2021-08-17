@@ -35,3 +35,7 @@
 [阮一峰 redux 入门教程 中间件与异步操作](https://www.ruanyifeng.com/blog/2016/09/redux_tutorial_part_two_async_operations.html)
 
 [阮一峰 redux 入门教程 react-redux 的用法](https://www.ruanyifeng.com/blog/2016/09/redux_tutorial_part_three_react-redux.html)
+
+[掌控 redux 异步](https://zhuanlan.zhihu.com/p/21398212)
+
+[理解 redux 中间件](https://zhuanlan.zhihu.com/p/21391101)

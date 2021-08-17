@@ -17,6 +17,8 @@
 
 [阮一峰网站](https://www.ruanyifeng.com/)
 
+[LinDaiDai\_霖呆呆掘金博主](https://juejin.cn/user/360295513463912/posts)
+
 ### 推荐学习网站
 
 [https://medium.com](https://medium.com)
