@@ -1,8 +1,8 @@
-## 关于react中的一些问题
+## 关于 react 中的一些问题
 
-[React性能优化技巧](https://www.infoq.cn/article/kve8xtrs-upphptq5luz)
+[React 性能优化技巧](https://www.infoq.cn/article/kve8xtrs-upphptq5luz)
 
-[React题目](http://www.lucklnk.com/godaddy/details/aid/690502212)[react 系列一，react 虚拟 dom 如何转成真实的 dom](https://www.cnblogs.com/zhenfei-jiang/p/9682430.html)
+[React 题目](http://www.lucklnk.com/godaddy/details/aid/690502212)[react 系列一，react 虚拟 dom 如何转成真实的 dom](https://www.cnblogs.com/zhenfei-jiang/p/9682430.html)
 [react+redux 基础用法](https://www.cnblogs.com/zhenfei-jiang/p/7280167.html)
 
 ### 1. angularjs 和 react 的区别
@@ -36,35 +36,33 @@ react 对比 angular 是思想上的转变，它也并不是一个库，是一�
 
 ### 2. redux 中间件
 
-```react
 Redux 的基本思想是整个应用的 state 保持在一个单一的 store 中。store 就是一个简单的 javascript 对象，而改变应用 state 的唯一方式是在应用中触发 actions，然后为这些 actions 编写 reducers 来修改 state。整个 state 转化是在 reducers 中完成，并且不应该有任何副作用。
 
 1. 在 Redux 中，何为 store
-Store 是一个 javascript 对象，它保存了整个应用的 state。与此同时，Store 也承担以下职责：
-允许通过 getState() 访问 state
-运行通过 dispatch(action) 改变 state
-通过 subscribe(listener) 注册 listeners
-通过 subscribe(listener) 返回的函数处理 listeners 的注销
+   Store 是一个 javascript 对象，它保存了整个应用的 state。与此同时，Store 也承担以下职责：
+   允许通过 getState() 访问 state
+   运行通过 dispatch(action) 改变 state
+   通过 subscribe(listener) 注册 listeners
+   通过 subscribe(listener) 返回的函数处理 listeners 的注销
 
 2. 何为 action
-Actions 是一个纯 javascript 对象，它们必须有一个 type 属性表明正在执行的 action 的类型。实质上，action 是将数据从应用程序发送到 store 的有效载荷。
+   Actions 是一个纯 javascript 对象，它们必须有一个 type 属性表明正在执行的 action 的类型。实质上，action 是将数据从应用程序发送到 store 的有效载荷。
 
 3. 何为 reducer
-一个 reducer 是一个纯函数，该函数以先前的 state 和一个 action 作为参数，并返回下一个 state。
+   一个 reducer 是一个纯函数，该函数以先前的 state 和一个 action 作为参数，并返回下一个 state。
 
 4. Redux Thunk 的作用是什么
-Redux thunk 是一个允许你编写返回一个函数而不是一个 action 的 actions creators 的中间件。如果满足某个条件，thunk 则可以用来延迟 action 的派发(dispatch)，这可以处理异步 action 的派发(dispatch)。
+   Redux thunk 是一个允许你编写返回一个函数而不是一个 action 的 actions creators 的中间件。如果满足某个条件，thunk 则可以用来延迟 action 的派发(dispatch)，这可以处理异步 action 的派发(dispatch)。
 
 5. 何为纯函数(pure function)
-一个纯函数是一个不依赖于且不改变其作用域之外的变量状态的函数，这也意味着一个纯函数对于同样的参数总是返回同样的结果。
-```
+   一个纯函数是一个不依赖于且不改变其作用域之外的变量状态的函数，这也意味着一个纯函数对于同样的参数总是返回同样的结果。
 
 ### 3. redux 有什么缺点
 
-[redux有什么缺点](https://www.zhihu.com/question/263928256)
+[redux 有什么缺点](https://www.zhihu.com/question/263928256)
 
-1. 默认只支持同步处理，连作者创造的redux-thunk都是独立于redux之外的一个包
-2. 比较麻烦，为了一个功能，即要写reducer，又要写action,还有定义一个actionType,比较麻烦。但他的目的又是为了让代码更清晰明确
+1. 默认只支持同步处理，连作者创造的 redux-thunk 都是独立于 redux 之外的一个包
+2. 比较麻烦，为了一个功能，即要写 reducer，又要写 action,还有定义一个 actionType,比较麻烦。但他的目的又是为了让代码更清晰明确
 
 一个组件所需要的数据，必须由父组件传过来，而不能像 flux 中直接从 store 取。
 当一个组件相关数据更新时，即使父组件不需要用到这个组件，父组件还是会重新 render，可能会有效率影响，或者需要写复杂的 shouldComponentUpdate 进行判断。
@@ -79,47 +77,49 @@ UI 组件负责 UI 的呈现，容器组件负责管理数据和逻辑。
 
 ### 5. react 生命周期函数
 
-```react
 目前 React 16.8 +的生命周期分为三个阶段,分别是挂载阶段、更新阶段、卸载阶段。
 
-//生命周期函数 : 组件在某一时刻，组件会自动调用执行的函数
+**生命周期函数 : 组件在某一时刻，组件会自动调用执行的函数**
 
-// getDerivedStateFromProps (static) 会在调用 render 方法之前调用，并且在初始挂载及后续更新时都会被调用。它应返回一个对象来更新 state，如果返回 null 则不更新任何内容。
+1. getDerivedStateFromProps (static) 会在调用 render 方法之前调用，并且在初始挂载及后续更新时都会被调用。它应返回一个对象来更新 state，如果返回 null 则不更新任何内容。
 
-//getSnapshotBeforeUpdate(prevProps,prevState), 在最近一次渲染输出（提交到 DOM 节点）之前调用。它使得组件能在发生更改之前从 DOM 中捕获一些信息（例如，滚动位置）。此生命周期方法的任何返回值将作为参数传递给 componentDidUpdate()。
+2. getSnapshotBeforeUpdate(prevProps,prevState), 在最近一次渲染输出（提交到 DOM 节点）之前调用。它使得组件能在发生更改之前从 DOM 中捕获一些信息（例如，滚动位置）。此生命周期方法的任何返回值将作为参数传递给 componentDidUpdate()。
 
-//挂载阶段： constructor() -> getDerivedStateFromProps()(用父组件传的props修改子组件state) -> render() -> componentDidMount()
-//组件更新(父组件触发)： getDerivedStateFromProps() -> shouldComponentUpdate() -> render() -> getSnapshotBeforeUpdate() -> componentDidUpdate()
-//组件更新(子组件触发)：shouldComponentUpdate() -> render() -> getSnapshotBeforeUpdate() -> componentDidUpdate()
+挂载阶段： constructor() -> getDerivedStateFromProps()(用父组件传的 props 修改子组件 state) -> render() -> componentDidMount()
+组件更新(父组件触发)： getDerivedStateFromProps() -> shouldComponentUpdate() -> render() -> getSnapshotBeforeUpdate() -> componentDidUpdate()
+组件更新(子组件触发)：shouldComponentUpdate() -> render() -> getSnapshotBeforeUpdate() -> componentDidUpdate()
 
-//挂载阶段
+#### 挂载阶段
+
 1.  constructor: 构造函数，最先被执行,我们通常在构造函数里初始化 state 对象或者给自定义方法绑定 this
 2.  getDerivedStateFromProps: static getDerivedStateFromProps(nextProps, prevState),这是个静态方法,当我们接收到新的属性想去修改我们 state，可以使用 getDerivedStateFromProps
 3.  render: render 函数是纯函数，只返回需要渲染的东西，不应该包含其它的业务逻辑,可以返回原生的 DOM、React 组件、Fragment、Portals、字符串和数字、Boolean 和 null 等内容
 4.  componentDidMount: 组件装载之后调用，此时我们可以获取到 DOM 节点并操作，比如对 canvas，svg 的操作，服务器请求，订阅都可以写在这个里面，但是记得在 componentWillUnmount 中取消订阅
 
-//更新阶段
- 1.  getDerivedStateFromProps: 此方法在更新个挂载阶段都可能会调用
- 2.  shouldComponentUpdate: shouldComponentUpdate(nextProps, nextState),有两个参数 nextProps 和 nextState，表示新的属性和变化之后的 state，返回一个布尔值，true 表示会触发重新渲染，false 表示不会触发重新渲染，默认返回 true,我们通常利用此生命周期来优化 React 程序性能
- 3.  render: 更新阶段也会触发此生命周期
- 4.  getSnapshotBeforeUpdate(prevProps, prevState),这个方法在 render 之后，componentDidUpdate 之前调用，有两个参数 prevProps 和 prevState，表示之前的属性和之前的 state，这个函数有一个返回值，会作为第三个参数传给 componentDidUpdate，如果你不想要返回值，可以返回 null，此生命周期必须与 componentDidUpdate 搭配使用
- 5.  componentDidUpdate: componentDidUpdate(prevProps, prevState, snapshot),该方法在 getSnapshotBeforeUpdate 方法之后被调用，有三个参数 prevProps，prevState，snapshot，表示之前的 props，之前的 state，和 snapshot。第三个参数是 getSnapshotBeforeUpdate 返回的,如果触发某些回调函数时需要用到 DOM 元素的状态，则将对比或计算的过程迁移至 getSnapshotBeforeUpdate，然后在 componentDidUpdate 中统一触发回调或更新状态。
+#### 更新阶段
 
-// 卸载阶段
+1.  getDerivedStateFromProps: 此方法在更新个挂载阶段都可能会调用
+2.  shouldComponentUpdate: shouldComponentUpdate(nextProps, nextState),有两个参数 nextProps 和 nextState，表示新的属性和变化之后的 state，返回一个布尔值，true 表示会触发重新渲染，false 表示不会触发重新渲染，默认返回 true,我们通常利用此生命周期来优化 React 程序性能
+3.  render: 更新阶段也会触发此生命周期
+4.  getSnapshotBeforeUpdate(prevProps, prevState),这个方法在 render 之后，componentDidUpdate 之前调用，有两个参数 prevProps 和 prevState，表示之前的属性和之前的 state，这个函数有一个返回值，会作为第三个参数传给 componentDidUpdate，如果你不想要返回值，可以返回 null，此生命周期必须与 componentDidUpdate 搭配使用
+5.  componentDidUpdate: componentDidUpdate(prevProps, prevState, snapshot),该方法在 getSnapshotBeforeUpdate 方法之后被调用，有三个参数 prevProps，prevState，snapshot，表示之前的 props，之前的 state，和 snapshot。第三个参数是 getSnapshotBeforeUpdate 返回的,如果触发某些回调函数时需要用到 DOM 元素的状态，则将对比或计算的过程迁移至 getSnapshotBeforeUpdate，然后在 componentDidUpdate 中统一触发回调或更新状态。
+
+#### 卸载阶段
+
 componentWillUnmount: 会在组件卸载及销毁之前直接调用。在此方法中执行必要的清理操作，例如，清除定时器，取消网络请求或清除在 componentDidMount() 中创建的订阅，清理无效的 DOM 元素等垃圾清理工作。
 
-// 异常处理
- 1.  static getDerivedStateFromError: 此生命周期会在渲染阶段后代组件抛出错误后被调用。 它将抛出的错误作为参数，并返回一个值以更新 state。
- 2.  componentDidCatch：此生命周期在后代组件抛出错误后被调用。 它接收两个参数：1. error —— 抛出的错误。2. info —— 带有 componentStack key 的对象，其中包含有关组件引发错误的栈信息。componentDidCatch 会在“提交”阶段被调用，因此允许执行副作用。 它应该用于记录错误之类的情况。
-```
+#### 异常处理
+
+1.  static getDerivedStateFromError: 此生命周期会在渲染阶段后代组件抛出错误后被调用。 它将抛出的错误作为参数，并返回一个值以更新 state。
+2.  componentDidCatch：此生命周期在后代组件抛出错误后被调用。 它接收两个参数：1. error —— 抛出的错误。2. info —— 带有 componentStack key 的对象，其中包含有关组件引发错误的栈信息。componentDidCatch 会在“提交”阶段被调用，因此允许执行副作用。 它应该用于记录错误之类的情况。
 
 ### 6. react 性能优化是哪个生命周期函数
 
-1. **setState()函数在任何情况下都会导致组件重渲染吗？如果setState()中参数还是原来没有发生任何变化的state呢？**
+1. **setState()函数在任何情况下都会导致组件重渲染吗？如果 setState()中参数还是原来没有发生任何变化的 state 呢？**
 
-   state和props发生改变，都会导致组件重渲染
+   state 和 props 发生改变，都会导致组件重渲染
 
-   <font color="red">**没有导致state的值发生变化的setState是否会导致重渲染 ——【会！】**</font>
+   <font color="red">**没有导致 state 的值发生变化的 setState 是否会导致重渲染 ——【会！】**</font>
 
    ```react
    import React from 'react'
@@ -137,7 +137,7 @@ componentWillUnmount: 会在组件卸载及销毁之前直接调用。在此方�
            Number:this.state.Number
         })
      }
-     
+
      //加上该生命周期函数，该组件避免了不必要的重渲染
      shouldComponentUpdate(nextProps,nextState){
        // nextState.Number是最新的数据，this.state.Number是更新前的数据
@@ -145,7 +145,7 @@ componentWillUnmount: 会在组件卸载及销毁之前直接调用。在此方�
            return false
          }
      }
-   
+
      render(){
        //当render函数被调用时，打印当前的Number
        console.log(this.state.Number)
@@ -155,19 +155,17 @@ componentWillUnmount: 会在组件卸载及销毁之前直接调用。在此方�
      }
    }
    export default Test
-   
+
    //没有shouldComponentUpdate生命周期函数，点击1一共15次，其间demo没有发生任何变化 ,但是控制台打印15个1
    ```
 
-   <font color="red">**这里状态没有发生任何改变，如何阻止重新渲染？  shouldComponentUpdate(nextProps,nextState) **,nextProps表示的是接收到新props内容，现有的props通过this.props拿到，由此感知到props的变化,nextState同理</font>
+   <font color="red">**这里状态没有发生任何改变，如何阻止重新渲染？  shouldComponentUpdate(nextProps,nextState) **,nextProps 表示的是接收到新 props 内容，现有的 props 通过 this.props 拿到，由此感知到 props 的变化,nextState 同理</font>
 
-   
-
-2. **组件的state没有变化，并且从父组件接受的props也没有变化，那它就还可能重渲染吗？——【可能！】**
+2. **组件的 state 没有变化，并且从父组件接受的 props 也没有变化，那它就还可能重渲染吗？——【可能！】**
 
    ```react
    import React from 'react'
-   
+
    //子组件
    class Son extends React.Component{
      //shouldComponentUpdate(nextProps,nextState){
@@ -183,122 +181,123 @@ componentWillUnmount: 会在组件卸载及销毁之前直接调用。在此方�
        return <h1 onClick ={() => handleClick(index)}>{number}</h1>
      }
    }
-   
-   
-   //父组件
-   class Father extends React.Component{
-     constructor(props) {
-       super(props);
-       this.state = {
-         numberArray:[0,1,2]
-       }
-     }
-     //点击后使numberArray中数组下标为index的数字值加一，重渲染对应的Son组件
-     handleClick = (index) => {
-        let preNumberArray = this.state.numberArray
-        preNumberArray[index] += 1;  //每次点击，被点击元素状态+1
-        this.setState({
-           numberArray:preNumberArray
-        })
-     }
-     render(){
-       return(<div style ={{margin:30}}>{
-                 this.state.numberArray.map(
-                   (number,key) => {
-                    return <Son
-                              key = {key}
-                              index = {key}
-                              number ={number}
-                              handleClick ={this.handleClick}/>
-                   }
-                   )
-                 }
-              </div>)
-     }
-   }
-   export default Father
-   
-   //点击1，控制台打印 1 1 2
-   //输出的（1，1，2），有我们从0变到1的数据，也有未发生变化的1和2。这说明Son又做了两次多余的重渲染，但是对于1和2来说，它们本身state没有变化（也没有设state）,同时父组件传达的props也没有变化，所以我们又做了无用功
-   
-   //怎么避免以上问题，关键还是在shouldComponentUpdate这个钩子函数上
-   //这时，只打印了数字发生改变的numberArray[0]对应的Son组件，说明numberArray[1]，numberArray[2]的重渲染被“过滤”了
+
+    //父组件
+      class Father extends React.Component{
+        constructor(props) {
+          super(props);
+          this.state = {
+            numberArray:[0,1,2]
+          }
+        }
+        //点击后使numberArray中数组下标为index的数字值加一，重渲染对应的Son组件
+        handleClick = (index) => {
+           let preNumberArray = this.state.numberArray
+           preNumberArray[index] += 1;  //每次点击，被点击元素状态+1
+           this.setState({
+              numberArray:preNumberArray
+           })
+        }
+        render(){
+          return(<div style ={{margin:30}}>{
+                    this.state.numberArray.map(
+                      (number,key) => {
+                       return <Son
+                                 key = {key}
+                                 index = {key}
+                                 number ={number}
+                                 handleClick ={this.handleClick}/>
+                      }
+                      )
+                    }
+                 </div>)
+        }
+      }
+      export default Father
+     //点击1，控制台打印 1 1 2
    ```
 
-   <font color="red">**总结：前后不改变state值的setState（理论上）和无数据交换的父组件的重渲染都会导致组件的重渲染，但你可以在shouldComponentUpdate这道两者必经的关口阻止这种浪费性能的行为**</font>
+输出的（1，1，2），有我们从 0 变到 1 的数据，也有未发生变化的 1 和 2。这说明 Son 又做了两次多余的重渲染，但是对于 1 和 2 来说，它们本身 state 没有变化（也没有设 state）,同时父组件传达的 props 也没有变化，所以我们又做了无用功
 
-   
+**怎么避免以上问题，关键还是在 shouldComponentUpdate 这个钩子函数上**
+这时，只打印了数字发生改变的 numberArray[0]对应的 Son 组件，说明 numberArray[1]，numberArray[2]的重渲染被“过滤”了
 
-   <font color="blue">**数据变得复杂时，就会出现意外情况**</font>
+<font color="red">**总结：前后不改变 state 值的 setState（理论上）和无数据交换的父组件的重渲染都会导致组件的重渲染，但你可以在 shouldComponentUpdate 这道两者必经的关口阻止这种浪费性能的行为**</font>
 
-   ```react
-   import React from 'react'
-   class Son extends React.Component{
-     shouldComponentUpdate(nextProps,nextState){
-         if(nextProps.numberObject.number == this.props.numberObject.number){
-           return false
-         }
-         return true
-     }
-     render(){
-       const {index,numberObject,handleClick} = this.props
-       //在每次渲染子组件时，打印该子组件的数字内容
-       console.log(numberObject.number);
-       return <h1 onClick ={() => handleClick(index)}>{numberObject.number}</h1>
-     }
-   }
-   class Father extends React.Component{
-     constructor(props) {
-       super(props);
-       this.state = {
-         numberArray:[{number:0 /*对象中其他的属性*/},
-                      {number:1 /*对象中其他的属性*/},
-                      {number:2 /*对象中其他的属性*/}
-                      ]
-       }
-     }
-     //点击后使numberArray中数组下标为index的数字值加一，重渲染对应的Son组件
-     handleClick = (index) => {
-        let preNumberArray = this.state.numberArray
-        preNumberArray[index].number += 1;
-        this.setState({
-           numberArray:preNumberArray
-        })
-     }
-     render(){
-       return(<div style ={{margin:30}}>{
-                 this.state.numberArray.map(
-                   (numberObject,key) => {
-                    return <Son
-                              key = {key}
-                              index = {key}
-                              numberObject ={numberObject}
-                              handleClick ={this.handleClick}/>
-                   }
-                   )
-                 }
-              </div>)
-     }
-   }
-   export default Father
-   
-   //这个时候发现无论如何点击三个标题均无变化（没有数字改变），且控制台无输出
-   
-   我的代码结构明明没有任何变化啊，只是改传递数字为传递对象而已。嗯嗯，问题就出在这里，我们传递的是对象，关键在于nextProps.numberObject.number == this.props.numberObject.number这个判断条件，让我们思考，这与前面成功例子中的nextProps.number == this.props.number的区别：
-   
-   1. numberObject是一个对象
-   2. number是一个数字变量
-   3. 数字变量（number类型）和对象（Object类型）的内存存储机制不同
-   ```
+<font color="blue">**数据变得复杂时，就会出现意外情况**</font>
 
-   <font color="blue">**解决方案：**</font>
+````
 
-   [利用shouldComponentUpdate函数优化react性能](https://www.cnblogs.com/penghuwan/p/6707254.html)
+```react
+import React from 'react'
+class Son extends React.Component{
+  shouldComponentUpdate(nextProps,nextState){
+      if(nextProps.numberObject.number == this.props.numberObject.number){
+        return false
+      }
+      return true
+  }
+  render(){
+    const {index,numberObject,handleClick} = this.props
+    //在每次渲染子组件时，打印该子组件的数字内容
+    console.log(numberObject.number);
+    return <h1 onClick ={() => handleClick(index)}>{numberObject.number}</h1>
+  }
+}
+class Father extends React.Component{
+  constructor(props) {
+    super(props);
+    this.state = {
+      numberArray:[{number:0 /*对象中其他的属性*/},
+                   {number:1 /*对象中其他的属性*/},
+                   {number:2 /*对象中其他的属性*/}
+                   ]
+    }
+  }
+  //点击后使numberArray中数组下标为index的数字值加一，重渲染对应的Son组件
+  handleClick = (index) => {
+     let preNumberArray = this.state.numberArray
+     preNumberArray[index].number += 1;
+     this.setState({
+        numberArray:preNumberArray
+     })
+  }
+  render(){
+    return(<div style ={{margin:30}}>{
+              this.state.numberArray.map(
+                (numberObject,key) => {
+                 return <Son
+                           key = {key}
+                           index = {key}
+                           numberObject ={numberObject}
+                           handleClick ={this.handleClick}/>
+                }
+                )
+              }
+           </div>)
+  }
+}
+export default Father
 
-   1. **Object.assign()**
-   2. **深拷贝／浅拷贝或利用JSON.parse(JSON.stringify(data))**
-   3. **immutable.js//react官方推荐使用的第三方库，目前github上20K star,足见其火热**
-   4. **继承react的PureComponent组件**
+//这个时候发现无论如何点击三个标题均无变化（没有数字改变），且控制台无输出
+
+
+````
+
+我的代码结构明明没有任何变化啊，只是改传递数字为传递对象而已。嗯嗯，问题就出在这里，我们传递的是对象，关键在于 nextProps.numberObject.number == this.props.numberObject.number 这个判断条件，让我们思考，这与前面成功例子中的 nextProps.number == this.props.number 的区别：
+
+1.  numberObject 是一个对象
+2.  number 是一个数字变量
+3.  数字变量（number 类型）和对象（Object 类型）的内存存储机制不同
+
+<font color="blue">**解决方案：**</font>
+
+[利用 shouldComponentUpdate 函数优化 react 性能](https://www.cnblogs.com/penghuwan/p/6707254.html)
+
+1.  **Object.assign()**
+2.  **深拷贝／浅拷贝或利用 JSON.parse(JSON.stringify(data))**
+3.  **immutable.js//react 官方推荐使用的第三方库，目前 github 上 20K star,足见其火热**
+4.  **继承 react 的 PureComponent 组件**
 
 ### 7. 为什么虚拟 dom 会提高性能
 
@@ -467,9 +466,9 @@ Refs 可以用于获取一个 DOM 节点或者 React 组件的引用。何时使
 
 ### 27. 当渲染一个组件时。何为 key？设置 key 的目的是什么
 
-[深入解析用key做索引的负面影响](https://robinpokorny.medium.com/index-as-a-key-is-an-anti-pattern-e0349aece318)
+[深入解析用 key 做索引的负面影响](https://robinpokorny.medium.com/index-as-a-key-is-an-anti-pattern-e0349aece318)
 
-[深入解析key为什么是必须的](https://zh-hans.reactjs.org/docs/reconciliation.html#recursing-on-children)
+[深入解析 key 为什么是必须的](https://zh-hans.reactjs.org/docs/reconciliation.html#recursing-on-children)
 
 <font color="red">保证 key 值在兄弟节点之间必须唯一,不需要全局唯一</font>
 
@@ -536,15 +535,13 @@ function render() {
 
 ```
 
-
-
 ### 29. 何为受控组件(controlled component)
 
-<font color="red">受控input一定是通过 onChange 和 setState 的组合方式来进行数值的更新, 而非受控的input就遵循DOM节点的方式进行数值更新.</font>
+<font color="red">受控 input 一定是通过 onChange 和 setState 的组合方式来进行数值的更新, 而非受控的 input 就遵循 DOM 节点的方式进行数值更新.</font>
 
 [受控组件和非受控组件](https://juejin.cn/post/6858276396968951822)
 
-[论受控组件和非受控组件在React中的定义](https://zhuanlan.zhihu.com/p/146540113)
+[论受控组件和非受控组件在 React 中的定义](https://zhuanlan.zhihu.com/p/146540113)
 
 ```react
 // 在HTML的表单元素中，它们通常自己维护一套state，并随着用户的输入自己进行UI上的更新，这种行为是不被我们程序所管控的。而如果将React里的state属性和表单元素的值建立依赖关系，再通过onChange事件与setState()结合更新state属性，就能达到控制用户输入过程中表单发生的操作。被React以这种方式控制取值的表单输入元素就叫做受控组件。
@@ -608,6 +605,3 @@ export default InputWrapper;
 
 // 有一个小问题就是, 在当前代码的基础上, 无法准确的说出一个事情 - InputWrapper 是一个受控组件还是一个非受控组件, 只能描述成:InputWrapper 有一个受控表单控件和一个非受控表单控件.
 ```
-
-
-
