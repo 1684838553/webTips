@@ -1,7 +1,5 @@
 ## 关于 react 中的一些问题
 
-[React 性能优化技巧](https://www.infoq.cn/article/kve8xtrs-upphptq5luz)
-
 [React 题目](http://www.lucklnk.com/godaddy/details/aid/690502212)[react 系列一，react 虚拟 dom 如何转成真实的 dom](https://www.cnblogs.com/zhenfei-jiang/p/9682430.html)
 [react+redux 基础用法](https://www.cnblogs.com/zhenfei-jiang/p/7280167.html)
 
@@ -303,7 +301,6 @@ export default Father
 
 ### 8. diff 算法
 
-```react
 React 对 Virtual DOM 树进行 分层比较、层级控制，只对相同颜色框内的节点进行比较(同一父节点的全部子节点)，当发现某一子节点不在了直接删除该节点以及其所有子节点，不会用于进一步的比较，在算法层面上就是说只需要遍历一次就可以了，而无需在进行不必要的比较，便能完成整个 DOM 树的比较。
 
 1. 同层比较（无 text 无 children）
@@ -311,57 +308,63 @@ React 对 Virtual DOM 树进行 分层比较、层级控制，只对相同颜色
 3. 节点比较（无 text 有 children）
 4. key 值比较（节点位移保留节点）
 
-// React 的 diff 策略
+#### React 的 diff 策略
+
 1. 策略一：忽略 Web UI 中 DOM 节点跨层级移动；
 2. 策略二：拥有相同类型的两个组件产生的 DOM 结构也是相似的，不同类型的两个组件产生的 DOM 结构则不近相同
 3. 策略三：对于同一层级的一组子节点，通过分配唯一唯一 id 进行区分（key 值）
    在 Web UI 的场景下，基于以上三个点，React 对 tree diff、component diff、element diff 进行优化，将普适 diff 的复杂度降低到一个数量级，保证了整体 UI 界面的构建性能！
 
-// 三个优化
+#### 三个优化
 
-// tree diff
-基于策略一，React 的做法是把 dom tree 分层级，对于两个 dom tree 只比较同一层次的节点，忽略 Dom 中节点跨层级移动操作，只对同一个父节点下的所有的子节点进行比较。如果对比发现该父节点不存在则直接删除该节点下所有子节点，不会做进一步比较，这样只需要对 dom tree 进行一次遍历就完成了两个 tree 的比较。
-==那么对于跨层级的 dom 操作是怎么进行处理的呢？==下面通过一个图例进行阐述
+1. tree diff
+   基于策略一，React 的做法是把 dom tree 分层级，对于两个 dom tree 只比较同一层次的节点，忽略 Dom 中节点跨层级移动操作，只对同一个父节点下的所有的子节点进行比较。如果对比发现该父节点不存在则直接删除该节点下所有子节点，不会做进一步比较，这样只需要对 dom tree 进行一次遍历就完成了两个 tree 的比较。
+   ==那么对于跨层级的 dom 操作是怎么进行处理的呢？==下面通过一个图例进行阐述
 
 ![image](https://img-blog.csdnimg.cn/img_convert/811296489daf91e4dc30c8c1bb576006.png)
 
-两个 tree 进行对比，右边的新 tree 发现 A 节点已经没有了，则会直接销毁 A 以及下面的子节点 B、C；在 D 节点上面发现多了一个 A 节点，则会重新创建一个新的 A 节点以及相应的子节点。
-具体的操作顺序：create A → create B → creact C → delete A。
+​ 两个 tree 进行对比，右边的新 tree 发现 A 节点已经没有了，则会直接销毁 A 以及下面的子节点 B、C；在 D 节点上面发现多了一个 A 节点，则会重新创建一个新的 A 节点以及相应的子节点。
+​ 具体的操作顺序：create A → create B → creact C → delete A。
 
-// 优化建议
-保证稳定 dom 结构有利于提升性能，不建议频繁真正的移除或者添加节点
+​ **优化建议**
+​ 保证稳定 dom 结构有利于提升性能，不建议频繁真正的移除或者添加节点
 
-// component diff
-React 应用是基于组件构建的，对于组件的比较优化侧重于以下几点：
+2. component diff
+   React 应用是基于组件构建的，对于组件的比较优化侧重于以下几点：
 
-1. 同一类型组件遵从 tree diff 比较 v-dom 树
-2. 不通类型组件，先将该组件归类为 dirty component，替换下整个组件下的所有子节点
-3. 同一类型组件 Virtual Dom 没有变化，React 允许开发者使用 shouldComponentUpdate（）来判断该组件是否进行 diff，运用得当可以节省 diff 计算时间，提升性能
+   - 同一类型组件遵从 tree diff 比较 v-dom 树
+
+   - 不通类型组件，先将该组件归类为 dirty component，替换下整个组件下的所有子节点
+
+   - 同一类型组件 Virtual Dom 没有变化，React 允许开发者使用 shouldComponentUpdate（）来判断该组件是否进行 diff，运用得当可以节省 diff 计算时间，提升性能
 
 ![image](https://img-blog.csdnimg.cn/img_convert/ee6d366616c3bfc0608095574b284b58.png)
 
-如上图，当组件 D → 组件 G 时，diff 判断为不同类型的组件，虽然它们的结构相似甚至一样，diff 仍然不会比较二者结构，会直接销毁 D 及其子节点，然后新建一个 G 相关的子 tree，这显然会影响性能，官方虽然认定这种情况极少出现，但是开发中的这种现象造成的影响是非常大的。
+​ 如上图，当组件 D → 组件 G 时，diff 判断为不同类型的组件，虽然它们的结构相似甚至一样，diff 仍然不会比较二者结构，会直接 销毁 D 及其子节点，然后新建一个 G 相关的子 tree，这显然会影响性能，官方虽然认定这种情况极少出现，但是开发中的这种现象 造成的影响是非常大的。
 
-// 优化建议
-对于同一类型组件合理使用 shouldComponentUpdate（），应该避免结构相同类型不同的组件
+​ **优化建议**
+​ 对于同一类型组件合理使用 shouldComponentUpdate（），应该避免结构相同类型不同的组件
 
-// element diff
-对于同一层级的 element 节点，diff 提供了以下 3 种节点操作：
+3. element diff
+   对于同一层级的 element 节点，diff 提供了以下 3 种节点操作：
 
-1.  INSERT_MARKUP 插入节点：对全新节点执行节点插入操作
-2.  MOVE_EXISING 移动节点：组件新集合中有组件旧集合中的类型，且 element 可更新，即组件调用了 receiveComponent，这时可以复用之前的 dom，执行 dom 移动操作
-3.  REMOVE_NODE 移除节点：此时有两种情况：组件新集合中有组件旧集合中的类型，但对应的 element 不可更新、旧组建不在新集合里面，这两种情况需要执行节点删除操作
+   - INSERT_MARKUP 插入节点：对全新节点执行节点插入操作
+
+   - MOVE_EXISING 移动节点：组件新集合中有组件旧集合中的类型，且 element 可更新，即组件调用了 receiveComponent，这时可以复用之前的 dom，执行 dom 移动操作
+
+   - REMOVE_NODE 移除节点：此时有两种情况：组件新集合中有组件旧集合中的类型，但对应的 element 不可更新、旧组建不在新集合里面，这两种情况需要执行节点删除操作
 
 ![image](https://img-blog.csdnimg.cn/img_convert/a3cc0a5cff4698d5f1376a07d0d68632.png)
 
-一般 diff 在比较集合[A,B,C,D]和[B，A，D，C]的时候会进行全部对比，即按对应位置逐个比较，发现每个位置对应的元素都有所更新，则把旧集合全部移除，替换成新的集合，如上图，但是这样的操作在 React 中显然是复杂、低效、影响性能的操作，因为新集合中所有的元素都可以进行复用，无需删除重新创建，耗费性能和内存，只需要移动元素位置即可。
-React 对这一现象做出了一个高效的策略：允许开发者对同一层级的同组子节点添加唯一 key 值进行区分。意义就是代码上的一小步，性能上的一大步，甚至是翻天覆地的变化！
+​ 一般 diff 在比较集合[A,B,C,D]和[B，A，D，C]的时候会进行全部对比，即按对应位置逐个比较，发现每个位置对应的元素都有所更 新，则把旧集合全部移除，替换成新的集合，如上图，但是这样的操作在 React 中显然是复杂、低效、影响性能的操作，因为新集合 中所有的元素都可以进行复用，无需删除重新创建，耗费性能和内存，只需要移动元素位置即可。
+​ React 对这一现象做出了一个高效的策略：允许开发者对同一层级的同组子节点添加唯一 key 值进行区分。意义就是代码上的一小 步，性能上的一大步，甚至是翻天覆地的变化！
 
-// 优化建议
-在开发过程中，同层级的节点添加唯一 key 值可以极大提升性能，尽量减少将最后一个节点移动到列表首部的操作，当节点达到一定的数量以后或者操作过于频繁，在一定程度上会影响 React 的渲染性能。比如大量节点拖拽排序的问题。
-```
+​ **优化建议**
+​ 在开发过程中，同层级的节点添加唯一 key 值可以极大提升性能，尽量减少将最后一个节点移动到列表首部的操作，当节点达到一定 的数量以后或者操作过于频繁，在一定程度上会影响 React 的渲染性能。比如大量节点拖拽排序的问题。
 
 ### 9. react 性能优化方案
+
+[React 性能优化技巧](https://www.infoq.cn/article/kve8xtrs-upphptq5luz)
 
 ### 10. 简述 flux 思想
 
