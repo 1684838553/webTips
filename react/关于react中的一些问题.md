@@ -296,6 +296,8 @@ export default Father
 
 ### 7. 为什么虚拟 dom 会提高性能
 
+虚拟 DOM 相当于在 js 和真实的 dom 中间加了缓存，利用了 dom 的 diff 算法减少了没有必要的 dom 操作，从而提高了性能。
+
 ### 8. diff 算法
 
 React 对 Virtual DOM 树进行 分层比较、层级控制，只对相同颜色框内的节点进行比较(同一父节点的全部子节点)，当发现某一子节点不在了直接删除该节点以及其所有子节点，不会用于进一步的比较，在算法层面上就是说只需要遍历一次就可以了，而无需在进行不必要的比较，便能完成整个 DOM 树的比较。
@@ -320,10 +322,10 @@ React 对 Virtual DOM 树进行 分层比较、层级控制，只对相同颜色
 
 ![image](https://img-blog.csdnimg.cn/img_convert/811296489daf91e4dc30c8c1bb576006.png)
 
-​ 两个 tree 进行对比，右边的新 tree 发现 A 节点已经没有了，则会直接销毁 A 以及下面的子节点 B、C；在 D 节点上面发现多了一个 A 节点，则会重新创建一个新的 A 节点以及相应的子节点。
+两个 tree 进行对比，右边的新 tree 发现 A 节点已经没有了，则会直接销毁 A 以及下面的子节点 B、C；在 D 节点上面发现多了一个 A 节点，则会重新创建一个新的 A 节点以及相应的子节点。
 ​ 具体的操作顺序：create A → create B → creact C → delete A。
 
-​ **优化建议**
+**优化建议**
 ​ 保证稳定 dom 结构有利于提升性能，不建议频繁真正的移除或者添加节点
 
 2. component diff
@@ -337,9 +339,9 @@ React 对 Virtual DOM 树进行 分层比较、层级控制，只对相同颜色
 
 ![image](https://img-blog.csdnimg.cn/img_convert/ee6d366616c3bfc0608095574b284b58.png)
 
-​ 如上图，当组件 D → 组件 G 时，diff 判断为不同类型的组件，虽然它们的结构相似甚至一样，diff 仍然不会比较二者结构，会直接 销毁 D 及其子节点，然后新建一个 G 相关的子 tree，这显然会影响性能，官方虽然认定这种情况极少出现，但是开发中的这种现象 造成的影响是非常大的。
+如上图，当组件 D → 组件 G 时，diff 判断为不同类型的组件，虽然它们的结构相似甚至一样，diff 仍然不会比较二者结构，会直接 销毁 D 及其子节点，然后新建一个 G 相关的子 tree，这显然会影响性能，官方虽然认定这种情况极少出现，但是开发中的这种现象 造成的影响是非常大的。
 
-​ **优化建议**
+**优化建议**
 ​ 对于同一类型组件合理使用 shouldComponentUpdate（），应该避免结构相同类型不同的组件
 
 3. element diff
@@ -353,15 +355,169 @@ React 对 Virtual DOM 树进行 分层比较、层级控制，只对相同颜色
 
 ![image](https://img-blog.csdnimg.cn/img_convert/a3cc0a5cff4698d5f1376a07d0d68632.png)
 
-​ 一般 diff 在比较集合[A,B,C,D]和[B，A，D，C]的时候会进行全部对比，即按对应位置逐个比较，发现每个位置对应的元素都有所更 新，则把旧集合全部移除，替换成新的集合，如上图，但是这样的操作在 React 中显然是复杂、低效、影响性能的操作，因为新集合 中所有的元素都可以进行复用，无需删除重新创建，耗费性能和内存，只需要移动元素位置即可。
+一般 diff 在比较集合[A,B,C,D]和[B，A，D，C]的时候会进行全部对比，即按对应位置逐个比较，发现每个位置对应的元素都有所更 新，则把旧集合全部移除，替换成新的集合，如上图，但是这样的操作在 React 中显然是复杂、低效、影响性能的操作，因为新集合 中所有的元素都可以进行复用，无需删除重新创建，耗费性能和内存，只需要移动元素位置即可。
 ​ React 对这一现象做出了一个高效的策略：允许开发者对同一层级的同组子节点添加唯一 key 值进行区分。意义就是代码上的一小 步，性能上的一大步，甚至是翻天覆地的变化！
 
-​ **优化建议**
+**优化建议**
 ​ 在开发过程中，同层级的节点添加唯一 key 值可以极大提升性能，尽量减少将最后一个节点移动到列表首部的操作，当节点达到一定 的数量以后或者操作过于频繁，在一定程度上会影响 React 的渲染性能。比如大量节点拖拽排序的问题。
 
-### 9. react 性能优化方案
+### 9. react 性能优化方案（以下是函数组件性能优化）
 
 [React 性能优化技巧](https://www.infoq.cn/article/kve8xtrs-upphptq5luz)
+
+[react Hook 之 useMemo、useCallback 及 memo](https://juejin.cn/post/6844903954539626510)
+
+#### 一、优化方向：1、减少 render 的次数 2、减少重复计算
+
+#### 1. 减少 render 的次数
+
+<font color="blue">**方法一（使用 React.Memo,父组件传的 props 没有改变，父组件重新渲染，不会导致子组件重新渲染）：**</font>
+
+```react
+import React, { memo, useState } from 'react';
+import { Button, Card } from 'antd';
+
+type IProps = {
+  name: string;
+};
+function Child(props: IProps) {
+  const { name } = props;
+  console.log(name);
+  return <h1>{name}</h1>;
+}
+
+const MyComponent = memo(Child);  //子组件被React.memo()包裹，阻止无用的渲染
+
+const ParentComponent = () => {
+  const [title, setTitle] = useState('这是一个title');
+
+  const handleChange = () => {
+    setTitle('这是一个title:drunk');
+  };
+
+  const handleOnChange = () => {
+    setTitle('这是一个title');
+  };
+
+  return (
+    <Card style={{ width: '100%', height: '90vh' }}>
+      <h2>{title}</h2>
+      <Button onClick={handleChange}>点击</Button>
+      <Button onClick={handleOnChange}>取消</Button>
+      <MyComponent name="drunkcat" />
+    </Card>
+  );
+};
+
+export default ParentComponent;
+
+```
+
+<font color="blue">**方法二（涉及到组件通讯时，useCallback 在函数没有改变的时候，重新渲染时能保持两个函数的引用一致）：**</font>
+
+[React Hooks 第一期：聊聊 useCallback](https://zhuanlan.zhihu.com/p/56975681)
+
+```React
+//父组件
+import React, { useState, useCallback } from "react";
+import ReactDOM from "react-dom";
+import Child from "./child";
+
+function App() {
+  const [title, setTitle] = useState("这是一个 title");
+  const [subtitle, setSubtitle] = useState("我是一个副标题");
+
+  const callback = () => {
+    setTitle("标题改变了");
+  };
+
+  // 通过 useCallback 进行记忆 callback，并将记忆的 callback 传递给 Child
+  const memoizedCallback = useCallback(callback, [])
+
+  return (
+    <div className="App">
+      <h1>{title}</h1>
+      <h2>{subtitle}</h2>
+      <button onClick={() => setSubtitle("副标题改变了")}>改副标题</button>
+      <Child onClick={memoizedCallback} name="桃桃" />
+    </div>
+  );
+}
+
+const rootElement = document.getElementById("root");
+ReactDOM.render(<App />, rootElement);
+
+
+//子组件
+import React from "react";
+
+function Child(props) {
+  console.log(props);
+  return (
+    <>
+      <button onClick={props.onClick}>改标题</button>
+      <h1>{props.name}</h1>
+    </>
+  );
+}
+
+export default React.memo(Child);
+
+```
+
+#### 2. 减少重复计算
+
+<font color="blue">**方法三（useMemo 做计算结果缓存）：**</font>
+
+```React
+interface ChildProps {
+    name: { name: string; color: string };
+    onClick: Function;
+}
+const Child = ({ name, onClick}: ChildProps): JSX.Element => {
+    console.log('子组件?')
+    return(
+        <>
+            <div style={{ color: name.color }}>我是一个子组件，父级传过来的数据：{name.name}</div>
+            <button onClick={onClick.bind(null, '新的子组件name')}>改变name</button>
+        </>
+    );
+}
+const ChildMemo = memo(Child);
+
+const Page = (props) => {
+    const [count, setCount] = useState(0);
+    const [name, setName] = useState('Child组件');
+
+    return (
+        <>
+            <button onClick={(e) => { setCount(count+1) }}>加1</button>
+            <p>count:{count}</p>
+            <ChildMemo
+                //使用useMemo，返回一个和原本一样的对象，第二个参数是依赖性，当name发生改变的时候，才产生一个新的对象
+                name={
+                    useMemo(()=>({
+                        name,
+                        color: name.indexOf('name') !== -1 ? 'red' : 'green'
+                    }), [name])
+                }
+                onClick={ useCallback((newName: string) => setName(newName), []) }
+                {/* useCallback((newName: string) => setName(newName),[]) */}
+                {/* 这里使用了useCallback优化了传递给子组件的函数，只初始化一次这个函数，下次不产生新的函数
+            />
+        </>
+    )
+}
+
+```
+
+#### 二、造成一个组件重新渲染的原因是什么？
+
+#### 1. 组件自身状态改变
+
+#### 2. 父组件重新渲染，导致子组件重新渲染，父组件传的 props 没有改变
+
+#### 3. 父组件重新渲染，导致子组件重新渲染，父组件传的 props 改变
 
 ### 10. 简述 flux 思想
 
@@ -375,8 +531,6 @@ View 收到"change"事件后，更新页面
 ```
 
 ### 11. react 项目用过什么脚手架？Mern?Yeoman?
-
-### 12. 了解 react 吗
 
 ### 13. react 的协议
 
@@ -457,12 +611,9 @@ Refs 可以用于获取一个 DOM 节点或者 React 组件的引用。何时使
 
 ### 26. 怎么阻止组件的渲染
 
-在组件的 render 方法中返回 null 并不会影响触发组件的生命周
+参考 第六点（react 性能优化是哪个生命周期函数）和 第九点（react 性能优化方案）
 
-**1、组件何时进行渲染**
-
-1. 第一次渲染，`componentWillMount` 调用结束。
-2. 调用 `componentWillUpdate` 结束后，再次渲染。
+shouldComponentUpdate 和 React.memo,useMemo,useCallback
 
 ### 27. 当渲染一个组件时。何为 key？设置 key 的目的是什么
 
