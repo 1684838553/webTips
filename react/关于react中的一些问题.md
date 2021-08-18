@@ -62,9 +62,6 @@ Redux 的基本思想是整个应用的 state 保持在一个单一的 store 中
 1. 默认只支持同步处理，连作者创造的 redux-thunk 都是独立于 redux 之外的一个包
 2. 比较麻烦，为了一个功能，即要写 reducer，又要写 action,还有定义一个 actionType,比较麻烦。但他的目的又是为了让代码更清晰明确
 
-一个组件所需要的数据，必须由父组件传过来，而不能像 flux 中直接从 store 取。
-当一个组件相关数据更新时，即使父组件不需要用到这个组件，父组件还是会重新 render，可能会有效率影响，或者需要写复杂的 shouldComponentUpdate 进行判断。
-
 ### 4. react 组件的划分
 
 [React 组件设计实践总结](https://juejin.cn/post/6844903843189243917)
