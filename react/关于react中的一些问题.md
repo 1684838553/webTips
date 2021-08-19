@@ -160,7 +160,7 @@ componentWillUnmount: 会在组件卸载及销毁之前直接调用。在此方�
 
    ```react
    import React from 'react'
-
+   
    //子组件
    class Son extends React.Component{
      //shouldComponentUpdate(nextProps,nextState){
@@ -176,7 +176,7 @@ componentWillUnmount: 会在组件卸载及销毁之前直接调用。在此方�
        return <h1 onClick ={() => handleClick(index)}>{number}</h1>
      }
    }
-
+   
     //父组件
       class Father extends React.Component{
         constructor(props) {
@@ -296,7 +296,21 @@ export default Father
 
 ### 7. 为什么虚拟 dom 会提高性能
 
-虚拟 DOM 相当于在 js 和真实的 dom 中间加了缓存，利用了 dom 的 diff 算法减少了没有必要的 dom 操作，从而提高了性能。
+虚拟dom(virtual dom) 其实就是一个JavaScript对象，通过这个JavaScript对象来描述真实dom。
+
+**真实dom**：以前没有虚拟dom，如果需要比较两个页面的差异，我们需要通过对真实dom进行比对。真实dom节点是非常复杂的，它里面会绑定的事件，它会有属性，背后会有各种方法，会频繁触发重排与重绘，所以两个真实dom比对，非常耗性能。
+
+总损耗 = 真实DOM完全增删改 + （可能较多的节点）重排与重绘
+
+**虚拟dom**：**相当于在js和真实dom中间加了一个缓存，利用dom diff算法避免了没有必要的dom操作，从而提髙性能。**
+
+总损耗 = 虚拟DOM增删改 + （与Diff算法效率有关）真实DOM差异增删改 + （较少的节点）重排与重绘
+
+具体实现步骤如下：
+
+1. 用JavaScript对象结构表示DOM树的结构；然后用这个树构建一个真正的DOM树，插到文档当中;
+2. 当状态变更的时候，重新构造一棵新的对象树。然后用新的树和旧的树进行比较，记录两棵树差异;
+3. 把步骤2所记录的差异应用到步骤1所构建的真正的DOM树上，视图就更新了。
 
 ### 8. diff 算法
 
@@ -532,7 +546,7 @@ View 收到"change"事件后，更新页面
 
 ### 11. react 项目用过什么脚手架？Mern?Yeoman?
 
-### 13. react 的协议
+**create-react-app** 它的作用都是帮助我们生成一个通用的目录结构，并且已经将我们所需的工程环境配置好
 
 ### 14. 了解 shouldComponentUpdate 吗
 
@@ -652,6 +666,8 @@ shouldComponentUpdate 和 React.memo,useMemo,useCallback
 
 1. JSX 实质上就是为了方便 React 将 View 层组件化，通过将 HTMl 语法加到 Javascript 代码中，以承担构建页面的职责。
 2. JSX 是 JavaScript 语法的一种语法扩展，并拥有 JavaScript 的全部功能。JSX 生产 React "元素"，你可以将任何的 JavaScript 表达式封装在花括号里，然后将其嵌入到 JSX 中。在编译完成之后，JSX 表达式就变成了常规的 JavaScript 对象，这意味着你可以在 if 语句和 for 循环内部使用 JSX，将它赋值给变量，接受它作为参数，并从函数中返回它。
+
+
 
 //jsx 组件
 1. jsx组件分为html组件和react组件
