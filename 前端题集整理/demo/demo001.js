@@ -35,3 +35,12 @@ const b = Array(10)
   .fill()
   .map((v, i) => i);
 console.log(b[0]);
+
+const c = [...Array(10)].map((v, i) => i);
+console.log(c);
+
+const d = Array.from(Array(10)).map((v, i) => i);
+console.log(d);
+
+const e = [...Array(10).keys()];
+console.log(e);
