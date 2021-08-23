@@ -28,6 +28,7 @@
     </p>
     <button id="btn1">attachEvent</button>
     <button id="btn2">addEventListener</button>
+    <div id="serviceExpiration"></div>
     <script>
       //   document.getElementById("btn1").attachEvent("onclick", function () {
       //     console.log(1);
@@ -37,6 +38,13 @@
         //this指向当前点击事件
         console.log(2, this);
       });
+
+      let serviceExpiration = 1000;
+      let serviceExpirationUnit = undefined;
+
+      var time = ["天", "月", "年"];
+      document.getElementById("serviceExpiration").innerHTML =
+        `${serviceExpiration}` + `${time[undefined]}`;
     </script>
   </body>
 </html>
