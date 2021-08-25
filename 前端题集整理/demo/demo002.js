@@ -25,36 +25,27 @@
 
 {
   const str1 = "hello";
-  console.log(str1.padStart(10, "y")); // 'yyyyyhello'
   String.prototype.myPadStart = function (strLength, str = " ") {
     if (!strLength) {
       throw new Error("字符串预期长度不能为空");
     }
     //目标字符串
-    const taragetStr = String(this);
+    let taragetStr = String(this);
     const taragetStrLength = String(this).length;
-    if (taragetStrLength <= strLength) {
+    if (taragetStrLength >= strLength) {
       return taragetStr;
     } else {
       //可拼接字符串长度
       const concatLength = strLength - taragetStrLength;
       //拼接字符串长度
-      const strLength = str.length;
-      let num = concatLength / strLength;
-      let overNum = concatLength % strLength;
-
-      function concatStr(taragetStrLength, str) {
-        taragetStr = str + taragetStr;
-        return taragetStr;
+      const strLength1 = str.length;
+      let num = concatLength / strLength1;
+      let overNum = concatLength % strLength1;
+      for (num; num--; num > 0) {
+        taragetStr += str;
       }
-
-      //   function* (){
-
-      //   }
+      return overNum + taragetStr;
     }
-
-    console.log(this, String(this), "this");
-    return "---";
   };
-  console.log(str1.myPadStart(4));
+  console.log(str1.myPadStart(6, "p"));
 }
