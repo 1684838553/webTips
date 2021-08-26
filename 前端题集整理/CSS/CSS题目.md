@@ -13,6 +13,8 @@
 
 **优先级（就近原则）：**!important > [ id > class > tag ]
 
+
+
 ## 2、display 有哪些值？说明他们的作用?
 
 inline（默认）--内联
@@ -21,6 +23,8 @@ block--块显示
 table--表格显示
 list-item--项目列表
 inline-block
+
+
 
 ## 3、position 的值？
 
@@ -31,6 +35,8 @@ relative(相对定位) 不脱离文本流，参考自身静态位置进行定位
 Relative（相对定位）脱离文本流，参考最近的一个定位元素或视口
 
 fixed（固定定位）参考对象是视口
+
+
 
 ## 4、CSS3 有哪些新特性？
 
@@ -43,6 +49,8 @@ fixed（固定定位）参考对象是视口
 7. 边框图片：border-image: url(border.png) 30 30 round
 8. 盒阴影：box-shadow: 10px 10px 5px #888888
 9. 媒体查询：定义两套 css，当浏览器的尺寸变化时会采用不同的属性
+
+
 
 ## 5、flexbox（弹性盒布局模型）,以及适用场景？
 
@@ -75,3 +83,305 @@ fixed（固定定位）参考对象是视口
 **容器属性：**justify-content(主轴对齐方式),align-items（侧轴对齐方式）,align-content（交叉轴对齐方式）,flex-direction（主轴方向）,flex-wrap（是否换行）,flex-flow（flex-wrap | flex-direction ）
 
 **元素属性：**order(排序),align-slef（元素对齐方式）,flex-grow（放大比例）,flex-basis（主轴占据空间）,flex-shrink（缩小比例）,flex（flex-basis | flex-shink | flex-basis）
+
+
+
+## 6、常见的兼容性问题？
+
+1. 不同浏览器的标签默认的margin和padding不一样。
+
+   *{margin:0;padding:0;}
+
+2. IE6双边距bug：块属性标签float后，又有横行的margin情况下，在IE6显示margin比设置的大。hack：display:inline;将其转化为行内属性。
+
+3. 渐进识别的方式，从总体中逐渐排除局部。首先，巧妙的使用“9”这一标记，将IE浏览器从所有情况中分离出来。接着，再次使用“+”将IE8和IE7、IE6分离开来，这样IE8已经独立识别。
+
+   ```css
+   {
+   background-color:#f1ee18;/*所有识别*/
+   .background-color:#00deff\9; /*IE6、7、8识别*/
+   +background-color:#a200ff;/*IE6、7识别*/
+   _background-color:#1e0bd1;/*IE6识别*/
+   }
+   ```
+
+4. 设置较小高度标签（一般小于10px），在IE6，IE7中高度超出自己设置高度。hack：给超出高度的标签设置overflow:hidden;或者设置行高line-height 小于你设置的高度。
+
+5. IE下，可以使用获取常规属性的方法来获取自定义属性,也可以使用getAttribute()获取自定义属性；Firefox下，只能使用getAttribute()获取自定义属性。解决方法:统一通过getAttribute()获取自定义属性。
+
+6. Chrome 中文界面下默认会将小于 12px 的文本强制按照 12px 显示,可通过加入 CSS 属性 -webkit-text-size-adjust: none; 解决。
+
+7. 超链接访问过后hover样式就不出现了，被点击访问过的超链接样式不再具有hover和active了。解决方法是改变CSS属性的排列顺序:L-V-H-A ( love hate ): a:link {} a:visited {} a:hover {} a:active {}
+
+
+
+## 7、为什么要初始化CSS样式
+
+因为浏览器的兼容问题，不同浏览器对有些标签的默认值是不同的，如果没对CSS初始化往往会出现浏览器之间的页面显示差异。
+
+
+
+## 8、absolute的containing block计算方式跟正常流有什么不同？
+
+
+
+## 9、display:none，opacity=0与visibility：hidden的区别？
+
+1. opacity=0,元素隐藏，不改变布局，如果该元素绑定了事件，那么，点击该区域，也能触发事件（重绘）
+2. display:none，把元素隐藏起来，改变布局，`相当于直接删除了该元素`（回流+重绘）
+3. visibility=hidden，将元素隐藏起来，不改变布局，但点击该区域，不触发事件（重绘）
+
+
+
+## 10、position跟display、float这些特性相互叠加后会怎么样？
+
+1. display属性规定元素应该生成的框的类型；
+
+2. position属性规定元素的定位类型；
+
+3. float属性是一种布局方式，定义元素在哪个方向浮动。
+
+**类似于优先级机制：**
+
+1. position：absolute/fixed优先级最高，有他们在时，float不起作用，display值需要调整。float 或者absolute定位的元素，只能是块元素或表格
+2. position:relative和float同时设置，都会生效
+
+<font color="red">设置元素position：absolute/fixed时，该元素的display会自动变成block。position：relative/static不改变display属性</font>
+
+## 11、为什么会出现浮动和什么时候需要清除浮动？清除浮动的方式？
+
+浮动元素碰到包含它的边框或者浮动元素的边框停留。由于浮动元素不在文档流中，所以文档流的块框表现得就像浮动框不存在一样。浮动元素会漂浮在文档流的块框上。
+浮动带来的问题：
+
+1. 父元素的高度无法被撑开，影响与父元素同级的元素
+2. 与浮动元素同级的非浮动元素（内联元素）会跟随其后
+3. 若非第一个元素浮动，则该元素之前的元素也需要浮动，否则会影响页面显示的结构。
+
+清除浮动的方式：
+
+1. 父级div定义height
+2. 最后一个浮动元素后加空div标签 并添加样式clear:both。
+3. 包含浮动元素的父标签添加样式overflow为hidden或auto。
+4. 使用伪元素:after清除浮动
+
+
+
+```html
+//方法一
+// 使用伪元素:after清除浮动
+// 定义元素前后的生成内容，这里是定义元素后的空内容
+p {
+  width: 50%;
+}
+.wrapper {
+  background-color: #ededed;
+}
+.black {
+  float: left;
+}
+.wrapper::after {
+  display: block;
+  content: "";
+  clear: both;
+}
+<div class="wrapper">
+  <p class="black">
+    Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Phasellus sit
+    amet diam. Duis mattis varius dui. Suspendisse eget dolor.
+  </p>
+</div>
+
+//方法二
+// 使用额外的标签clear:both
+// 在浮动元素下面添加一个空标签，在这个标签中设置clear：both；
+p {
+  width: 50%;
+}
+.wrapper {
+  background-color: #ededed;
+}
+.black {
+  float: left;
+}
+.right {
+  clear: both;
+}
+
+<div class="wrapper">
+  <p class="black">
+    Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Phasellus sit
+    amet diam. Duis mattis varius dui. Suspendisse eget dolor.
+  </p>
+  <p class="right"></p>
+</div>
+
+//方法三
+// 使用overflow：hidden属性
+// 父元素定义overflow:hidden，此时，浏览器会自动检查浮动区域的高度；
+p {
+  width: 50%;
+}
+.wrapper {
+  background-color: #ededed;
+  overflow: hidden;
+}
+.black {
+  float: left;
+}
+
+<div class="wrapper">
+  <p class="black">
+    Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Phasellus sit
+    amet diam. Duis mattis varius dui. Suspendisse eget dolor.
+  </p>
+</div>
+```
+
+
+
+## 12、**什么是响应式设计？响应式设计的基本原理是什么**？移动端的布局媒体查询
+
+**响应式网站设计**是一个网站能够兼容多个终端，而不是为每一个终端做一个特定的版本。
+**基本原理**是通过媒体查询检测不同的设备屏幕尺寸做处理。
+页面头部必须有meta声明的viewport。
+
+```html
+<meta name=’viewport’ content=”width=device-width, initial-scale=1. maximum-scale=1,user-scalable=no”>
+```
+
+## 13、CSS优化、提高性能的方法有哪些？
+
+1. 避免过度约束
+2. 避免后代选择符
+3. 避免链式选择符
+4. 使用紧凑的语法
+5. 避免不必要的命名空间
+6. 避免不必要的重复
+7. 最好使用表示语义的名字。一个好的类名应该是描述他是什么而不是像什么
+8. 避免！important，可以选择其他选择器
+9. 尽可能的精简规则，你可以合并不同类里的重复规则
+
+## 14、浏览器是怎样解析CSS选择器的？
+
+CSS选择器的解析是从右向左解析的。若从左向右的匹配，发现不符合规则，需要进行回溯，会损失很多性能。若从右向左匹配，先找到所有的最右节点，对于每一个节点，向上寻找其父节点直到找到根元素或满足条件的匹配规则，则结束这个分支的遍历。两种匹配规则的性能差别很大，是因为从右向左的匹配在第一步就筛选掉了大量的不符合条件的最右节点（叶子节点），而从左向右的匹配规则的性能都浪费在了失败的查找上面。
+而在 CSS 解析完毕后，需要将解析的结果与 DOM Tree 的内容一起进行分析建立一棵 Render Tree，最终用来进行绘图。在建立 Render Tree 时（WebKit 中的「Attachment」过程），浏览器就要为每个 DOM Tree 中的元素根据 CSS 的解析结果（Style Rules）来确定生成怎样的 Render Tree。
+
+## 15、margin和padding分别适合什么场景使用？
+
+何时使用margin：
+
+1. 需要在border外侧添加空白
+2. 空白处不需要背景色
+3. 上下相连的两个盒子之间的空白，需要相互抵消时。
+
+何时使用padding：
+
+1. 需要在border内侧添加空白
+2. 空白处需要背景颜色
+3. 上下相连的两个盒子的空白，希望为两者之和。
+
+兼容性的问题：在IE5 IE6中，为float的盒子指定margin时，左侧的margin可能会变成两倍的宽度。通过改变padding或者指定盒子的display：inline解决。
+
+## 16、元素竖向的百分比设定是相对于容器的高度吗？
+
+当按百分比设定一个元素的宽度时，它是相对于父容器的宽度计算的，但是，对于一些表示竖向距离的属性，例如 padding-top , padding-bottom , margin-top , margin-bottom 等，当按百分比设定它们时，依据的也是父容器的宽度，而不是高度。
+
+- 行内元素设置 padding,margin 在垂直方向都无效，不产生边距效果，即不影响布局
+- 对于普通元素，margin,padding 的百分比值，无论水平方向还是垂直方向，都是相对于容器宽度计算的
+- 绝对定位元素，百分比值相对于第一个定位祖先元素（relative/adsolute/fixed）的宽度计算的
+
+## 17、你对line-height是如何理解的？
+
+行高是指一行文字的高度，具体说是两行文字间基线的距离。CSS中起高度作用的是height和line-height，没有定义height属性，最终其表现作用一定是line-height。
+单行文本垂直居中：把line-height值设置为height一样大小的值可以实现单行文字的垂直居中，其实也可以把height删除。
+多行文本垂直居中：需要设置display属性为inline-block。
+
+## 18、怎么让Chrome支持小于12px 的文字？
+
+```css
+p{font-size:10px;-webkit-transform:scale(0.8);} //0.8是缩放比例
+```
+
+## 19、如果需要手动写动画，你认为最小时间间隔是多久，为什么？
+
+多数显示器默认频率是60Hz，即1秒刷新60次，所以理论上最小间隔为1/60＊1000ms ＝ 16.7ms。
+
+## 20、li与li之间有看不见的空白间隔是什么原因引起的？有什么解决办法？
+
+行框的排列会受到中间空白（回车空格）等的影响，因为空格也属于字符,这些空白也会被应用样式，占据空间，所以会有间隔，把字符大小设为0，就没有空格了。
+解决方法：
+
+1. 可以将<li>代码全部写在一排
+2. 浮动li中float：left
+3. 在ul中用font-size：0（谷歌不支持）；可以使用letter-space：-3px
+
+## 21、display:inline-block 什么时候会显示间隙？
+
+1. 有空格时候会有间隙     解决：移除空格
+2. margin正值的时候        解决：margin使用负值
+3. 使用font-size时候         解决：font-size:0、letter-spacing、word-spacing
+
+## 22、父div高度可变，子div一个定高100px，另一个高度始终填满剩余的父div空间
+
+```html
+ <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      .content {
+        width: 500px;
+        height: 100vh;
+        margin: auto;
+        background-color: tomato;
+        position: relative;
+      }
+      .one {
+        height: 100px;
+        background-color: teal;
+      }
+      .two {
+        position: absolute;
+        top: 100px;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: thistle;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="content">
+      <div class="one"></div>
+      <div class="two"></div>
+    </div>
+  </body>
+```
+
+## 23、png、jpg、gif 这些图片格式解释一下，分别什么时候用。有没有了解过webp？
+
+1. png是便携式网络图片（Portable Network Graphics）是一种无损数据压缩位图文件格式.优点是：压缩比高，色彩好。 大多数地方都可以用。
+2. jpg是一种针对相片使用的一种失真压缩方法，是一种破坏性的压缩，在色调及颜色平滑变化做的不错。在www上，被用来储存和传输照片的格式。
+3. gif是一种位图文件格式，以8位色重现真色彩的图像。可以实现动画效果.
+4. webp格式是谷歌在2010年推出的图片格式，压缩率只有jpg的2/3，大小比png小了45%。缺点是压缩的时间更久了，兼容性不好，目前谷歌和opera支持。
+
+## 24、style标签写在body后与body前有什么区别？
+
+页面加载自上而下 当然是先加载样式。
+写在body标签后由于浏览器以逐行方式对HTML文档进行解析，当解析到写在尾部的样式表（外联或写在style标签）会导致浏览器停止之前的渲染，等待加载且解析样式表完成之后重新渲染，在windows的IE下可能会出现FOUC现象（即样式失效导致的页面闪烁问题）
+
+## 25、CSS属性overflow属性定义溢出元素内容区的内容会如何处理
+
+- scroll    必会出现滚动条。
+- auto     子元素内容大于父元素时出现滚动条。
+- visible   溢出的内容出现在父元素之外。
+- hidden   溢出隐藏。
+
+## 26、阐述一下CSS Sprites
+
+将一个页面涉及到的所有图片都包含到一张大图中去，然后利用CSS的 background-image，background- repeat，background-position 的组合进行背景定位。
+
+利用CSS Sprites能很好地减少网页的http请求，从而大大的提高页面的性能；
+
+CSS Sprites能减少图片的字节。
+

@@ -7,16 +7,16 @@
 #### 容器属性（6 个）
 
 1. flex-direction 规定主轴方向
-   
+
    > column | column-reverse | row | row-reverse
-   
+
 2. flex-wrap 是否换行
-   
+
    > nowrap | wrap | wrap-reverse（换行，第一行在下方）
-   
+
 3. flex-grow
 
-   >  是 flex-direction 属性和 flex-wrap 属性的简写形式，默认值为 row nowrap
+   > 是 flex-direction 属性和 flex-wrap 属性的简写形式，默认值为 row nowrap
 
 4. justify-content 主轴对其方式
 
@@ -38,8 +38,9 @@
 4. flex-basis 属性定义了在分配多余空间之前，项目占据的主轴空间
 5. flex flex-shrink 和 flex-basis 的简写，默认值为 0 1 auto
 6. align-slef 允许单个项目有与其他项目不一样的对齐方式
-   
+
    > auto | flex-start | flex-end | center | baseline | stretch > 除了 auto，其他都与 align-items 属性完全一致
 
 #### 面试题
+
     flex的flex属性的伸缩长度如何计算？

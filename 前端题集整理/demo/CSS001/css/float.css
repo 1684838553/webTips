@@ -1,0 +1,18 @@
+p {
+  width: 50%;
+}
+.wrapper {
+  background-color: #ededed;
+  overflow: hidden;
+}
+.black {
+  float: left;
+}
+/* .right {
+  clear: both;
+} */
+/* .wrapper::after {
+  display: block;
+  content: "";
+  clear: both;
+} */

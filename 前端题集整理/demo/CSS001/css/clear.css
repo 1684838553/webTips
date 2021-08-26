@@ -1,0 +1,24 @@
+.wrapper {
+  border: 1px solid black;
+  padding: 10px;
+}
+.left {
+  border: 1px solid black;
+  clear: left;
+}
+.black {
+  float: left;
+  margin: 0;
+  background-color: black;
+  color: #fff;
+  width: 20%;
+}
+.red {
+  float: left;
+  margin: 0;
+  background-color: pink;
+  width: 20%;
+}
+p {
+  width: 50%;
+}

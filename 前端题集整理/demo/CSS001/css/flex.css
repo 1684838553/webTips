@@ -1,0 +1,33 @@
+html {
+  font-size: 20px;
+}
+.tip {
+  visibility: collapse;
+  background-color: aqua;
+}
+.tip1 {
+  width: 50%;
+  background-color: red;
+  color: aliceblue;
+  display: inline-block;
+}
+.tip2 {
+  /* float: left; */
+  position: absolute;
+  top: 10px;
+}
+.tip3 {
+  position: relative;
+  right: 10px;
+}
+.tip4 {
+  position: fixed;
+  bottom: 10px;
+}
+.tip5 {
+  display: inline-block;
+  width: 50%;
+  position: relative;
+  left: 10px;
+  float: right;
+}
