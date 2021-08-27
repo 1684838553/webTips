@@ -19,6 +19,8 @@
     border-bottom: 100px solid red;
 }
 
+//transparent 透明色
+
 
 #triangle-topright {
     width: 0;
@@ -61,7 +63,7 @@
 //方法二
 .line{    
       height: 1px;
-       background: -webkit-linear-gradient(90deg, #000 50%, transparent 50%);
+      background: -webkit-linear-gradient(90deg, #000 50%, transparent 50%);
    }
 ```
 
