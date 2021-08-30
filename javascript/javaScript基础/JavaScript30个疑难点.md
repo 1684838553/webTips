@@ -162,7 +162,7 @@ var a = new Number(2);
 
    ```javascript
    var objNum = new Number(123); //object
-   
+
    objNum.valueOf(); // 123 number
    ```
 
@@ -173,20 +173,20 @@ var a = new Number(2);
    > 不是原始类型，调用 input.valueOf() 在做判断，是原始类型，返回该值
    > 不是原始类型，调用 input.toString() 在做判断，是原始类型，返回该值
    > 不是原始类型，报错
-   
+
    ```javascript
    objNum.valueOf(); // 123 number
-   
+
    objNum.toString(); // '123'
-   
+
    var a = 1;
    a.valueOf(); // 1
-   
+
    a.toString(); // '1'
    ```
-   
+
    **面试题：(`要执行拆箱操作，调用toPrimitive方法`)**
-   
+
    > - 1、两个空数组相加 console.log([] + []) // ''
    > - 2、[] + {}
    > - 3、console.log([])
@@ -413,113 +413,119 @@ Object.is()判断两个值是否为同一个值。返回布尔值
 <font color="red"> 1.Object.is(NaN,NaN) === true      2.Object.is(+0,-0) === false</font>
 
 ### 18、常见的四种类型的函数
+
 1. 匿名函数
-    定义时没有任何变量引用的函数`（加载后立即执行，执行完立即销毁）`
-    匿名函数的字调
-    ```javascript
-    (function(window,udefinded){
-        var jQuery;
-        /* ... */
-        window.jQuery = window.$ = jQuery
-    })(window)
-    ```
-    **优点：**节约内存空间，调用前和调用后内存中不创建任何函数对象
+   定义时没有任何变量引用的函数`（加载后立即执行，执行完立即销毁）`
+   匿名函数的字调
+
+   ```javascript
+   (function (window, udefinded) {
+     var jQuery;
+     /* ... */
+     window.jQuery = window.$ = jQuery;
+   })(window);
+   ```
+
+   **优点：**节约内存空间，调用前和调用后内存中不创建任何函数对象
 
 2. 回调函数：一个函数作为对象交给其他函数使用
 3. 递归函数
-     - 循环调用函数本身
-     - arguments.callee`(严格模式不支持)`
+   - 循环调用函数本身
+   - arguments.callee`(严格模式不支持)`
 4. 构造函数（习惯上首字母大写）
-    调用方式不一样，作用也不一样
+   调用方式不一样，作用也不一样
 
 ### 19、函数提升和变量提升
+
 `函数提升优于变量提升，同名变量和函数同时声明了，首先执行的是函数声明`
 
-js解释引擎:词法分析 -> 语法分析 -> 语法树
+js 解释引擎:词法分析 -> 语法分析 -> 语法树
 
 ```javascript
-console.log(a)  // 变量声明提前
-var a = 10
-function fn(){  //方法一
-
+console.log(a); // 变量声明提前
+var a = 10;
+function fn() {
+  //方法一
 }
-function test(){
-    a = 100  // a是局部变量，不影响外部变量a ，相当于 var a ; a = 100 ; console.log(a)
-    console.log(a) //100
-    console.log(b) // 报错，在块级作用域中，let定义的变量不能在声明之前调用，块级作用域到变量定义之间形成了死区
-    var a
-    let b = 5
-    console.log(a) // 100
-    console.log(fn) //f fn(){}  删除方法一，执行方法二，打印undefined
+function test() {
+  a = 100; // a是局部变量，不影响外部变量a ，相当于 var a ; a = 100 ; console.log(a)
+  console.log(a); //100
+  console.log(b); // 报错，在块级作用域中，let定义的变量不能在声明之前调用，块级作用域到变量定义之间形成了死区
+  var a;
+  let b = 5;
+  console.log(a); // 100
+  console.log(fn); //f fn(){}  删除方法一，执行方法二，打印undefined
 }
-test()
-var fn = function(){}  //方法二
+test();
+var fn = function () {}; //方法二
 ```
-<font color="red"> 函数是整个代码提前，如果是var fn声明的只是变量提升，函数体留在本地</font>
+
+<font color="red"> 函数是整个代码提前，如果是 var fn 声明的只是变量提升，函数体留在本地</font>
 
 ### 20、作用域和作用域链
 
 - 作用域 scope ：一个变量可用范围
 
-- 作用域链 scope chain：以当前作用域scope属性为起点，依次引用每个AO`（活动对象）`，直至window结束，形成多级引用
+- 作用域链 scope chain：以当前作用域 scope 属性为起点，依次引用每个 AO`（活动对象）`，直至 window 结束，形成多级引用
 
-- js作用域：es5
-    全局作用域 window
-    函数作用域：在函数中定义的一些变量`可访问函数外部的变量，形成闭包，不可访问函数中圈套的函数中的变量`
+- js 作用域：es5
+  全局作用域 window
+  函数作用域：在函数中定义的一些变量`可访问函数外部的变量，形成闭包，不可访问函数中圈套的函数中的变量`
 
-    `[[scope]]在计算机内部使用，不暴露到外部`
+  `[[scope]]在计算机内部使用，不暴露到外部`
 
-    **面试题**
-    ```javascript
-    var a = [{name:'b1'},{name:'b2'},{name:'b3'}]
-    function bind(){
-        for(var i = 0;i<a.length;i++){
-            a[i].fun = function(){
-                alert(i)
-            }
-        }
+  **面试题**
+
+  ```javascript
+  var a = [{ name: "b1" }, { name: "b2" }, { name: "b3" }];
+  function bind() {
+    for (var i = 0; i < a.length; i++) {
+      a[i].fun = function () {
+        alert(i);
+      };
     }
-    bind()  /*  执行该函数，给a中每个对象绑定一个函数，执行完之后，i就是3，在执行对象中的方法，取得i为全局变量i，都为3  */
-    a[0].fun() /* 3 */
-    a[1].fun()  /* 3 */
-    a[2].fun() /* 3 */
-    ```
+  }
+  bind(); /*  执行该函数，给a中每个对象绑定一个函数，执行完之后，i就是3，在执行对象中的方法，取得i为全局变量i，都为3  */
+  a[0].fun(); /* 3 */
+  a[1].fun(); /* 3 */
+  a[2].fun(); /* 3 */
+  ```
 
 ### 21、重载和多态
 
 1. 重载：在程序中定义相同的名字，参数不同的函数。函数在调用函数时，自动识别不同参数对应的函数，实现相同函数名不同函数的调用。`js本身没有重载，但可通过arguments实现函数重载`
 
-    ```javascript
-    /*计算长方形，正方形面积*/
-    function React(){
-        /*传入一个参数是正方形，传入两个参数是长方形*/
-        /*arguments 类数组*/
-    }
-    ```
+   ```javascript
+   /*计算长方形，正方形面积*/
+   function React() {
+     /*传入一个参数是正方形，传入两个参数是长方形*/
+     /*arguments 类数组*/
+   }
+   ```
 
 2. 多态：同一个东西，在不同情况下的表现不同状态。
 
+### 22、call,apply,bind 之间的区别
 
-### 22、call,apply,bind之间的区别
-
-- 相同点：都会Function对象中的方法
+- 相同点：都会 Function 对象中的方法
 
 - 不同点：
-    1. call,apply的参数不同，call是单个参数传入，apply是传入一个数组的参数
 
-    ```javascript
-    function foo(a,b){
-        console.log(a,b)
-    }
-    foo.apply(null,[1,2])
-    foo.call(null,1,2)
-    ```
+  1. call,apply 的参数不同，call 是单个参数传入，apply 是传入一个数组的参数
 
-    **应用：类数组转数组**
-    `var arr = Array.prototype.slice.apply(arguments)`
+  ```javascript
+  function foo(a, b) {
+    console.log(a, b);
+  }
+  foo.apply(null, [1, 2]);
+  foo.call(null, 1, 2);
+  ```
 
-    2. bind类似于call，但与call不同的是call调用后可立即执行，但bind需要一个变量进行接收后在执行
-    `var val = foo.bind()`
+  **应用：类数组转数组**
+  `var arr = Array.prototype.slice.apply(arguments)`
+
+  2. bind 类似于 call，但与 call 不同的是 call 调用后可立即执行，但 bind 需要一个变量进行接收后在执行
+     `var val = foo.bind()`
 
 ### 23、new 执行过程
 
@@ -550,183 +556,187 @@ if(typeof result === 'object'){
 }
 ```
 
+### 24、开发中 this 指向
 
-### 24、开发中this指向
+指向当前调用的这个对象，4 种绑定规则分别是：
 
-指向当前调用的这个对象，4种绑定规则分别是：
 1. 默认绑定
 2. 隐式绑定
 3. 显示绑定
 4. new 绑定
-`(优先级，从低到高)`
+   `(优先级，从低到高)`
 
 ```javascript
 var man = {
-    name:'Jack',
-    age:30,
-    getName:function(){
-        console.log(this.name)
-    },
-    getAge:function(){
-        function aa(){  // 局部函数
-            console.log(this+ ' ' +this.age)  //局部函数this指向window，undefined
-        }
-        aa() // window.aa()
-        consol.log(this + ' ' + this.age)
+  name: "Jack",
+  age: 30,
+  getName: function () {
+    console.log(this.name);
+  },
+  getAge: function () {
+    function aa() {
+      // 局部函数
+      console.log(this + " " + this.age); //局部函数this指向window，undefined
     }
-}
-man.getName() // this指向man，Jack
-man.getAge()
+    aa(); // window.aa()
+    consol.log(this + " " + this.age);
+  },
+};
+man.getName(); // this指向man，Jack
+man.getAge();
 ```
 
 **工作误区：**
+
 ```javascript
-$("#btn").click(function(){
-    var that = this  // this指向被点击的dom对象
-    $('.content').each(function(){
-        console.log(this)  // 指向window
-        console.log(that)  // that指向被点击的dom对象
-    })
-})
+$("#btn").click(function () {
+  var that = this; // this指向被点击的dom对象
+  $(".content").each(function () {
+    console.log(this); // 指向window
+    console.log(that); // that指向被点击的dom对象
+  });
+});
 ```
 
-<font color="red"> 改变this指向，call,apply,bind</font>
-1. this总是指向函数的直接调用者
-2. 如果有new，指向new出来的实例对象
-3. 在事件上，this指向触发这个事件的对象
-4. 在ie下，attachEvent中，this指向window
-5. 箭头函数中，this指向定义时所在作用域的对象，而不是使用时所在作用域的对象
+<font color="red"> 改变 this 指向，call,apply,bind</font>
 
-**this是函数运行时自动生成的一个内部对象，只能在函数内部使用**
+1. this 总是指向函数的直接调用者
+2. 如果有 new，指向 new 出来的实例对象
+3. 在事件上，this 指向触发这个事件的对象
+4. 在 ie 下，attachEvent 中，this 指向 window
+5. 箭头函数中，this 指向定义时所在作用域的对象，而不是使用时所在作用域的对象
+
+**this 是函数运行时自动生成的一个内部对象，只能在函数内部使用**
 
 ```javascript
-var name = 'tom'
+var name = "tom";
 var man = {
-    name:'Jack',
-    getName:function(){
-        console.log(this.name)
-    },
-}
-obj.getName() // Jack
-var fn = obj.getName() // this指向window，tom
-var fn1 = obj.getName.bind(obj)  //把this绑定给obj
-fn1() //Jack
+  name: "Jack",
+  getName: function () {
+    console.log(this.name);
+  },
+};
+obj.getName(); // Jack
+var fn = obj.getName(); // this指向window，tom
+var fn1 = obj.getName.bind(obj); //把this绑定给obj
+fn1(); //Jack
 ```
 
 ### 25、理解面向对象
+
 1. 什么是对象
 
-    - 具有私有属性 {a:1} a是私有属性
-    - 只要new出来的都是对象
-    - 不同对象肯定不相等
+   - 具有私有属性 {a:1} a 是私有属性
+   - 只要 new 出来的都是对象
+   - 不同对象肯定不相等
      `var a = [1] var b = [1] 两者的引用地址不同`
-    - 对象都会有引用机制
-    `栈 -》 地址    堆 -》 对象`
+   - 对象都会有引用机制
+     `栈 -》 地址 堆 -》 对象`
 
-    `JS中万物皆对象：Array,Date,Object,Function,String ...`
+   `JS中万物皆对象：Array,Date,Object,Function,String ...`
 
 2. 面向对象：把任何的数据和行为抽象成一个对象的对象
 
-    - 类：对象的模板，定义同一组对象（实例）共有的属性和方法
+   - 类：对象的模板，定义同一组对象（实例）共有的属性和方法
 
-        ```javascript
-        js中可通过构造函数模拟一个类，未实例化一个对象
-        function Person(){
-            name:this.name,
-            say:function(){}
-        }
-        ```
-    
-    - js面向对象
-    继承：子继承父
-    封装：将某个功能封装成一个方法
-    多态：重载，重写
+     ```javascript
+     js中可通过构造函数模拟一个类，未实例化一个对象
+     function Person(){
+         name:this.name,
+         say:function(){}
+     }
+     ```
 
+   - js 面向对象
+     继承：子继承父
+     封装：将某个功能封装成一个方法
+     多态：重载，重写
 
 ### 26、原型与原型链
 
 1. 前置知识
 
-    - 函数对象Function
-        定义：主要通过Function对象创建的
-        `var fun1 = new Function('str',console.log('str'))`
-    - 普通对象
-        通过Object对象创建的
-    - 构造函数创建
+   - 函数对象 Function
+     定义：主要通过 Function 对象创建的
+     `var fun1 = new Function('str',console.log('str'))`
+   - 普通对象
+     通过 Object 对象创建的
+   - 构造函数创建
 
 2. 原型与原型链`（一句话，两个定义，三个属性）`
 
-    - 万物皆对象，万物皆空
-        js中万物皆对象，最后指向的都是null
+   - 万物皆对象，万物皆空
+     js 中万物皆对象，最后指向的都是 null
 
-    - 原型：保存所有子对象的共有属性和方法的父对象
-      原型链：由各级子对象的__proto__属性连续引用形成的结构
+   - 原型：保存所有子对象的共有属性和方法的父对象
+     原型链：由各级子对象的**proto**属性连续引用形成的结构
 
-    - 三个属性：__proto__ , constructor , prototype
+   - 三个属性：**proto** , constructor , prototype
 
 3. 构造函数实现类
-```javascript
-function Preson(name,age){
-    this.name = name
-    this.say = function(){
-        console.log(this.name)
-    }
-}
-```
-> 当函数创建时会携带上一个prototype属性，这个属性指向prototype对象，也就是原型对象。原型对象创建完成会生成一个指针，指向最初对象Person
 
 ```javascript
-Person.prototype.money = 20
-Person.prototype.run = function(){
-
+function Preson(name, age) {
+  this.name = name;
+  this.say = function () {
+    console.log(this.name);
+  };
 }
 ```
-**constructor:Person.prototype携带**
- `console.log(Person.prototype.constructor === Person)`
 
-var p1 = new Person('张三',18) // 实例化 p1.__proto__
-js中__proto__都是js的内部属性，相当于[[scope]]，js中所有对象都会携带__proto__
- `p1.__proto__ === Person.prototype`
+> 当函数创建时会携带上一个 prototype 属性，这个属性指向 prototype 对象，也就是原型对象。原型对象创建完成会生成一个指针，指向最初对象 Person
+
+```javascript
+Person.prototype.money = 20;
+Person.prototype.run = function () {};
+```
+
+**constructor:Person.prototype 携带**
+`console.log(Person.prototype.constructor === Person)`
+
+var p1 = new Person('张三',18) // 实例化 p1.**proto**
+js 中**proto**都是 js 的内部属性，相当于[[scope]]，js 中所有对象都会携带**proto**
+`p1.__proto__ === Person.prototype`
 
 > 1. 挂载在函数内部的方法，实例化对象会复制构造函数的方法，挂载在原型上的方法，不会复制。
 > 2. 内部和原型上的方法实例化都可以去调用
 > 3. 一般来说，需要访问构造函数内部的私有变量，可定义在函数内部，其它情况定义在原型上
 
 `总结`
-1. 所有对象都会携带__proto__属性
-2. p1.__proto__ , Person.prototype
-3.  Person.prototype.constructor === Person
 
-**如图：prototype,__proto__,constructor关系图，构造函数与函数之间的关系图**
+1. 所有对象都会携带**proto**属性
+2. p1.**proto** , Person.prototype
+3. Person.prototype.constructor === Person
+
+**如图：prototype,**proto**,constructor 关系图，构造函数与函数之间的关系图**
 
 **三个方法：**
-1. hasOwnPrototype 
-    `obj.hasOwnPrototype('属性名')  返回true/false`
+
+1. hasOwnPrototype
+   `obj.hasOwnPrototype('属性名') 返回true/false`
 
 2. isPrototypeOf
-    `用来判断指定对象obj1是否存在于另一个对象obj2的原型链中，返回true/false`
+   `用来判断指定对象obj1是否存在于另一个对象obj2的原型链中，返回true/false`
 
 3. getPrototypeOf
-    `用来得到obj对象的原型对象的标准方法`
+   `用来得到obj对象的原型对象的标准方法`
 
+### 27、Object.defineProperty 方法
 
-### 27、Object.defineProperty方法
-
-`Object.defineProperty(obj,prop,descriptor) //指定对象 需定义的属性 属性描述符`  **返回值：返回该对象** 
+`Object.defineProperty(obj,prop,descriptor) //指定对象 需定义的属性 属性描述符` **返回值：返回该对象**
 
 ```javascript
 var descriptor = {
-    // 数据描述符
-    configurable:false,  // 是否能用delete删除
-    writable:false,  //是否可写
-    enumerable:false,  // 是否可枚举
-    value:'hello',  // 属性值
-    //访问器描述符（writable为true时才能使用）
-    get,  //在读取属性时调用的函数，默认值为undefined
-    set,  //在写入...
-}
+  // 数据描述符
+  configurable: false, // 是否能用delete删除
+  writable: false, //是否可写
+  enumerable: false, // 是否可枚举
+  value: "hello", // 属性值
+  //访问器描述符（writable为true时才能使用）
+  get, //在读取属性时调用的函数，默认值为undefined
+  set, //在写入...
+};
 
-
-Object.defineProperty(obj,'MOOC',descriptor)
-console.log(obj.MOOC)  // hello
+Object.defineProperty(obj, "MOOC", descriptor);
+console.log(obj.MOOC); // hello
 ```
