@@ -3,6 +3,7 @@
 ### 什么是 BFC
 
 BFC 全称 Block Formatting Context 即`块级格式上下文`，简单的说，BFC 是页面上的一个隔离的独立容器，不受外界干扰或干扰外界
+[css 中的 BFC](https://x-front-team.github.io/2017/02/19/CSS%E4%B8%AD%E7%9A%84BFC/)
 
 ### 如何触发 BFC
 
@@ -79,6 +80,3 @@ Inline Formatting Contexts，也就是“内联格式化上下文”。
 ## 3、GFC
 
 ## 4、FFC
-
-
-

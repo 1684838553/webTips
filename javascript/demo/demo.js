@@ -57,3 +57,8 @@ map.forEach((key, value) => {
     console.log("setTimeout2");
   }, 0);
 }
+
+const a = [1, 2, 3, 4, 4, 5, 6, 7];
+const c = [0, 1, 2];
+const b = c.slice(0, 5);
+console.log(b);
