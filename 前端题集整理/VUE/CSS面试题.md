@@ -104,3 +104,12 @@ border-bottom:30px solid red;
 ## 样式为什么要初始化
 
 因为浏览器的兼容性问题，不同浏览器默认样式不同，为了达到页面统一
+
+## absolute 的 containing block 计算方式跟正常流有什么不同
+
+## display:none 与 visibility：hidden 的区别？
+
+1. display:none 隐藏元素，不占据原有空间(回流和重绘)
+2. visibility:hidden 隐藏元素，占据原有空间（重绘）
+
+## position 跟 display、overflow、float 这些特性相互叠加后会怎么样
