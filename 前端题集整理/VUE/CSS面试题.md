@@ -113,3 +113,17 @@ border-bottom:30px solid red;
 2. visibility:hidden 隐藏元素，占据原有空间（重绘）
 
 ## position 跟 display、overflow、float 这些特性相互叠加后会怎么样
+
+## 对 BFC 规范(块级格式化上下文：block formatting context)的理解
+
+1.  BFC 是有绝对定位元素，浮动元素，非块元素的块级元素以及 overflow 不为 hidden 的块级盒子，形成的一个 bfc
+
+2.  触发条件
+
+    - position 为 absolute 或 fixed
+    - display 为 inline-block,table-cell
+    - flex
+
+3.  特点
+
+4.  解决问题
