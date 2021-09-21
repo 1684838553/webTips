@@ -1,5 +1,6 @@
 # useEffect 完整指南
 [useEffect 完整指南](https://overreacted.io/zh-hans/a-complete-guide-to-useeffect/)
+React Hooks的闭包陷阱，你是怎么解决的？
 
 ## 1、如何用useEffect模拟componentDidMount生命周期？
 ## 2、如何正确地在useEffect里请求数据？[]又是什么？
