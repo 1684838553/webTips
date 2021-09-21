@@ -121,9 +121,19 @@ border-bottom:30px solid red;
 2.  触发条件
 
     - position 为 absolute 或 fixed
-    - display 为 inline-block,table-cell
-    - flex
+    - display 为 inline-block,table-cell，flex,inline-flex
+    - overflow不为visible
+    - 根元素
 
-3.  特点
+3. BFC特性
 
-4.  解决问题
+    - BFC形成的区域不受外界的影响
+    - BFC中浮动元素也参与高度计算
+    - BFC内部元素会发生margin重叠
+    - BFC不受浮动元素影响
+
+4. 解决问题
+
+    - margin重叠问题，在同一个BFC内部元素发生margin重叠，相邻BFC不发生margin重叠
+    - 高度塌陷问题，BFC中浮动元素也参与高度计算
+    - 避免元素被浮动元素覆盖

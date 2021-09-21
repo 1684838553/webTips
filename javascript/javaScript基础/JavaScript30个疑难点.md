@@ -672,6 +672,9 @@ fn1(); //Jack
      原型链：由各级子对象的**proto**属性连续引用形成的结构
 
    - 三个属性：**proto** , constructor , prototype
+   Person.prototype.constructor === Person
+   p1.__proto__ === Person.prototype
+
 
 3. 构造函数实现类
 

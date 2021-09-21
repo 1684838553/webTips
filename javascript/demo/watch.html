@@ -1,0 +1,56 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>监听机制</title>
+	<!-- 导入vue -->
+	<script src="https://cdn.bootcss.com/vue/2.6.10/vue.js"></script>
+	<script src="https://cdn.bootcss.com/lodash.js/4.17.15/lodash.js"></script>
+</head>
+<body>
+	<div id="app">
+		<button @click="change">change</button>
+		{{obj}}
+		<div>
+			<ul>
+				<li v-for="l in list">{{l}}</li>
+			</ul>
+		</div>
+	</div>
+	<script>
+		new Vue({
+			el:"#app",
+			data:{
+				obj:{
+					name:"terry",
+					age:12
+				},
+				list:[
+					{id:1,title:"hello"},
+					{id:2,title:"world"},
+					{id:3,title:"name"}
+				]
+			},
+			watch:{
+				obj:function(now,old){
+                    // alert(JSON.stringify(now));
+                    console.log(now,old)
+                    this.list.push(now)
+                },
+                // list:function(n,o){
+                //     this.list
+                // }
+			},
+			methods:{
+				change(){
+					this.obj = Object.assign({},this.obj)
+					this.obj.age++;
+
+					_.remove(this.list,item => item.id===2 )
+				}
+			}
+		})
+	</script>
+</body>
+</html>

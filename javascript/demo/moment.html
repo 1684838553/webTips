@@ -1,22 +1,86 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>moment的使用</title>
-    <script
-      src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"
-      integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    ></script>
-  </head>
-  <body>
-    <script>
-      var a = moment("2016-01-01");
-      var b = a.add(1, "week");
-      console.log(a.format()); // 2016-01-08T00:00:00+08:00
-    </script>
-  </body>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>moment的使用</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js" integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+</head>
+
+<body>
+  <iframe class="myIframe" src="./demo.html" frameborder="0"></iframe>
+  <script>
+    const dom = document.querySelector('.myIframe')
+    dom.onload = function (res) {
+      const domWin = dom.contentWindow || dom.contentDocument.parentWindow;
+      dom.height = domWin.document.documentElement.scrollHeight || domWin.document.body.scrollHeight
+    }
+    // var a = moment("2016-01-01");
+    // var b = a.add(1, "week");
+    // console.log(a.format()); // 2016-01-08T00:00:00+08:00
+
+    function Observe(data) {
+      // 所谓数据劫持就是给对象增加get,set
+      // 先遍历一遍对象再说
+      for (let key in data) {     // 把data属性通过defineProperty的方式定义属性
+        let val = data[key];
+        observe(val);   // 递归继续向下找，实现深度的数据劫持
+        Object.defineProperty(data, key, {
+          configurable: true,
+          get() {
+            return val;
+          },
+          set(newVal) {   // 更改值的时候
+            if (val === newVal) {   // 设置的值和以前值一样就不理它
+              return;
+            }
+            val = newVal;   // 如果以后再获取值(get)的时候，将刚才设置的值再返回去
+            observe(newVal);    // 当设置为新值后，也需要把新值再去定义成属性
+          }
+        });
+      }
+    }
+
+    function observe(data) {
+      // 如果不是对象的话就直接return掉
+      // 防止递归溢出
+      if (!data || typeof data !== 'object') return;
+      return new Observe(data);
+    }
+
+    function Mvvm(options = {}) {
+      // 数据劫持
+      observe(data);
+      // this 代理了this._data
+     for (let key in data) {
+        Object.defineProperty(this, key, {
+          configurable: true,
+          get() {
+            return this._data[key];     // 如this.a = {b: 1}
+          },
+          set(newVal) {
+            this._data[key] = newVal;
+          }
+        });
+      }
+    }
+
+
+    const data = {
+      name: '123',
+      feature: {
+        color: 'red',
+        height: '1m',
+        width: '50cm'
+      }
+    }
+
+    console.log(Mvvm(observe(data)))
+
+  </script>
+</body>
+
 </html>

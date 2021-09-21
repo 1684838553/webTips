@@ -195,3 +195,39 @@ HTML 的输入框可以拥有自动完成的功能，当你往输入框输入内
 ## 16、img 的 alt 和 title 有什么异同
 
 在 alt 和 title 同时设置的时候，alt 作为图片的替代文字出现，title 是图片的解释文字。
+
+## 16、常见元素
+1. meta
+    - meta可定义页面的字符集
+    <meta charset="utf-8">
+    - meta可设置设备屏幕
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    - width：控制 viewport 的大小，可以指定的一个值，如果 600，或者特殊的值，如 device-width 为设备的宽度（单位为缩放为 100% 时的 CSS 的像素）。
+    - height：和 width 相对应，指定高度。
+    - initial-scale：初始缩放比例，也即是当页面第一次 load 的时候缩放比例。
+    - maximum-scale：允许用户缩放到的最大比例。
+    - minimum-scale：允许用户缩放到的最小比例。
+    - user-scalable：用户是否可以手动缩放
+
+    - **解决问题：**无视设备的真实分辨率，直接通过dpi，在物理尺寸和浏览器之间重设分辨率，这个分辨率和设备的分辨率无关
+
+2. doctype
+    - 让浏览器以标准模式渲染
+    - 让浏览器知道元素的合法性
+
+## 17、html嵌套关系
+    - 块级元素可包含行内元素
+    - 行内元素不可包含块级元素，a标签除外，a可包含块级元素
+    - 块级元素不一定可以包含块级元素，p不能包含块级元素
+
+## 18、那些元素可闭合
+    - 表单元素 input 
+    - img
+    - br
+    - hr
+    - meta
+    -link
+
+## HTML与DOM的关系
+    HTML是一个字符串，解析之后生成DOM
+    JS维护的是DOM
