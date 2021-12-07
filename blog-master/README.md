@@ -39,8 +39,6 @@
 * [《图解HTTP之HTTP报文》](https://github.com/chenxiaochun/blog/issues/17)
 * [《图解HTTP之简单的HTTP协议》](https://github.com/chenxiaochun/blog/issues/16)
 * [《图解HTTP之web及网络基础》](https://github.com/chenxiaochun/blog/issues/15)
-* [《匆匆》](https://github.com/chenxiaochun/blog/issues/14)
-* [《送别》](https://github.com/chenxiaochun/blog/issues/12)
 * [《如何定义git commit message的书写模版》](https://github.com/chenxiaochun/blog/issues/11)
 * [《css函数之-webkit-image-set》](https://github.com/chenxiaochun/blog/issues/10)
 * [《js判断页面可见状态的方法》](https://github.com/chenxiaochun/blog/issues/9)
