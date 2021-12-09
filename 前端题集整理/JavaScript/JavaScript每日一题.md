@@ -54,6 +54,82 @@ document.documentElement.scrollTop = 0
 ```
  
 ## 5、typeof('abc')和typeof 'abc'都是string, 那么typeof是操作符还是函数？
+
 typeof 是操作符，不是函数。括号的改变运算优先级而不是函数调用。
 
 **参考<JavaScript高级程序设计> 3.4.1**
+
+## 6、你理解的"use strict";是什么?使用它有什么优缺点？
+
+use strict是指js运行在严格模式下
+
+**说明：**
+
+1. `使调试更容易`。一些被忽略或默默失败了的代码错误，会产生错误或抛出异常。
+2. `变量在赋值之前必须声明，防止意外的全局变量`。在非严格模式下，将值分配给一个未声明的变量，会直接创建该名称的全局变量
+3. `取消this值的强制转换`。严格模式下，this使undefined,而不是window
+4. `不允许重复的属性名和参数值`
+```javascript
+ var obj = {
+       foo:'1',
+        foo:'1'
+}
+function foo(a,a){ }
+```
+
+5. `使eval()更安全`。严格模式下，变量和声明在eval()语句内部的函数不会在包含范围内创建（非严格模式下，会被创建）
+6. `在delete使用无效时抛出错误`。在严格模式下，删除对象不可配置的属性时，抛出异常
+7. `严格模式下去除with`
+8. `不能修改arguments ，不能在函数内定义arguments变量 ，不能使用arugment.caller和argument.callee`
+
+**优点：**
+
+1. 消除JavaScript语法的一些不合理，不严谨支出，减少一些怪异行为
+2. 消除代码运行的不安全之处，保证代码运行的安全
+3. 提高编译器效果，增加运行速度
+4. 为未来新版本的JavaScript做铺垫
+
+**缺点：**
+
+1. 某些代码在严格模式下会报错，尤其引入公用与第三方模块的时候需要注意
+2. 有些严格模式的特征在不同浏览器的支持情况不同，需要注意兼容问题
+
+## 7、"attribute"和"property"有什么不同？
+
+**property**
+
+1. 是DOM中的属性，是JavaScript里的对象
+2. 可以读取标签自带属性，包括没有写出来的
+3. 不能读取attribute设置的属性
+4. 获取方式：读：element.property;            如：p.className;
+5. 设置方式：element.property = 'xxx';        如：p.className = 'xiao';
+6. 是元素（对象）的属性
+
+**attribute**
+
+1. 是HTML标签的属性,即直接在html标签添加的都是attribute属性
+2. 不能读取property设置的属性
+3. 读取方式：element.getAttribute('属性名','属性值');  如：a.getAttribute('href');
+4. 设置方式：element.setAttribute('属性名','属性值');  如：a.getAttribute('href','xiaowan.jpg');
+5. 直接在html标签上添加的和使用setAttribute添加的情况一致
+
+## 8、说说你对arguments的理解，它是数组吗？
+
+
+## 9、造成内存泄露的操作有哪些？
+1. 意外的全局变量
+2. 闭包
+3. 监听事件没有移除
+4. 死循环
+5. setInterval没有被清除
+6. 过度递归
+
+## 10、说说对this的理解
+- `this` 指的是当前运行环境的上下文。
+- `一般情况：`函数中的this永远指向函数的调用者，谁最终调用这个函数，this就指向谁
+1. 全局对象中this指向window
+2. 构造函数的this指向new 出来的对象
+3. call , apply , bind 的this指向第一个参数
+4. 箭头函数this指向创建时的上下文
+5. 函数是通过对象调用的，那么this就指向这个对象
+6. 在事件上，this指向触发这个事件的对象。`在IE下，attachEvent中，this指向window`
