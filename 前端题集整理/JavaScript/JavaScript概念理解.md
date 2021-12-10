@@ -196,3 +196,15 @@ var re2 = /[.]/g;
 console.log(str.search(re));     // 4
 console.log(str.search(re2));   // -1
 ```
+
+## 14、原生Math的方法有哪些？请列举并描述其功能
+
+1. Math.abs()     绝对值
+2. Math.ceil()    向上取整
+3. Math.floor()   向下取整
+4. Math.max(num1, num2 ...)
+5. Math.min(num1, num2 ...) 
+6. Math.pow(num1, num2)   num1的num2次幂
+7. Math.random()      0-1间伪随机数
+8. Math.sqrt()     num的平方根
+9. Math.round()   四舍五入
