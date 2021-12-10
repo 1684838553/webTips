@@ -141,3 +141,59 @@ console.log("output is " + (val === "Test") ? "123" : "456");  // "123"
 > "output is false" ? "123" : "456" ==>
 > 
 > "123"
+
+
+## 经典题目7
+
+### 请用js编写一个红绿灯程序（循环显示红绿灯）
+
+```javascript
+/**
+ * 请用js编写一个红绿灯程序
+ * setInterval 间歇调用
+ */
+
+// setInterval
+var n = 0
+function setColor(){
+    if( n % 3 === 0){
+        console.log('red')
+    } else if( n % 3 ===1){
+        console.log('yellow')
+    } else if( n % 3 ===2){
+        console.log('blue')
+    }
+    n++
+}
+setInterval(()=>{setColor()},3000)
+
+// Promise
+function sleep(t){
+    return new Promise((res,rej)=>{
+        setTimeout(()=>{
+            res()
+        },t)
+    })
+}
+
+
+async function light(green = 3000 , yellow = 3000,red = 3000){
+    let state = 'green'
+    // while 循环 使得灯的颜色一直改变 没有该条件，只会执行一次
+    while(true){ 
+        await sleep(green).then(()=>{
+            state = 'yellow'
+            console.log(state)
+        })
+        await sleep(yellow).then(()=>{
+            state = 'red'
+            console.log(state)
+        })
+        await sleep(red).then(()=>{
+            state = 'green'
+            console.log(state)
+        })
+    }
+}
+light(1000,1000,1000)
+```
