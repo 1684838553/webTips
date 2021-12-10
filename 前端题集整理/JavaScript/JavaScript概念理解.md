@@ -220,3 +220,32 @@ console.log(str.search(re2));   // -1
 7. Math.random()      0-1间伪随机数
 8. Math.sqrt()     num的平方根
 9. Math.round()   四舍五入
+
+
+## 15、document的load 和ready有什么区别？
+
+1. load：页面资源加载完成
+
+2. ready：是dom加载完成。
+
+一般我们都在js脚本都写在onload 保证dom节点都能获取。但是有时只需要dom节点加载完成就执行代码，提前执行js脚本就可放到ready里面 jQuery也为此提供了onReady方法
+
+
+
+## 16、举例子说明javascript的变量声明提升和函数声明提升
+
+1. **变量声明只提升声明 不提升赋值操作，函数声明 函数体整体被提升。**
+
+2. 函数变量优先于变量声明
+
+
+```javascript
+var getName = function(){
+  console.log(4)
+}
+function getName() {
+  console.log(5)
+}
+getName() 
+// 5的优先级高于4 , 5先声明, 但是后来它被4覆盖而已
+```
