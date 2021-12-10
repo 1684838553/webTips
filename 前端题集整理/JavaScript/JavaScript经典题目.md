@@ -143,7 +143,7 @@ console.log("output is " + (val === "Test") ? "123" : "456");  // "123"
 > "output is false" ? "123" : "456" ==>
 > 
 > "123"
-
+>
 > 'ba' + (+'a') + 'a' => 'ba' + (Number('a')) + 'a' => 'baNaNa'
 
 ## 经典题目7
