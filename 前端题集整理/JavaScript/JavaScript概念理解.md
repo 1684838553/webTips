@@ -115,6 +115,18 @@ function foo(a,a){ }
 
 ## 8、说说你对arguments的理解，它是数组吗？
 
+1. `arguments`是一个类数组对象对象
+2. js中每个函数都会有`arguments`这个对象，他引用着函数的实参
+3. `arguments.length`为函数实参个数，`arguments.callee`引用函数自身
+
+**特性**
+1. `arguments`对象合`Function`是不分开的
+2. `arguments`对象不能显示创建
+3. `arguments`对象只有函数开始时才可用
+
+**使用方法**
+
+`arguments`访问方式与数组相同
 
 ## 9、造成内存泄露的操作有哪些？
 1. 意外的全局变量
