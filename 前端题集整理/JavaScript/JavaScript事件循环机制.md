@@ -199,3 +199,8 @@ setInterval(function() {
 - 而且把浏览器最小化显示等操作时，`setInterval` 并不是不执行程序，它会把 `setInterval` 的回调函数放到队列中，等浏览器窗口再次打开时，一瞬间全部执行完。
 
 所以，鉴于这么多问题，目前一般认为的最佳方案是：用 `setTimeout` 模拟 `setInterval`，或者特殊场合（做动画）直接用 `requestAnimationFrame`。
+
+### setTimeout 第三个参数
+
+1. arg1 ,..., argN
+2. 附加参数，一旦定时器到期，它们会作为参数传递给function 
