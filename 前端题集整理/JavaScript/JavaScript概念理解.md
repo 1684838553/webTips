@@ -150,3 +150,49 @@ function foo(a,a){ }
 2. 不利于代码可维护性，可扩展性
 3. 不推荐使用
 4. eval()相当于一个小型的js解析器，接受一个字符串，可以解析字符串并执行
+
+
+## 13、原生的字符串操作方法有哪些？请列举并描述其功能
+
+1. charAt  返回指定的字符
+2. charCodeAt  
+4. concat
+5. includes
+6. endsWith 是否是以这个字符串结尾 返回布尔值
+7. indexOf
+8. lastIndexOf  
+10. match  返回能匹配的字符，返回一个数组
+12. padEnd   在字符串末尾拼接
+13. padStart  在字符串开头拼接
+14. repeat  重复
+15. replace
+16. search  返回正则表达式在字符串中首次匹配项的索引,没匹配上返回-1
+17. slice  截取字符串  第二个参数是indexEnd `[a,b)`
+18. split
+19. startsWith  是否是以这个字符串开头 返回布尔值
+20. substr  截取字符串  第二个参数是length  
+21. substring  截取字符串  第二个参数是indexEnd  `[a,b)`
+24. toLowerCase  将大写字母转为小写字母
+25. toUpperCase  将小写字母转为大写字母
+26. trim  去除前后空格
+
+```javascript
+// match
+var str = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
+var regexp = /[A-E]/gi;
+var matches_array = str.match(regexp);
+
+console.log(matches_array);
+// ['A', 'B', 'C', 'D', 'E', 'a', 'b', 'c', 'd', 'e']
+
+
+// charCodeAt
+"ABC".charCodeAt(0)   // 65
+
+// search
+var str = "hey JudE";
+var re = /[A-Z]/g;
+var re2 = /[.]/g;
+console.log(str.search(re));     // 4
+console.log(str.search(re2));   // -1
+```
