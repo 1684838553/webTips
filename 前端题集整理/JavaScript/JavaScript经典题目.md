@@ -130,6 +130,8 @@ console.log(foo.mybind(person,13)())
 ```javascript
 var val = "test";
 console.log("output is " + (val === "Test") ? "123" : "456");  // "123"
+
+('b' + 'a' + +'a' + 'a').toLowerCase()  // 'banana'
 ```
 **本质是运算符优先级问题。**
 **优先级是：() > + > ?:**
@@ -142,6 +144,7 @@ console.log("output is " + (val === "Test") ? "123" : "456");  // "123"
 > 
 > "123"
 
+> 'ba' + (+'a') + 'a' => 'ba' + (Number('a')) + 'a' => 'baNaNa'
 
 ## 经典题目7
 
