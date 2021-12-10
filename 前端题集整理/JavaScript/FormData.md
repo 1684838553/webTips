@@ -15,11 +15,11 @@
   data.append('user',JSON.stringify(userObj))
   data.append('one','one')
   data.set('two',10)
-  console.log(data.get('two'))  // 10
-  console.log(data.get('user')) // {"userName":"terry","age":12}
-  console.log(data.has('age')) // false
-  console.log(data.values().next()) // {done: false,value: "{\"userName\":\"terry\",\"age\":12}"}
-  console.log(data.keys().next()) // {done: false,value: "user"}
+  data.get('two') // 10
+  data.get('user') // {"userName":"terry","age":12}
+  data.has('age') // false
+  data.values().next() // {done: false,value: "{\"userName\":\"terry\",\"age\":12}"}
+  data.keys().next() // {done: false,value: "user"}
   data.delete('user')
-  console.log(data.get('user')) // null
+  data.get('user') // null
 ```
