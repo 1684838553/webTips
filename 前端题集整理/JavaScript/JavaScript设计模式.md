@@ -116,5 +116,26 @@ methods.checkName().checkEmail()
 
 3. 试着定义一个既可为函数原型添加方法有可为其自身添加方法的addMethod方法
 
-## 面向对象编程
+### 面向对象编程
 
+[JavaScript继承](https://github.com/1684838553/webTips/blob/master/%E5%89%8D%E7%AB%AF%E9%A2%98%E9%9B%86%E6%95%B4%E7%90%86/JavaScript/JavaScript%E7%BB%A7%E6%89%BF.md)
+
+### 多态
+
+> 多态：同一种方法多种调用方式
+
+```javascript
+function add(){
+    var arg = arguments
+    var len = arg.length
+
+    switch(len){
+        case 0: return 10
+        case 1: return 10 + arg[0]
+        case 2: return arg[0] + arg[1]
+    }
+}
+console.log(add())  // 10
+console.log(add(1))  // 11
+console.log(add(10,3))  // 13
+```
