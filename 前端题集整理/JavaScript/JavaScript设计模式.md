@@ -204,4 +204,148 @@ for(let i = 0;i<data.length;i++){
 
 ```
 
+## 建造者模式
 
+> 建造者模式：将一个复杂对象的构建层与其表示层相互分离，同样的构建过程可采用不同的表示
+
+```javascript
+
+// 建造者模式
+// 创建一个人类
+var Human = function(param){
+    this.skill = param?.skill || '保密'
+    this.hobby = param?.skill || '保密'
+}
+Human.prototype = {
+    getSkill:function(){
+        return this.skill
+    },
+    getHobby:function(){
+        return this.hobby
+    }
+}
+// 实例化姓名类
+var Named = function(name){
+    var that = this
+    ;(function(name,that){
+        that.wholeName = name
+        if(name.indexOf(' ')>-1){
+            that.FirstName = name.slice(0,name.indexOf(' '))
+            that.sencondName = name.slice(name.indexOf(' '))
+        }
+    })(name,that)
+}
+// 实例化职业
+var Work = function(work){
+    var that = this
+    ;(function(work,that){
+        switch(work){
+            case 'code':{
+                that.work = "工程师"
+                that.workDescript = "每天沉醉于编程"
+                break
+            }
+            case 'code':{
+                that.work = "设计师"
+                that.workDescript = "设计更似一种艺术"
+                break
+            }
+            default:
+                that.work = work
+                that.workDescript = "无相关描述"
+        }
+    })(work,that)
+}
+// 应聘者建造者
+var Person = function(name,work){
+    var p = new Human()
+    p.name = new Named(name)
+    p.work = new Work(work)
+    return p
+}
+var person = new Person('xiao ming','code')
+console.log(person,person.name)
+
+// Human {skill: "保密", hobby: "保密", name: Named, work: Work} 
+// Named {wholeName: "xiao ming", FirstName: "xiao", sencondName: " ming"}
+```
+
+## 原型模式
+
+> 原型模式：用原型实例指向创建对象的类，使用于创建新的对象的类共享原型对象的属性和方法
+
+**原型对象是一个共享对象，不论是父类的实例对象或子类的继承，都是对它的一个指引，所以原型对象才会被共享。**
+
+```javascript
+var LoopImages = function(imgArr,container){
+    this.imagesArray = imgArr
+    this.container = container
+}
+LoopImages.prototype = {
+    // 创建轮播图片
+    createImage:function(){} , 
+    // 切换下一张图片
+    changeImage:function(){
+        console.log('changeImage')
+    }
+}
+var m = new LoopImages()
+console.log(m.changeImage())  // changeImage
+// 上下滑动切换类
+var SlideLoopImage = function(imgArr,container){
+    LoopImages.call(this,imgArr,container)
+}
+SlideLoopImage.prototype = new LoopImages()
+//重写继承的切换下一张图片方法
+SlideLoopImage.prototype.changeImage = function(){
+    console.log('slideLoopImage')
+}
+var s = new SlideLoopImage()
+console.log(s.changeImage())  // slideLoopImage
+
+```
+
+## 单例模式
+
+> 单例模式：只允许实例化一次的对象类
+
+**命名空间：**
+
+1. 让代码更易懂
+
+2. 可以用命名空间来约束每个人定义的变量来解决代码冲突的问题
+
+```javascript
+// 单例模式
+var Ming = {
+    g:function(id){
+        return document.getElementById(id)
+    },
+    css:function(id,key,value){
+        this.g(id).style[key] = value
+    }
+}
+Ming.css('file','color','red')
+```
+
+**使用单例模式管理静态变量**
+
+```javascript
+var Conf = (function(){
+    //私有变量
+    var conf = {
+        MAX_NUM:100,
+        MIn_NUM:1,
+        COUNT:1000
+    }
+    //返回取值器对象
+    return {
+        // 取值器方法
+        get:function(name){
+            return conf[name] ? conf[name] : null
+        }
+    }
+})()
+var count = Conf.get('COUNT')
+console.log(count)  // 1000
+```
