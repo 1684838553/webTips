@@ -29,13 +29,46 @@ HTML4.01 基于 SGML，所以需要引用 DTD。才能告知浏览器文档所�
 
 **空元素：**`<br> <hr> <link> <meta>`
 
-## 4、无样式内容闪烁
+## 4、页面导入样式时，使用link和@import有什么区别？无样式内容闪烁
+
+### 区别
+
+1. link是html标签，@import是css提供的
+
+2. link是按顺序加载，@import引入的样式是灯页面加载完后在加载
+
+3. link没有兼容性问题，@import不兼容ie5以下
+
+4. link可以通过js操作dom动态引入样式表改变样式，@import不可以
+
+```html
+// 链接样式
+<head>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+
+
+// 导入样式
+<style>
+    @import url(style.css);
+</style>
+
+
+// 写在css样式中
+@charset "utf-8";
+@import url(style.css);
+*{ margin:0; padding:0;}
+.notice-link a{ color:#999;}
+
+```
+
+### 无样式内容闪烁
 
 @import 导入 css 文件会等到文档加载完之后在加载 css 样式表，所以，在页面加载完到 css 导入完成之间有一段时间，页面上的内容是没有样式的
 
-解决方案：使用 link 标签加载 css 样式表。因为 link 是顺序加载，这样页面会等到 css 下载完之后在下载
+**解决方案：**
 
-html 文件。先布局，就不会出现闪烁问题。
+使用 link 标签加载 css 样式表。因为 link 是顺序加载，这样页面会等到 css 下载完之后在下载html 文件。先布局，就不会出现闪烁问题。
 
 ## 5、对浏览器内核的理解，常见的浏览器内核有哪些
 
@@ -78,21 +111,24 @@ html 文件。先布局，就不会出现闪烁问题。
 
 ## 7、cookies，sessionStorage 和 localStorage 的区别？
 
-共同点：都是保存在浏览器端，且是同源的。
+**共同点：**
 
-区别：
+都是保存在浏览器端，且是同源的。
+
+**区别：**
 
 1. cookies 是为了标识用户身份而存储在用户本地终端上的数据，始终在同源 http 请求中携带，即 cookies 在浏览器和服务器间来回传递，而 sessionstorage 和 localstorage 不会自动把数据发给服务器，仅在本地保存。
-2. 存储大小的限制不同。cookie 保存的数据很小，不能超过 4k，而 sessionstorage 和 localstorage 保存的数据大，可达到 5M。
-3. 数据的有效期不同。cookie 在设置的 cookie 过期时间之前一直有效，即使窗口或者浏览器关闭。sessionstorage 仅在浏览器窗口关闭之前有效。localstorage 始终有效，窗口和浏览器关闭也一直保存，用作长久数据保存。
-4. 作用域不同。cookie 在所有的同源窗口都是共享；sessionstorage 不在不同的浏览器共享，即使同一页面；localstorage 在所有同源窗口都是共享
 
-## 8、对 HTML 语义化的理解
 
-1. 去掉或丢失样式的时候能够让页面呈现出清晰的结构。
-2. 有利于 SEO 和搜索引擎建立良好沟通，有助于爬虫抓取更多的信息，爬虫依赖于标签来确定上下文和各个关键字的权重。
-3. 方便其它设备解析。
-4. 便于团队开发和维护，语义化增强可读性。
+3. 存储大小的限制不同。cookie 保存的数据很小，不能超过 4k，而 sessionstorage 和 localstorage 保存的数据大，可达到 5M。
+
+
+5. 数据的有效期不同。cookie 在设置的 cookie 过期时间之前一直有效，即使窗口或者浏览器关闭。sessionstorage 仅在浏览器窗口关闭之前有效。localstorage 始终有效，窗口和浏览器关闭也一直保存，用作长久数据保存。
+
+
+7. 作用域不同。cookie 在所有的同源窗口都是共享；sessionstorage 不在不同的浏览器共享，即使同一页面；localstorage 在所有同源窗口都是共享
+
+
 
 ## 9、HTML5 的文件离线储存怎么使用，工作原理是什么
 
@@ -141,11 +177,13 @@ label 定义表单控件间的关系,当用户选择该标签时，浏览器会�
 **功能：**
 
 - 聚焦 (点击关联的标签来聚焦或者激活这个输入元素)
+
 - 扩大点击面积
 
 **属性：**
 
 - for
+
 - accesskey 提供了为当前元素生成快捷键的方式。
 
 **for 属性功能：**
@@ -164,14 +202,27 @@ label 定义表单控件间的关系,当用户选择该标签时，浏览器会�
 <label for="InputBox" accesskey＝"N">姓名</label><input id="InputBox" type="text">
 ```
 
-## 12、在 form 表单中，如何关闭 HTML5 的自动完成功能
+## 12、 form 表单
+
+### 12.1如何关闭 HTML5 的自动完成功能
 
 HTML 的输入框可以拥有自动完成的功能，当你往输入框输入内容的时候，浏览器会从你以前的同名输入框的历史记录中查找出类似的内容并列在输入框下面，这样就不用全部输入进去了，直接选择列表中的项目就可以了。但有时候我们希望关闭输入框的自动完成功能，例如当用户输入内容的时候，我们希望使用 AJAX 技术从数据库搜索并列举而不是在用户的历史记录中搜索。
 
-方法：
+**方法：**
 
 1. 在 IE 的 internet 选项菜单中里的自动完成里面设置
-2. Input 输入框的 autocomplete 为 on 或者 off 来来开启输入框的自动完成功能
+
+3. Input 输入框的 autocomplete 为 on 或者 off 来来开启输入框的自动完成功能
+
+### 12.2From表单提交时为什么会刷新页面？怎么预防刷新？
+
+**原因：**
+
+早期网页交互模型只能是浏览器提交数据给服务器，服务器做出响应重新返回一个页面，浏览器加载这个页面进行显示。早期前端没有编程式发送网络请求的 API，更没有前端路由管理的概念，所以表单提交跳转页面是广泛接受的方案。
+
+**预防：**
+
+使用 JS 拦截 form 的 onsubmit 事件，阻止掉浏览器的默认行为，然后用 ajax/fetch 和后台交互
 
 ## 13、如何实现浏览器内多个标签页之间的通信?
 
@@ -220,14 +271,45 @@ HTML 的输入框可以拥有自动完成的功能，当你往输入框输入内
     - 行内元素不可包含块级元素，a标签除外，a可包含块级元素
     - 块级元素不一定可以包含块级元素，p不能包含块级元素
 
-## 18、那些元素可闭合
-    - 表单元素 input 
-    - img
-    - br
-    - hr
-    - meta
-    -link
 
 ## HTML与DOM的关系
     HTML是一个字符串，解析之后生成DOM
     JS维护的是DOM
+    
+## 18、对html中的置换元素和非置换元素的理解
+
+### 置换元素
+
+> 该元素有自带的属性，并且css渲染模型不对此内容渲染
+
+1. script
+
+2. img
+
+3. video
+
+4. audio
+
+5. picture
+
+6. iframe
+
+### 非置换元素
+
+> 对于不是置换元素的都是
+
+## 19、说说你对属性data-的理解
+
+> data-*是HTML5新增的元素属性，用于存储页面或应用程序的私有自定义数据
+
+```javascript
+<div id="user" data-id="1234567890" data-user="johndoe" data-date-of-birth>John Doe</div>
+
+const el = document.querySelector('#user');
+
+// el.id === 'user'
+// el.dataset.id === '1234567890'
+// el.dataset.user === 'johndoe'
+```
+
+## 20、[说说你对<meta>标签的理解](https://github.com/haizlin/fe-interview/issues/98)
