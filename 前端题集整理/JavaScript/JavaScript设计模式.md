@@ -1,0 +1,116 @@
+[JavaScript设计模式](https://kingyinliang.github.io/PDF/JavaScript%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F.pdf)
+
+# 面向对象的编程
+
+## 灵活的语言
+
+```javascript
+function checkName(){
+}
+
+// 另一种形式
+var checkName = function(){
+}
+
+// 用对象收编变量
+var CheckObject = {
+    checkName:function(){
+
+    }
+}
+
+// 对象的另一个形式
+var CheckObject = function(){}
+CheckObject.checkName = function(){}
+
+// 函数返回对象
+var CheckObject = function(){
+    return {
+        checkName:function(){
+
+        }
+    }
+}
+
+// 类
+var CheckObject = function(){
+    this.checkName=function(){
+
+    }
+}
+
+// 或
+var CheckObject = function(){}
+CheckObject.prototype.checkName = function(){}
+```
+
+1. 真假对象一节中如何实现链式调用？
+
+**this指向当前对象CheckObject**
+
+```javascript
+// 方法一
+var CheckObject = {
+    checkName:function(){
+        console.log(1,this)
+        return this
+    },
+    checkEmail:function(){
+        console.log(2,this)
+        return this
+    }
+}
+CheckObject.checkName().checkEmail()
+
+// 方法二
+var CheckObject = function(){}
+CheckObject.prototype = {
+    checkName:function(){
+        console.log(1,this)
+        return this
+    },
+    checkEmail:function(){
+        console.log(2,this)
+        return this
+    }
+}
+var a = new CheckObject()
+a.checkName().checkEmail()
+
+```
+
+2. 试着定义一个可以为函数添加多个方法的addMethod方法
+
+```javascript
+// 方法一
+Function.prototype.addMethod = function(name,fn){
+    this[name] = fn
+}
+var methods = function(){}
+methods.addMethod('checkName',()=>{
+    console.log(1,this)
+})
+methods.addMethod('checkEmail',()=>{
+    console.log(2,this)
+})
+methods.checkName()
+
+// 方法二 链式调用
+Function.prototype.addMethod = function(name,fn){
+    this[name] = fn
+    return this
+}
+var methods = function(){}
+methods.addMethod('checkName',function(){
+    // 这里不要用箭头函数
+    console.log(1,this)
+    return this
+}).addMethod('checkEmail',function(){
+    console.log(2,this)
+    return this
+})
+methods.checkName().checkEmail()
+```
+
+3. 试着定义一个既可为函数原型添加方法有可为其自身添加方法的addMethod方法
+
