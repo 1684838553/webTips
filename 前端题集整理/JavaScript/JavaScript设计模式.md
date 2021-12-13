@@ -44,6 +44,8 @@ var CheckObject = function(){}
 CheckObject.prototype.checkName = function(){}
 ```
 
+### 我问你答
+
 1. 真假对象一节中如何实现链式调用？
 
 **this指向当前对象CheckObject**
@@ -113,4 +115,6 @@ methods.checkName().checkEmail()
 ```
 
 3. 试着定义一个既可为函数原型添加方法有可为其自身添加方法的addMethod方法
+
+## 面向对象编程
 
