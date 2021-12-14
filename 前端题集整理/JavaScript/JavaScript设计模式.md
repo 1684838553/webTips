@@ -363,7 +363,7 @@ function addEvent(dom,type,fn){
         console.log('click1',dom.addEventListener)
         dom.addEventListener(type,fn,false)
     } else if(dom.attachEvent){
-        dom/attachEvent(`on${type}`,fn)
+        dom.attachEvent(`on${type}`,fn)
     }else{
         dom[`on${type}`] = fn
     }
