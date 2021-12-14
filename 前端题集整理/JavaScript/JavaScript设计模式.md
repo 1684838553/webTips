@@ -501,3 +501,46 @@ var decorator = function(dom,fn){
     // 做其他事情
 }
 ```
+
+## 9、桥接模式
+
+> 桥接模式：在系统沿着多个维度变化的同时，又不增加其复杂度并已达到解耦。(事件与业务逻辑之间的桥梁)
+
+
+1. 普通代码
+
+```javascript
+var spans = document.getElementsByTagName('span')
+spans[0].onmouseover = function(){
+    this.style.color = 'red'
+    this.style.background = '#ddd'
+}
+spans[0].onmouseout = function(){
+    this.style.color = '#333'
+    this.style.background = '#f5f5f5'
+}
+
+spans[1].onmouseover = function(){
+    this.style.color = 'red'
+    this.style.background = '#eee'
+}
+spans[1].onmouseout = function(){
+    this.style.color = '#333'
+    this.style.background = '#f6f6f6'
+}
+
+```
+
+2. 使用桥接模式的代码
+```javascript
+function changeColor(dom,color,bg){
+    dom.style.color = color
+    dom.style.background = bg
+}
+spans[0].onmouseover = function(){
+   changeColor(this,'red','#ddd')
+}
+spans[0].onmouseout = function(){
+     changeColor(this,'#333','#f4f4f4')
+}
+```
