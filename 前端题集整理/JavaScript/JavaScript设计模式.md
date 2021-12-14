@@ -349,3 +349,37 @@ var Conf = (function(){
 var count = Conf.get('COUNT')
 console.log(count)  // 1000
 ```
+
+# 结构型设计模式
+
+## 外观模式
+
+> 外观模式:为一组复杂的子系统借口提供一个更高级的统一接口，通过这个接口是的对子系统接口的访问更容易。
+
+```javascript
+ // 外观模式实现 监听
+function addEvent(dom,type,fn){
+    if(dom.addEventListener){
+        console.log('click1',dom.addEventListener)
+        dom.addEventListener(type,fn,false)
+    } else if(dom.attachEvent){
+        dom/attachEvent(`on${type}`,fn)
+    }else{
+        dom[`on${type}`] = fn
+    }
+}
+
+// 获取样式
+function getStyle(obj,style){
+   /* 
+        Window.getComputedStyle()方法返回一个对象，该对象在应用活动样式表并
+        解析这些值可能包含的任何基本计算后报告元素的所有CSS属性的值
+   */
+    if(window.getComputedStyle){
+        return window.getComputedStyle(obj,null)[style]
+    }else{
+        // ie
+        return obj.currentStyle[style]
+    }
+}
+```
