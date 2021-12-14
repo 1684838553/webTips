@@ -383,3 +383,57 @@ function getStyle(obj,style){
     }
 }
 ```
+
+## 适配器
+
+> 适配器模式：将一个类（对象）的接口（方法或属性）转化为另一个接口，以满足用户需求，使类（对象）之间接口的不兼容问题通过适配器得意解决。
+
+```javascript
+// 框架适配
+// 定义框架
+var A = A || {}
+A.g = function(id){
+    return document.getElementById(id)
+}
+A.on = function(dom,type,fn){
+    if(dom.addEventListener){
+        dom.addEventListener(type,fn,false)
+    } else if(dom.attachEvent){
+        dom/attachEvent(`on${type}`,fn)
+    }else{
+        dom[`on${type}`] = fn
+    }
+}
+
+// 窗口加载完成事件
+A.on(window,'load',function(){
+    
+})
+
+
+// 参数适配
+// 函数参数过多，以参数对象传入
+function doSomeThing(obj){
+    var _ad = {
+        name:'语言',
+        title:'设计模式',
+        age:23
+    }
+    for(var i in _ad){
+        _ad[i] = obj[i] || _ad[i]
+    }
+}
+
+
+// 数据适配
+var arr = ['java','book','后端编程语言','8月1日']
+function arrToObj(arr){
+    return {
+        name:arr[0],
+        type:arr[1],
+        title:arr[2],
+        data:arr[3]
+    }
+}
+var a = arrToObj(arr)
+```
