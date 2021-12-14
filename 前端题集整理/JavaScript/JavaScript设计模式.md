@@ -142,7 +142,7 @@ console.log(add(10,3))  // 13
 
 # 创建型设计模式
 
-## 工厂模式
+## 1、工厂模式
 
 1. 简单工厂模式：即静态工厂模式，由一个工厂对象决定创建某一种产品对象类的实力。`主要用来创建某一种产品对象类的实例`
 
@@ -204,7 +204,7 @@ for(let i = 0;i<data.length;i++){
 
 ```
 
-## 建造者模式
+## 2、建造者模式
 
 > 建造者模式：将一个复杂对象的构建层与其表示层相互分离，同样的构建过程可采用不同的表示
 
@@ -270,7 +270,7 @@ console.log(person,person.name)
 // Named {wholeName: "xiao ming", FirstName: "xiao", sencondName: " ming"}
 ```
 
-## 原型模式
+## 3、原型模式
 
 > 原型模式：用原型实例指向创建对象的类，使用于创建新的对象的类共享原型对象的属性和方法
 
@@ -305,7 +305,7 @@ console.log(s.changeImage())  // slideLoopImage
 
 ```
 
-## 单例模式
+## 4、单例模式
 
 > 单例模式：只允许实例化一次的对象类
 
@@ -352,7 +352,7 @@ console.log(count)  // 1000
 
 # 结构型设计模式
 
-## 外观模式
+## 5、外观模式
 
 > 外观模式:为一组复杂的子系统借口提供一个更高级的统一接口，通过这个接口是的对子系统接口的访问更容易。
 
@@ -384,7 +384,7 @@ function getStyle(obj,style){
 }
 ```
 
-## 适配器
+## 6、适配器模式
 
 > 适配器模式：将一个类（对象）的接口（方法或属性）转化为另一个接口，以满足用户需求，使类（对象）之间接口的不兼容问题通过适配器得意解决。
 
@@ -436,4 +436,68 @@ function arrToObj(arr){
     }
 }
 var a = arrToObj(arr)
+```
+
+## 7、代理模式 ??
+
+> 代理模式：由于一个对象不能直接引用另一个对象，所以需要通过代理对象在这两个对象之间起到中介作用。
+
+1. 解决跨域问题：
+    
+    - img的src属性
+    - JSONP
+
+```javascript
+// 代理模板
+<iframe src="" name="proxyIframe" id="proxyIframe" frameborder="0"></iframe>
+<form action="http://localhost:3000?callback=callback" method="post" target="proxyIframe">
+    <input type="text" name="callback" value="callback">
+    <input type="text" name="proxy" value="http://localhost:3000">
+    <input type="submit" value="提交">
+</form>
+<script>
+    function callback(data){
+        console.log('成功接收数据',data)
+    }
+</script>
+
+// server
+const url = require('url');
+const http = require('http');
+
+http.createServer((req, res)=>{
+    const person = {
+        name:'terry',
+        age:12,
+        gender:'meal',
+    }
+    const callback = url.parse(req.url,true).query.callback
+    res.writeHead(200)
+    res.end(`${callback}(${JSON.stringify(person)})`)
+}).listen(3000, '127.0.0.1');
+```
+
+## 8、装饰者模式
+
+> 装饰者模式:在不改变原对象的基础上，通过对其进行包装拓展（添加属性或方法）使原有对象可以满足用户的更复杂需求
+
+**在不了解原有功能的基础上对功能拓展，这是对原有功能的一种增强与拓展**
+
+```javascript
+var decorator = function(dom,fn){
+    // 判断事件源是否绑定事件
+    if(typeof dom.onclick === 'function'){
+        // 缓存事件源原有回调函数
+        var oldClickFn = dom.onclick
+        dom.onclick = function(){
+            // 事件源原有回调函数
+            oldClickFn()
+            //执行事件源新增回调函数
+            fn()
+        }
+    } else {
+        dom.onclick = fn
+    }
+    // 做其他事情
+}
 ```
