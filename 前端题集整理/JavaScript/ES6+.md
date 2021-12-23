@@ -262,7 +262,7 @@ console.log(JSON.stringify([...map]));   // [["one",1],["two",2]]
 Object.values({ one: 1, two: 2 })   // [1, 2]
 ```
 
-# Object.getOwnPropertyDescriptors()
+# 6、Object.getOwnPropertyDescriptors()
 
 ### `Object.getOwnPropertyDescriptors(obj)`的功能返回一个包含 obj 自身所有属性的属性描述符数组。
 
