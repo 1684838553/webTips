@@ -16,3 +16,11 @@ git push -f
 git commit --amend --author="xx <xx@cc.com>"
 ## git commit --amend --author="drunk <000000@qq.com>"
 ```
+
+## git reset
+
+版本回退
+
+```
+git reset --hard HEAD~1
+```
