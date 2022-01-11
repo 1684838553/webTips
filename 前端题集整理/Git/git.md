@@ -24,3 +24,10 @@ git commit --amend --author="xx <xx@cc.com>"
 ```
 git reset --hard HEAD~1
 ```
+
+
+## 解决git status显示中文文件名乱码问题
+
+```
+git config --global core.quotepath false
+```
