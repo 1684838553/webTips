@@ -17,6 +17,38 @@ true == "true" // false true == 1 "true" == NaN
 +!![] //1  !![] 为true
 ```
 
+### `toString`和`String`的区别  
+- `toString`
+1. `toString()`可以将数据都转为字符串，但是`null`和`undefined`不可以转换。
+
+    ```javascript
+    console.log(null.toString())
+    //报错 TypeError: Cannot read property 'toString' of null
+    
+    console.log(undefined.toString())
+    //报错 TypeError: Cannot read property 'toString' of undefined
+    ```
+2. `toString()`括号中可以写数字，代表进制
+
+    二进制：.toString(2); 
+    
+    八进制：.toString(8);
+    
+    十进制：.toString(10);
+    
+    十六进制：.toString(16);
+    
+- `String`
+
+1.  `String()`可以将`null`和`undefined`转换为字符串，但是没法转进制字符串
+
+    ```javascript
+    console.log(String(null));
+    // null
+    console.log(String(undefined));
+    // undefined
+    ```
+
 ### 对象转换为基本数据类型
 
 ```javascript
