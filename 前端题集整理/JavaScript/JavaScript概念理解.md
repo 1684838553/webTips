@@ -139,7 +139,7 @@ function foo(a,a){ }
 ## 10、说说对this的理解
 - `this` 指的是当前运行环境的上下文。
 - `一般情况：`函数中的this永远指向函数的调用者，谁最终调用这个函数，this就指向谁
-1. 全局对象中this指向window
+1. 全局环境中，this会返回顶层对象。但是，Node 模块和 ES6 模块中，this返回的是当前模块。
 2. 构造函数的this指向new 出来的对象
 3. call , apply , bind 的this指向第一个参数
 4. 箭头函数this指向创建时的上下文
