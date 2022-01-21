@@ -1,5 +1,17 @@
 # JS 基础知识
 
+## 0. 疑难点
+
+```javascript
+var tmp = new Date(); 
+if( true ){ 
+	var tmp = 'hello world'; 
+} 
+console.log( tmp )  // 'hello world'
+```
+`总结`：在块级作用域中，let,const声明的变量是局部变量，对var声明的变量不影响
+
+
 ## 1. 声明
 
 ### 1.1 声明变量
