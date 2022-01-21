@@ -18,3 +18,4 @@
 16. [Set,Map,WeakSet,WeakMap](https://github.com/1684838553/webTips/blob/master/%E5%89%8D%E7%AB%AF%E9%A2%98%E9%9B%86%E6%95%B4%E7%90%86/JavaScript/Set%2CMap%2CWeakSet%2CWeakMap.md)
 17. [async](https://github.com/1684838553/webTips/blob/master/%E5%89%8D%E7%AB%AF%E9%A2%98%E9%9B%86%E6%95%B4%E7%90%86/JavaScript/async.md)
 18. [解决跨域的方法](https://github.com/1684838553/webTips/blob/master/%E5%89%8D%E7%AB%AF%E9%A2%98%E9%9B%86%E6%95%B4%E7%90%86/JavaScript/%E8%A7%A3%E5%86%B3%E8%B7%A8%E5%9F%9F%E7%9A%84%E6%96%B9%E6%B3%95.md)
+19. [es6+](https://github.com/1684838553/exploring-es2016-es2017)
