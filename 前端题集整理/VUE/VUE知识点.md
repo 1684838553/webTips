@@ -2,6 +2,8 @@
 
 ## vue 的 nextTick
 
+[Vue NextTick获取更新后的DOM](https://www.cnblogs.com/skuld-yi/p/15838944.html)
+
 this.nextTick(callback)
 
 Vue 视图更新是异步的，视图不会立刻更新，而且是批量的，同一事件循环中的所有数据变化完成之后，再统一进行视图更新
