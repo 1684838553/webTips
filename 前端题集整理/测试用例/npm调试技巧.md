@@ -1,2 +1,3 @@
 - [你所不知道的模块调试技巧](https://github.com/atian25/blog/issues/17)
 - [发布npm包](https://segmentfault.com/a/1190000023075167)
+- [如何开发一个npm包并发布到npm中央仓库](https://blog.51cto.com/u_10624715/3245234)
