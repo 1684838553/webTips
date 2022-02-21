@@ -37,3 +37,12 @@ describe('加法函数的测试',function(){
 
 [Chai.js断言库expect常用API](https://blog.csdn.net/qq_30068487/article/details/82900633)
 
+
+## before,brforeEach,after,afterEach
+
+- before,brforeEach 有助于在一组测试之前或每次测试之前设置要运行的条件。
+- after,afterEach它们还有助于在一组测试或每次测试后清理条件。
+
+- `before`会在第一个用例之前运行，`afeter`会在跑完所有的用例之后运行。
+- `beforeEach`会在每一个用例前运行，`afterEach`会在每一个用例结束后运行。
+
