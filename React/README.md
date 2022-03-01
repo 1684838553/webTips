@@ -40,13 +40,16 @@
 
 [理解 redux 中间件](https://zhuanlan.zhihu.com/p/21391101)
 
-## React相关图片
+## React 相关图片
 
-- redux数据流向
- ![请添加图片描述](https://img-blog.csdnimg.cn/3901cac8181c44f4a7ee32b34ac7a5d8.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAZHJ1bmvllrXlkqo=,size_20,color_FFFFFF,t_70,g_se,x_16)
- 
-- react15组件生命周期
- ![请添加图片描述](https://img-blog.csdnimg.cn/968f49503d3b402abf2b60a53b1a95ef.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAZHJ1bmvllrXlkqo=,size_20,color_FFFFFF,t_70,g_se,x_16)
- 
-- redux工作流程图
- ![请添加图片描述](https://img-blog.csdnimg.cn/81ef8d2ee1ae46b19a0d87ad9360dbcb.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAZHJ1bmvllrXlkqo=,size_20,color_FFFFFF,t_70,g_se,x_16)
+- redux 数据流向
+  ![请添加图片描述](https://img-blog.csdnimg.cn/3901cac8181c44f4a7ee32b34ac7a5d8.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAZHJ1bmvllrXlkqo=,size_20,color_FFFFFF,t_70,g_se,x_16)
+
+- react15 组件生命周期
+  ![请添加图片描述](https://img-blog.csdnimg.cn/968f49503d3b402abf2b60a53b1a95ef.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAZHJ1bmvllrXlkqo=,size_20,color_FFFFFF,t_70,g_se,x_16)
+
+- redux 工作流程图
+  ![请添加图片描述](https://img-blog.csdnimg.cn/81ef8d2ee1ae46b19a0d87ad9360dbcb.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAZHJ1bmvllrXlkqo=,size_20,color_FFFFFF,t_70,g_se,x_16)
+
+- react 初始化及生命周期
+  ![请添加图片描述](https://img-blog.csdnimg.cn/16ac5e6e88e0498788aa9a266c44a267.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAZHJ1bmvllrXlkqo=,size_20,color_FFFFFF,t_70,g_se,x_16)
