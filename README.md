@@ -5,7 +5,7 @@
 [css-tricks](https://css-tricks.com/)
 一些 css 的基本知识点，以及学习过程中的一些小案例
 
-[flex布局小游戏](https://flexboxfroggy.com/)
+[flex 布局小游戏](https://flexboxfroggy.com/)
 
 [TypeScript 手册指南](https://www.tslang.cn/docs/handbook/basic-types.html)
 
@@ -31,4 +31,16 @@
 
 [真机调试 spy-debugger](https://github.com/wuchangming/spy-debugger)
 
-Javascript,es,浏览器原理，http,css,react,vue,webpack,less,node
+## 优秀博客推荐
+
+[前端面试题每日 3+1](https://github.com/1684838553/fe-interview)
+
+[冴羽的博客](https://github.com/mqyqingfeng/Blog/blob/master/README.md)
+
+[霖呆呆的知识体系](https://github.com/LinDaiDai/niubility-coding-js)
+
+[JavaScript 闯关记](https://github.com/stone0090/javascript-lessons)
+
+[Step-By-Step](https://github.com/YvetteLau/Step-By-Step)
+
+[面试系列](https://github.com/YvetteLau/Blog)
