@@ -5,11 +5,7 @@
 [css-tricks](https://css-tricks.com/)
 一些 css 的基本知识点，以及学习过程中的一些小案例
 
-[flex 布局小游戏](https://flexboxfroggy.com/)
-
 [TypeScript 手册指南](https://www.tslang.cn/docs/handbook/basic-types.html)
-
-[javascript 隐式转换](https://jsisweird.com/)
 
 [RESTful Web API 设计](https://docs.microsoft.com/en-us/azure/architecture/best-practices/api-design#conform-to-http-semantics)
 
@@ -20,6 +16,14 @@
 [阮一峰网站](https://www.ruanyifeng.com/)
 
 [LinDaiDai\_霖呆呆掘金博主](https://juejin.cn/user/360295513463912/posts)
+
+## 前端小游戏
+
+[CSS Battle](https://cssbattle.dev/)
+
+[flex 布局小游戏](https://flexboxfroggy.com/)
+
+[javascript 隐式转换](https://jsisweird.com/)
 
 ## 推荐学习网站
 
