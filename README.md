@@ -25,6 +25,33 @@
 
 [javascript 隐式转换](https://jsisweird.com/)
 
+[CSS layout](http://learnlayout.comFlexbox) 
+
+[EnjoyCSS](https://enjoycss.comCSS-Tricks)
+
+[CSS-Tricks](https://css-tricks.com)
+
+[Neumorphism](https://neumorphism.io)
+
+[uiGradients](https://uigradients.com)
+
+[JavaScript【一个一直更新的JavaScript 的语法文档，主要会写如何去避免一些常见的错误】](https://bonsaiden.github.io/JavaScript-Garden/zh/JS)
+
+[Tips【JS 技巧】](https://www.jstips.co)
+
+[JSweekly【技术周刊 】](https://javascriptweekly.com)
+
+[CDNJS【JavaScript 资料库】](https://cdnjs.com/libraries)
+
+[Beautiful Open 【开源 JS 库集合】](https://beautifulopen.com)
+
+[JavaScript Fun【代码库集合】](https://www.javascript.fun)
+
+[Codrops【网页设计开发博客】](https://tympanus.net)
+
+[趣IT【一个会更新面试题和练习题的宝藏王】](https://www.funit.cn/)
+
+
 ## 推荐学习网站
 
 [https://medium.com](https://medium.com)
