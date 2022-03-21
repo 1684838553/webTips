@@ -113,7 +113,7 @@ OrdinaryToPrimitive(input,hint)
 	c.否则，抛出TypeError错误
 ```
 
-<font color="red">**总结：**在没有改写或自定义@@toPrimitive 方法的条件下，如果是 Date 求原值，则 PreferredType 是 String，其他均为 Number。PreferredType 是 String，则先调用 toString()，结果不是原始值的话再调用 valueOf()，还不是原始值的话则抛出错误；PreferredType 是 Number，则先调用 valueOf()再调用 toString()。</font>
+<font color="red">**总结**:在没有改写或自定义@@toPrimitive 方法的条件下，如果是 Date 求原值，则 PreferredType 是 String，其他均为 Number。PreferredType 是 String，则先调用 toString()，结果不是原始值的话再调用 valueOf()，还不是原始值的话则抛出错误；PreferredType 是 Number，则先调用 valueOf()再调用 toString()。</font>
 
 **valueOf()**
 
