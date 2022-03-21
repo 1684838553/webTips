@@ -166,7 +166,7 @@ var a = new Number(2);
    objNum.valueOf(); // 123 number
    ```
 
-   > 实现原理：[数据类型转换](./数据类型转换.md)
+   > 实现原理：[数据类型转换](https://github.com/1684838553/webTips/blob/master/JavaScript/JavaScript%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2.md)
    >
    > js 有 toPrimitive(input,type) // input 传入的值 type 值类型
    > 第一步：input 判断是否为原始类型，是原始类型，直接返回
