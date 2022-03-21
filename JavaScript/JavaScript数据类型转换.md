@@ -5,6 +5,7 @@
 ```javascript
 --[,]  // 0
 +!!NaN //0
+'b' + 'a' + + 'a' + 'a' // 'baNaNa'
 +0 === -0 // true
 Object.is(0, -0); //  false
 Number(undefined) // NaN
