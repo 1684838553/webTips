@@ -1,5 +1,7 @@
 # JS 数据类型转换
 
+[JavaScript 隐式类型转换](https://chinese.freecodecamp.org/news/javascript-implicit-type-conversion/)
+
 ### 案例
 
 ```javascript
