@@ -15,6 +15,11 @@ git push -f
 ```
 git commit --amend --author="xx <xx@cc.com>"
 ## git commit --amend --author="drunk <000000@qq.com>"
+// 修改最后一次commit提交的信息
+git commit --amend --message="message"
+
+// 强制推送
+git push --force
 ```
 
 ## git reset (已经commit的代码回退)
