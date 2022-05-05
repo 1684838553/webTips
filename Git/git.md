@@ -58,3 +58,28 @@ git add .
 git commit - m "aa"
 git push
 ```
+
+## github下fork后同步更新代码
+
+```
+1. 添加上游仓库
+
+git remote add upstream 上游git地址
+
+
+2. 拉取上游变动
+
+git fetch upstream
+
+
+3. 合并
+
+git rebase upstream/master
+
+
+4. 更新自己远端仓库分支
+
+git push origin master
+
+
+```
