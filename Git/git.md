@@ -36,7 +36,7 @@ git reset --hard HEAD~1
 git log
 
 git reset --hard 8b26dce5a8b9c4c66d9929bdeb7a840988cc12a1  谨慎使用
-git reset --soft HEAD 回退到某个版本
+git reset --soft HEAD~1 回退到某个版本
 ```
 
 ## 解决git status显示中文文件名乱码问题
