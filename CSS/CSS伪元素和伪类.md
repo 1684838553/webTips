@@ -61,7 +61,7 @@ article p:first-child::first-line {
 - :nth-child
 - :first-child
 - :last-child
-- ...
+- [:not()](https://developer.mozilla.org/zh-CN/docs/Web/CSS/:not)
 
 #### 伪元素
 
