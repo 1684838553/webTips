@@ -76,3 +76,10 @@ git rebase upstream/master
 git push origin master
 
 ```
+
+## 解决冲突
+
+```
+1. 合并最新代码到当前分支
+git rebase master
+```
