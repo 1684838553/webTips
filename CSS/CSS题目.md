@@ -15,12 +15,19 @@
 
 ## 2、display 有哪些值？说明他们的作用?
 
-inline（默认）--内联
-none--隐藏
-block--块显示
-table--表格显示
-list-item--项目列表
-inline-block
+1. none 元素不显示，并从文档流中移除
+
+2. block 块元素。`独占一行，可设置宽高，宽度默认父元素100%`
+
+3. inline 行内元素。`不会独占一行，不能设置宽高，可设置行高，行内元素中不能放块元素`
+
+4. inline-block 行内块元素
+
+5. flex 弹性布局
+
+6. grid 网格布局
+
+7. table 作为块级表格显示
 
 ## 3、position 的值？
 
