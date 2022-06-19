@@ -60,11 +60,13 @@ font 开头的属性，颜色，透明度 opacity
 
 设置元素高和宽为 0，设置边框样式
 
+```javascript
 width:0;
 heighe:0;
 border-right:30px solid transparent;
 border-left:30px solid transparent;
 border-bottom:30px solid red;
+```
 
 ## css 常见的兼容性问题
 
