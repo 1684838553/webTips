@@ -152,8 +152,10 @@
 4. 使用伪元素:after 清除浮动
 
 ```html
-//方法一 // 使用伪元素:after清除浮动 //
-定义元素前后的生成内容，这里是定义元素后的空内容 p { width: 50%; } .wrapper {
+//方法一 
+// 使用伪元素:after清除浮动 
+//定义元素前后的生成内容，这里是定义元素后的空内容 
+p { width: 50%; } .wrapper {
 background-color: #ededed; } .black { float: left; } .wrapper::after { display:
 block; content: ""; clear: both; }
 <div class="wrapper">
@@ -163,8 +165,10 @@ block; content: ""; clear: both; }
   </p>
 </div>
 
-//方法二 // 使用额外的标签clear:both //
-在浮动元素下面添加一个空标签，在这个标签中设置clear：both； p { width: 50%; }
+//方法二 
+// 使用额外的标签clear:both
+//在浮动元素下面添加一个空标签，在这个标签中设置clear：both； 
+p { width: 50%; }
 .wrapper { background-color: #ededed; } .black { float: left; } .right { clear:
 both; }
 
@@ -176,8 +180,10 @@ both; }
   <p class="right"></p>
 </div>
 
-//方法三 // 使用overflow：hidden属性 //
-父元素定义overflow:hidden，此时，浏览器会自动检查浮动区域的高度； p { width:
+//方法三 
+// 使用overflow：hidden属性 
+//父元素定义overflow:hidden，此时，浏览器会自动检查浮动区域的高度； 
+p { width:
 50%; } .wrapper { background-color: #ededed; overflow: hidden; } .black { float:
 left; }
 
