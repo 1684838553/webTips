@@ -68,14 +68,11 @@ border-left:30px solid transparent;
 border-bottom:30px solid red;
 ```
 
-## css 常见的兼容性问题
-
 ## 样式为什么要初始化
 
 因为浏览器的兼容性问题，不同浏览器默认样式不同，为了达到页面统一
 
 ## absolute 的 containing block 计算方式跟正常流有什么不同
 
-## position 跟 display、overflow、float 这些特性相互叠加后会怎么样
 
  
