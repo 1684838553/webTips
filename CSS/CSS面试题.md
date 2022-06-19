@@ -7,20 +7,6 @@
 
 设置盒子类型，border-box 和 content-box
 
-## CSS 选择器有哪些？哪些属性可以继承？（不清晰）
-
-1.  id 选择器
-2.  类选择器
-3.  标签选择器
-4.  相邻元素选择器
-5.  子选择器
-6.  后代选择器
-7.  伪类选择器
-8.  通配属选择器
-9.  属性选择器
-
-font 开头的属性，颜色，透明度 opacity
-
 ## CSS 优先级算法如何计算？
 
 1. id 100
@@ -35,26 +21,6 @@ font 开头的属性，颜色，透明度 opacity
 3. nth-child()
 4. only-child
 5. only-of-type
-
-## 如何居中 div？如何居中一个浮动元素？如何让绝对定位的 div 居中？
-
-## display 有哪些值？说明他们的作用?
-
-1. none 隐藏
-2. block 块元素
-3. inline-block
-4. inline 内联
-5. table-cell 表格
-6. list-item
-
-## position 的值？
-
-1. static 默认
-2. relative 相对自身定位，不脱离文档流
-3. absolute 绝对定位（相对最近的父定位元素或视口），脱离文档流
-4. fiexd 固定定位（相对于视口），脱离文档流
-5. sticky 粘性定位（相对最近滚动父元素或块级父元素），不脱离文档流
-
 
 ## 用纯 CSS 创建一个三角形的原理是什么？
 
@@ -72,7 +38,49 @@ border-bottom:30px solid red;
 
 因为浏览器的兼容性问题，不同浏览器默认样式不同，为了达到页面统一
 
-## absolute 的 containing block 计算方式跟正常流有什么不同
+## [伪元素和伪类的区别](https://github.com/1684838553/webTips/blob/master/CSS/CSS%E4%BC%AA%E5%85%83%E7%B4%A0%E5%92%8C%E4%BC%AA%E7%B1%BB.md)
+
+1. 伪元素用于创建一些不在文档树中的元素，并为其添加样式。比如，`:before`
+
+2. 伪类用于某个元素处于某种状态，为其添加对应样式，该状态是根据用户行为而动态变化。`:link :visited :hover :active :focus`
+
+3. **本质上一个是元素，一个是类**
+
+## ::after 和::before 的区别是什么
+
+1. `::after`在被选元素的内容之后插入内容
+
+2. `::before`在被选元素的内容之前插入内容
+
+3. 默认，两者都是行内元素，但是可以使用 display 改变这一点
+
+4. 两者都是某元素的兄弟节点
+
+## CSS 有哪些单位
+
+`px , % , em , rem , vw , vh `
+
+## em 和 rem 计算规则
+
+## 防抖和节流怎么实现
+
+## 什么是 1px 像素问题，怎么解决
+
+`多倍的设计图设计了1px的边框，在手机上缩小呈现时，由于CSS只支持显示1px大小，导致边框太粗的效果`
+
+- 解决方法：`transform:scale(0.5)`
+
+## 居中为什么使用 transform,而不是 margin
+
+## SEO
+
+## 旋转屏幕时，字体大小调整的问题
+
+## 移动端适配 1px 问题，border 1px 问题
+
+## 禁止移动端缩放
+
+
 
 
  
