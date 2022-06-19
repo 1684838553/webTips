@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>css</title>
+	</head>
+	<body>
+		<div>
+			<a href="#1" style="position: fixed;border: 1px solid #f40; background-color: #aaa;">顶部</a>
+			<div   class="router">
+
+				<a href="#12">css3有哪些新特性</a>
+				<a id="1" href="#2">CSS3新增伪类有那些？</a>
+				<a href="#17">伪元素和伪类的区别是什么？</a>
+				<a href="#10">常见的伪类伪元素：：before 和：after的区别？</a>
+				<a href="#11">清除浮动float</a>
+				<a href="#4">什么是BFC</a>
+				<a href="#5">CSS单位有哪些？</a>
+				<a href="#6">什么是回流和重排，如何减少回流，重排?</a>
+				<a href="#7">什么是1px像素问题，如何解决?</a>
+				<a href="#8">display有哪些值？说明他们的作用</a>
+				<a href="#9">浏览器兼容性有哪些？</a>
+
+				<a href="#13">position的值， relative和absolute定位原点是?</a>
+				<a href="#14">link与@import的区别</a>
+				<a href="#33">浅谈script标签中的async和defer</a>
+				<a href="#15">居中为什么要使用transform（为什么不使用marginLeft/Top）</a>
+				<a href="#16">SEO</a>
+				<a href="#32">浏览器兼容写法?</a>
+				
+			</div>
+			<div  class="router">
+				<a href="#45">css继承属性的分类</a>
+
+				<a href="#23">旋转屏幕时，字体大小调整的问题/a>
+				<a href="#24">IOS中input键盘事件keyup、keydown、keypress支持不是很好</a>
+				<a href="#25">li与li之间有看不见的空白间隔是什么原因引起的？有什么解决办法？</a>
+
+				<a href="#27"> 介绍flex布局</a>
+				<a href="#3">div水平垂直居中几种方式</a>
+				<a href="#28">css方式设置垂直居中</a>
+				<a href="#29">display:none和visibility:hidden的区别?</a>
+				<a href="#30">如何解决a标点击后hover事件失效的问题?</a>
+				<a href="#22">移动端长时间按住页面出现闪退:答案不符合css规范</a>
+				<a href="#21">移动端提高可点区域范围---加padding</a>
+				<a href="#20">为什么图片在安卓上，有些设备模糊问题</a>
+				<a href="#18">什么是响应式布局？</a>
+				<a href="#31">移动端适配，移动端适配，移动端适配</a>
+				<a href="#26">移动端适配`1px`的问题2</a>
+				<a href="#19">移动端border 1px 问题</a>
+				<a href="#34">禁止移动端缩放，使用viewpoint meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0"</a>
+			</div>
+			<div class="router">
+				<a href="#35">在less中表示变量；；；less的拓展名是.less</a>
+				<a href="#36">mixins在less中有什么用处</a>
+				<a href="#37">嵌套在less中起什么作用</a>
+				<a href="#38">less的颜色通道功能是什么</a>
+				<a href="#39">less中统一资源标识符URI的作用什么</a>
+				<a href="#40">减少源地图内联选项代表</a>
+				<a href="#41">less中&combinator是用来组合嵌套选择器和父选择器的</a>
+				<a href="#42">less支持运算,可以对颜色和向量进行操作</a>
+				<a href="#43">less中转义有什么用</a>
+				<a href="#44"></a>
+				
+				
+				
+				
+				
+			</div>
+
+
+
+			<div id="2">
+				<img src="css2.png" >
+			</div>
+			<div id="3"><img src="css3-1.png" ><img src="css3-2.png" ></div>
+			<div id="4"><img src="css4.png" ></div>
+			<div id="5"><img src="css5.png" ></div>
+			<div id="6"><img src="css6.png" ></div>
+			<div id="7"><img src="css7.png" alt=""><img src="css7-1.png" alt=""></div>
+			<div id="8"><img src="css8.png" ></div>
+			<div id="9"><img src="css9.png" ></div>
+			<div id="10"><img src="css10.png" ></div>
+			<div id="11"><img src="css11.png" ></div>
+			<div id="12"><img src="css12.png" ></div>
+			<div id="13"><img src="css13.png" ></div>
+			<div id="14"><img src="css14.png" ></div>
+			<div id="15"><img src="css15.png" ></div>
+			<div id="16"><img src="css16.png" ></div>
+			<div id="17"><img src="css17.png" ></div>
+			<div id="18"><img src="css18.png" ></div>
+			<div id="19"><img src="css19.png" ></div>
+			<div id="20"><img src="css20.png" ></div>
+			<div id="21"><img src="css21.png" ></div>
+			<div id="22"><img src="css22.png" ></div>
+			<div id="23"><img src="css23.png" ></div>
+			<div  id="24"><img src="css24.png" ></div>
+			<div id="25"><img src="css25.png" ></div>
+			<div id="26"><img src="css26.png" ></div>
+			<div id="27"><img src="css27.png" >
+			<br>多个div标签，它们会纵向向下排位，如果我们想将多个div并列成一排，就得借助position，float，或display属性，这便是传统的盒模型做法。<br>	
+			而flex布局则是一种新的布局方案，通过为修改父div的display属性，让父元素成为一个flex容器，从而可以自由的操作容器中子元素(项目)的排列方式。
+			<br>
+			例如我们让多个div横向排列，传统做法是使用浮动，但浮空后因为脱离文档流的缘故，父元素会失去高度，这又涉及了清除浮动等一系列的问题。
+			<br>
+			而flex布局相对简单很多，修改父元素display:flex，你会发现div自动就排列成了一行，而且没有浮动之后的副作用，从回流角度考虑，flex的性能更优于float；随着浏览器不断兼容以及旧版本的淘汰，
+			
+			<br>3.flex-shrink
+
+取值：默认1，用于决定项目在空间不足时是否缩小，默认项目都是1，即空间不足时大家一起等比缩小；注意，即便设置了固定宽度，也会缩小。
+
+但如果某个项目flex-shrink设置为0，则即便空间不够，自身也不缩小。
+			
+			<a href="https://www.cnblogs.com/echolun/p/11299460.html">flex具体</a>
+			<br>
+			</div>
+			<div id="28"><img src="css28.png" ></div>
+			<div id="29"><img src="css29.png" ></div>
+			<div id="30"><img src="css30.png" ></div>
+			<div id="31"><img src="css31.png" ></div>
+			<div id="32"><img src="css32.png" ></div>
+			<h3 >浅谈script标签中的async和defer</h3>
+			<div id="33">这两个属性都不会阻塞dom渲染，defer是异步加载，顺序执行，defer脚本会在文档渲染完毕后，DOMContentLoaded事件调用前执行。<br>aysnc是异步加载，谁加载完谁执行。
+			<br>如果是不加属性的话，阻塞dom，就是顺序加载，顺序执行，chrome对此有一个优化，，如果遇到script脚本，会快速的查看后边有没有需要下载其他资源的，如果有的话，会先下载那些资源，然后再进行下载script所对应的资源，这样能够节省一部分下载的时间 
+			<img src="css33.png" alt="">
+			<br>推荐的应用场景<br>
+			defer
+			如果你的脚本代码依赖于页面中的DOM元素（文档是否解析完毕），或者被其他脚本文件依赖。
+			<br>
+			评论框
+			代码语法高亮
+			polyfill.js
+			async
+			<br>
+			如果你的脚本并不关心页面中的DOM元素（文档是否解析完毕），并且也不会产生其他脚本需要的数据。
+			例：
+			<br>
+			百度统计
+			如果不太能确定的话，用defer总是会比async稳定。。。
+			</div>
+			<div id="34"><img src="css34.png" ></div>
+			
+			
+			
+			<div id="35"><img src="css35.png" ></div>
+			<div id="36"><img src="css36.png" ></div>
+			<div id="37"><img src="css37.png" ></div>
+			<div id="38"><img src="css38.png" ></div>
+			<div id="39"><img src="css39.png" ></div>
+			<div id="40"><img src="css40.png" ></div>
+			<div id="41"><img src="css41.png" ></div>
+			<div id="42"><img src="css42.png" ></div>
+			<div id="43"><img src="css43.png" ></div>
+			<div id="44"><img src="css44.png" ></div>
+			<div id="45"><img src="css45.png" ></div>
+			<div id=""><img src="" ></div>
+			<div id=""><img src="" ></div>
+			<div id=""><img src="" ></div>
+			<div id=""><img src="" ></div>
+			<div id=""><img src="" ></div>
+			
+			
+		</div>
+
+	<style type="text/css">
+		a{
+			color:#424242;
+			padding:10px;
+			display: block;
+			font-weight: bold;
+		}
+		.router{
+			display: inline-block;
+		}
+		
+	</style>
+	</body>
+</html>

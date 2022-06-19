@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>js,对象，history，node</title>
+		<style type="text/css">
+			a {
+				color: #424242;
+				padding: 10px;
+				display: block;
+				font-weight: bold;
+			}
+
+			.router {
+				display: inline-block;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="0">
+			<a href="#0" style="position: fixed;border: 1px solid #f40; background-color: #aaa;">顶部</a>
+		</div>
+		<div>
+			<a href="#1">Window.onLoad 和 DOMContentLoaded事件的先后顺序?</a>
+			<a href="#2">怎么实现this对象的深拷贝?</a>
+			<a href="#3">var let const 的区别</a>
+			<a href="#4">node服务器优缺点?</a>
+			<a href="#5">WebSocket和socket的区别?</a>
+			<a href="#6">ES6新的数组去重方法?</a>
+			<a href="#7">不用for循环的情况下，打印出500个星号?</a>
+			<a href="#8">storage和cookie的区别?</a>
+			<a href="#9">介绍js有哪些内置对象？</a>
+			<a href="#10">如何区分数组和对象？</a>
+			<a href="#11">什么是闭包？</a>
+			<a href="#12">说说几个闭包的使用场景?</a>
+			<a href="#13">作用域链</a>
+			<a href="#14">构造函数内部原理</a>
+			<a href="#15">js。浏览器加载时间线</a>
+			<a href="#16">script标签中的async和defer</a>
+			<a href="#17">防抖节流：防抖，设定时器，时间结束后执行，如果再触发的话，重设定时器；节流是设定规定时间内，只执行一次，时间内触发不响应</a>
+			<a href="#18">函数预编译的4部曲</a>
+			<a href="#19">数组方法</a>
+			<a href="#26">什么是windows对象，document对象</a>
+			<a href="#27">通过什么做到并发请求?Promise.all ,web worker</a>
+			<a href="#28">async,await</a>
+			<a href="#29">eval()函数：把字符串转化成js代码</a>
+			<a href="#30">原型,继承，圣杯模式</a>
+			<a href="#31">如何判断一个对象是否属于某个类？instanceof</a>
+			<a href="#34">设计模式,单例模式，工厂模式，构造函数模式，观察者模式（vue）</a>
+			<a href="#36">js垃圾回收机制</a>
+			<a href="#40">cookie利弊</a>
+			<a href="#41">对象枚举遍历</a>
+			<a href="#42">路由的history</a>
+			<a href="#43">优化，所有的优化</a>
+			<a href="#44">new 关键字的机制</a>
+			<a href="#45">eventLoop 事件循环的机制</a>
+			<a href="#55">js写一个数组扁平化函数</a>
+			<a href=""></a>
+			<a href=""></a>
+			<a href=""></a>
+			<a href=""></a>
+			<a href=""></a>
+		</div>
+
+		<div>
+			<div id="1"><img src="js1.png"></div>
+			<div id="2"><img src="js2.png">
+				<h3>json方法对循环对象报错。.map会省略 <img src="js2-1.png"><img src="js2-2.png"></h3>
+			</div>
+			<div id="3"><img src=""></div>
+			<div id="4"><img src="js4.png"></div>
+			<div id="5"><img src="js5.png"><img src="js5-1.png"></div>
+			<div id="6"><img src="js6.png"></div>
+			<div id="7"><img src="js6.png"></div>
+			<div id="8"><img src="js8.png"></div>
+			<div id="9"><img src="js9.png"></div>
+			<div id="10"><img src="js10.png"></div>
+			<div id="11"><img src="js11.png"></div>
+			<div id="12"><img src="js12.png"></div>
+			<div id="13"><img src="js13.png"></div>
+			<div id="14"><img src="js14.png"></div>
+			<div id="15"><img src="js15.png"></div>
+			<div id="16"><img src="css33.png"></div>
+
+			<div id="18"><img src="js18.png"></div>
+			<div id="19"><img src="js19.png"><img src="js19-1.png"><img src="js19-2.png"><img src="js19-3.png"><img
+					src="js19-4.png"></div>
+			<div id="26"><img src="js26.png"></div>
+			<div id="27"><img src="js27.png"><img src="js27-1.png"></div>
+			<div id="28"><img src="js28.png"></div>
+			<div id="30"><img src="js30.png"><img src="js30-1.png"><img src="js30-2.png"></div>
+			<div id="34"><img src="js35.png"><img src="js34.png"></div>
+			<div id="36"><img src="js36.png"><img src="js36.png" alt=""></div>
+			<div id="40"><img src="js40.png" alt=""></div>
+			<div id="41"><img src="js41.png" alt=""></div>
+			<div id="42"><img src="js42.png">popstate事件
+				popstate事件是window对象上的事件，配合pushState()和replaceState()方法使用。当同一个文档(可以理解为同一个网页，不能跳转，跳转了就不是同一个网页了)的浏览历史出现变化时，就会触发popstate事件。
+
+				上面我们说过，调用pushState()或者replaceState()方法都会改变当前的历史记录，仅仅调用pushState()方法或replaceState()方法
+				，并不会触发该事件，另外一个条件是用户必须点击浏览器的倒退按钮或者前进按钮，或者使用js调用history.back()或者history.forward()等方法。
+
+				所以，记住popstate事件触发的条件
+
+				处在同一个文档(同一个html页面)
+				文档的浏览历史(即history对象)发生改变</div>
+			<div id="43"><img src="js43.png"></div>
+			<div id="44"><img src="js44.png"></div>
+			<div id="45"><img src="js45.png"><img src="js45-1.png" > <a href="https://zhuanlan.zhihu.com/p/55511602" target="_blank"></a></div>
+			
+			<div id="55"><img src="js55.png"></div>
+			<div id=""><img src=""></div>
+			<div id=""><img src=""></div>
+			<div id=""><img src=""></div>
+			<div id=""><img src=""></div>
+			<div id=""><img src=""></div>
+			<div id=""><img src=""></div>
+			<div id=""><img src=""></div>
+		</div>
+		<script type="text/javascript">
+
+		</script>
+	</body>
+</html>

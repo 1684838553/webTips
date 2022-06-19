@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>vue</title>
+		<style type="text/css">
+			a {
+				color: #424242;
+				padding: 10px;
+				display: block;
+				font-weight: bold;
+			}
+
+
+			.router {
+				display: inline-block;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="0">
+			<a href="#0" style="position: fixed;border: 1px solid #f40; background-color: #aaa;">顶部</a>
+		</div>
+		<div style="display: inline-block;">
+			<br>
+			<br>
+			<br>
+			<div><a href="#65">谈谈你对vue的理解和mvvm</a></div>
+			<div><a href="#9">Vue中双向数据绑定是如何实现的，双向绑定vue核心原理?</a></div>
+			<div><a href="#21">Vue模版编译原理知道吗，能简单说一下?</a></div>
+			<div><a href="#31">Vue中模板编译原理?</a></div>
+			<div><a href="#55">Vue 中的diff原理?</a></div>
+			<div><a href="#13">Vue的两个核心是什么？数据驱动.组件</a></div>
+			<div><a href="#1">vue优点？</a></div>
+			<div><a href="#22">Vue的优点及缺点?</a></div>
+			<div><a href="#44">Vue 为什么需要虚拟DOM？ 虚拟DOM的优劣如何？</a></div>
+			<div><a href="#2">vue父组件向子组件传递数据？</a></div>
+			<div><a href="#3">子组件向父组件传递事件?</a></div>
+			<div><a href="#4">v-if与v-show的区别</a></div>
+			<div><a href="#5">v-if 与 v-for的优先级?</a></div>
+			<div><a href="#6">vue组件中data为什么必须是一个函数？</a></div>
+			<div><a href="#47">computed 和 watch 的区别和运用的场景？</a></div>
+			<div><a href="#8">Vue有哪些组件间的通信传值方式?</a></div>
+
+			<div><a href="#17">v-model的原理</a></div>
+			<div><a href="#19">谈谈Computed和Watch!</a></div>
+			<div><a href="#20">说一下Vue的生命周期</a></div>
+			<div><a href="#10">单页面应用和多页面应用区别及优缺点?</a></div>
+			<div><a href="#11">vue中v-if和v-for优先级?</a></div>
+
+
+			<div><a href="#14">react和vue的区别：react大项目，vue小项目</a></div>
+
+			<div><a href="#16">Vue性能优化方法</a></div>
+
+			<div><a href="#18">nextTick的实现原理是什么?</a></div>
+
+		</div>
+		<div style="display: inline-block;">
+			<div><a href="#12">Vue事件的修饰符（）？</a></div>
+
+			<div><a href="#23">Vue中hash模式和history模式的区别?</a></div>
+
+			<div><a href="#78">vuex存储和本地存储(localstorage、sessionstorage)的区别?</a></div>
+			<div><a href="#79">vue如何使用token</a></div>
+			<div><a href="#24">你的接口请求一般放在哪个生命周期中？</a></div>
+			<div><a href="#25">Vue SSR渲染原理？</a></div>
+			<div><a href="#26">new Vue() 发生了什么？</a></div>
+			<div><a href="#27">Vue.use是干什么的？原理是什么？</a></div>
+			<div><a href="#28">请说一下响应式数据的理解？数组响应式的原理</a></div>
+			<div><a href="#29">Vue中是如何检测数组变化?</a></div>
+			<div><a href="#30">Vue.set 方法是如何实现的？</a></div>
+
+			<div><a href="#32">Proxy(vue3) 与 Object.defineProperty(vue2) 优劣对比?</a></div>
+
+			<div><a href="#34">Vue的生命周期方法有哪些？</a></div>
+			<div><a href="#35">生命周期钩子是如何实现的?</a></div>
+			<div><a href="#36">Vue 的父组件和子组件生命周期钩子执行顺序?</a></div>
+			<div><a href="#37">组件中写 name选项有哪些好处及作用？</a></div>
+			<div><a href="#38">keep-alive平时在哪里使用？原理是？</a></div>
+			<div><a href="#39">Vue.minxin的使用场景和原理？</a></div>
+			<div><a href="#40">mixins和vuex的区别?</a></div>
+			<div><a href="#49">$router和$route的区别？</a></div>
+			<div><a href="#50">$router对象有哪些属性？</a></div>
+			<div><a href="#51">$router对象有哪些方法？</a></div>
+			<div><a href="#52">$route对象有哪些属性？</a></div>
+		</div>
+		<div style="display: inline-block;">
+			<div><a href="#84">vue,数组，对象不能检测动态检测变化的注意事项</a></div>
+			<div><a href="#83">vue中ref $refs操作dom</a></div>
+			<div><a href="#80">slot插槽</a></div>
+			<div><a href="#81">自定义指令</a></div>
+			<div><a href="#82">vue自定义指令事件</a></div>
+			<div><a href="#85">自定义指令的自定义事件修饰符</a></div>
+			<div><a href="#48">如何理解自定义指令？</a></div>
+			<div><a href="#41">mixins和公共组件的区别?</a></div>
+			<div><a href="#42">Vue-router有几种钩子函数？具体是什么及执行流程是怎样的？</a></div>
+			<div><a href="#43">vue-router 两种模式的区别？</a></div>
+
+			<div><a href="#45">Vue中key的作用和工作原理，说说你对它的理解</a></div>
+			<div><a href="#46">说说$nextTick的使用?</a></div>
+
+
+
+			<div><a href="#53">对MVC （react） MVVM（vue）的了解?</a></div>
+			<div><a href="#54">Vue.js 如何让CSS只在当前组件中起作用?:scoped</a></div>
+
+
+			<div><a href="#33">Vue3.x响应式数据原理proxy?</a></div>
+			<div><a href="#59">那为什么new Vue里data可以是一个对象？</a></div>
+			<div><a href="#15">vue3.0有哪些新特性</a></div>
+			<div><a href="#60">Vue 3.0 性能提升主要是通过哪几方面体现的？</a></div>
+			<div><a href="#61">Composition Api 与 Vue 2.x使用的Options Api 有什么区别？</a></div>
+			<div><a href="#62">Proxy 相对于 Object.defineProperty区别？</a></div>
+			<div><a href="#63">Vue 3.0 在编译方面有哪些优化？</a></div>
+			<div><a href="#64">Vue.js 3.0 响应式系统的实现原理？</a></div>
+
+
+			<div><a href="#7">VueX之actions与mutations的区别?如何在vuex中使用异步修改?</a></div>
+			<div><a href="#57">Vuex中使用mutation要注意什么?mutation 必须是同步函数</a></div>
+			<div><a href="#58">Vuex中action和mutation有什么相同点？</a></div>
+			<div><a href="#65"></a></div>
+			<div><a href="#66"></a></div>
+			<div><a href="#67"></a></div>
+			<div><a href="#45"></a></div>
+			<div><a href="#45"></a></div>
+
+
+		</div>
+		<div style="display: inline-block;">
+			<div><a href="#70">vuex用处是用来解决什么问题的</a></div>
+			<div><a href="#71">vuex的安装和目录结构</a></div>
+			<div><a href="#72">vuex的安装，使用</a></div>
+			<div><a href="#73">Vuex的5个核心属性？</a></div>
+			<div>state、getters、mutations、actions、modules</div>
+			<div><a href="#74">vuex的工作流程，原理</a></div>
+			<div><a href="#75">vuex的mutation传值，state中成员的增删</a></div>
+			<div><a href="#76">vuex的getter actions</a></div>
+			<div><a href="#77">vuex的模块化modules</a></div>
+			<!-- <div><a href="#78">vuex的工作流程</a></div> -->
+
+			
+			<div><a href="#"></a></div>
+			<div><a href="#"></a></div>
+			<div><a href="#"></a></div>
+			<div><a href="#"></a></div>
+			<div><a href="#"></a></div>
+			<div><a href="#"></a></div>
+			<div><a href="#"></a></div>
+			<div><a href="#"></a></div>
+			<div><a href="#"></a></div>
+
+		</div>
+		<div></div>
+
+		<div id="1">
+			<img src="vue1.png">
+		</div>
+		<div id="2">
+			<img src="vue2.png">
+		</div>
+		<div id="3">
+			<img src="vue3.png">
+		</div>
+		<div id="4">
+			<img src="vue4.png">
+		</div>
+		<div id="5">
+			<img src="vue5.png">
+		</div>
+		<div id="6">
+			<img src="vue6.png">
+		</div>
+		<div id="7">
+			<img src="vue7.png">
+		</div>
+		<div id="8">
+			<img src="vue8.png">
+		</div>
+		<div id="9">
+			<img src="vue9.png">
+		</div>
+		<div id="10">
+			<img src="vue10.png">
+		</div>
+		<div id="11">
+			<img src="vue11.png">
+		</div>
+		<div id="12">
+			<img src="vue12.png">
+		</div>
+		<div id="13">
+			<img src="vue13.png">
+		</div>
+		<div id="14">
+			<img src="vue14.png">
+		</div>
+		<div id="15">
+			<img src="vue15.png">
+		</div>
+		<div id="16">
+			<img src="vue16.png">
+		</div>
+		<div id="17">
+			<img src="vue17.png">
+		</div>
+		<div id="18">
+			<img src="vue18.png">
+		</div>
+		<div id="19">
+			<img src="vue19.png">
+		</div>
+		<div id="20">
+			<img src="vue20.png">
+		</div>
+		<div id="21">
+			<img src="vue21.png">
+		</div>
+		<div id="22">
+			<img src="vue22.png">
+		</div>
+		<div id="23">
+			<img src="vue23.png">
+		</div>
+		<div id="24"><img src="vue24.png"></div>
+		<div id="25"><img src="vue25.png"></div>
+		<div id="26"><img src="vue26.png"></div>
+		<div id="27"><img src="vue27.png"></div>
+		<div id="28"><img src="vue28.png"></div>
+		<div id="29"><img src="vue29.png"></div>
+		<div id="30"><img src="vue30.png"></div>
+		<div id="31"><img src="vue31.png"></div>
+		<div id="32"><img src="vue32.png"></div>
+		<div id="33"><img src="vue33.png"></div>
+		<div id="34"><img src="vue34.png"></div>
+		<div id="35"><img src="vue35.png"></div>
+		<div id="36"><img src="vue36.png"></div>
+		<div id="37"><img src="vue37.png"></div>
+		<div id="38"><img src="vue38.png"></div>
+		<div id="39"><img src="vue39.png"></div>
+		<div id="40"><img src="vue40.png"></div>
+		<div id="41"><img src="vue41.png"></div>
+		<div id="42"><img src="vue42.png"></div>
+		<div id="43"><img src="vue43.png"></div>
+		<div id="44"><img src="vue44.png"></div>
+		<div id="45"><img src="vue45.png"></div>
+		<div id="46"><img src="vue46.png"></div>
+		<div id="47"><img src="vue47.png"></div>
+		<div id="48"><img src="vue48.png"></div>
+		<div id="49"><img src="vue49.png"></div>
+		<div id="50"><img src="vue50.png"></div>
+		<div id="51"><img src="vue51.png"></div>
+		<div id="52"><img src="vue52.png"></div>
+		<div id="53"><img src="vue53.png"></div>
+		<div id="54"><img src=""></div>
+		<div id="55"><img src="vue55.png"></div>
+		<div id="56"><img src=""></div>
+		<div id="57"><img src=""></div>
+		<div id="58"><img src="vue58.png"></div>
+		<div id="59"><img src="vue59.png"></div>
+		<div id="60"><img src="vue60.png"></div>
+		<div id="61"><img src="vue61.png"></div>
+
+		<div id="62"><img src="vue62.png"></div>
+		<div id="63"><img src=""></div>
+		<div id="64"><img src="vue64.png"></div>
+		<div id="65"><img src="vue65.png"></div>
+		<div id=""><img src=""></div>
+		<div id="67"><img src=""></div>
+		<div id="70"><img src="vue70.png"></div>
+		<div id="71"><img src="vue71.png"></div>
+		<div id="72"><img src="vue72.png"></div>
+		<div id="73"><img src="vue73.png"></div>
+		<div id="74"><img src="vue74.png"></div>
+		<div id="75"><img src="vue75.png"></div>
+		<div id="76"><img src="vue76.png"></div>
+		<div id="77"><img src="vue77.png"></div>
+		<div id="78"><img src="vue78.png"></div>
+		<div id="79"><img src="vue79.png"></div>
+		<div id="80"><img src="vue80.png"></div>
+		<div id="81">
+			<img src="vue81.png">
+		</div>
+		<div id="82"><img src="vue82.png"></div>
+		<div id="83"><img src="vue83.png"></div>
+		<div id="84"><img src="vue84.png"></div>
+		<div id="85"><img src="vue85.png"></div>
+	</body>
+</html>
