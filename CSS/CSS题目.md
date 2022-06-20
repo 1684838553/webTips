@@ -6,10 +6,15 @@
 
 **可继承属性：**
 
-文本 font-
-颜色（背景色不可以）
-列表（list-style-type）
-元素可见性 visibility
+1. 字体系列属性 font-
+
+2. 颜色（背景色不可以）
+
+3. 列表（list-style-type）
+
+4. 元素可见性 visibility
+
+5. 文本系列属性 `text-indent  text-align  line-height  word-spacing letter-spacing color`
 
 **优先级（就近原则）：**!important > [ id > class > tag ]
 
