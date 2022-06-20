@@ -60,7 +60,11 @@ border-bottom:30px solid red;
 
 `px , % , em , rem , vw , vh `
 
-## em 和 rem 计算规则
+## [em 和 rem 计算规则](https://segmentfault.com/a/1190000008972593)
+
+任意浏览器的默认字体大小都是16px，所以在浏览器字体大小保持默认的状态下
+
+em和rem都是相对长度单位，不同的是em是相对于父级元素的字体尺寸，而rem只相对于HTML的根元素。
 
 ## 防抖和节流怎么实现
 
@@ -72,13 +76,27 @@ border-bottom:30px solid red;
 
 ## 居中为什么使用 transform,而不是 margin
 
+在浏览器渲染时，`margin`会引起页面的回流和重绘，而`transform`却不会。`transform`比`margin`更省时间
+
 ## SEO
 
-## 旋转屏幕时，字体大小调整的问题
+`SEO`是搜索引擎优化；利用搜索引擎的规则，提高网站在有关搜索引擎内的自然排名。`目的是`，为网站提供生态式的自我营销解决方案，让其在行业内占据领先地位，获得品牌收益
 
-## 移动端适配 1px 问题，border 1px 问题
+1. 合理地title，description，keywords
+
+2. 语义化html代码
+
+3. 重要的HTML代码放在前面
+
+4. 重点内容不要用js输出，爬虫不会执行js获取内容
+
+5. 少用iframe,搜索引擎不会抓取iframe中的内容
+
+6. 非装饰性图片必须要加alt
 
 ## 禁止移动端缩放
+
+`<meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1.0,user-scalable=0">`
 
 
 
