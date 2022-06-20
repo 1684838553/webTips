@@ -10,7 +10,7 @@ BFC 全称 Block Formatting Context 即`块级格式上下文`，简单的说，
 - `float`不为 none
 - `overflow`的值不为 visible
 - `position` 为 absolute 或 fixed
-- `display`的值为 inline-block 或 table-cell 或 table-caption 或 grid
+- `display`的值为 inline-block 或 table-cell 或 table-caption 或 grid 或 flex
 
 ### BFC 的渲染规则是什么
 
