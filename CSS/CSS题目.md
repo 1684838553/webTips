@@ -55,6 +55,7 @@
 7. 边框图片：border-image: url(border.png) 30 30 round
 8. 盒阴影：box-shadow: 10px 10px 5px #888888
 9. 媒体查询：定义两套 css，当浏览器的尺寸变化时会采用不同的属性
+10. 渐变、过渡、动画
 
 ## 5、flexbox（弹性盒布局模型）,以及适用场景？
 
