@@ -106,7 +106,25 @@ em和rem都是相对长度单位，不同的是em是相对于父级元素的字�
 
 `<meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1.0,user-scalable=0">`
 
+## 实现单行／多行文本溢出的省略样式
 
+1. 单行文本溢出
+
+ ```css
+ overflow: hidden;
+ width:400px;
+ text-overflow: ellipsis;
+ white-space: nowrap;
+ ```
+2. 多行文本溢出
+ ```css
+ width: 400px;
+ -webkit-line-clamp: 2;
+ display: -webkit-box;
+ -webkit-box-orient: vertical;
+ overflow: hidden;
+ text-overflow: ellipsis;
+ ```
 
 
  
