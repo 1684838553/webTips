@@ -65,3 +65,31 @@
    ![在这里插入图片描述](https://img-blog.csdnimg.cn/8eea781f52c74568b36449ef8ae4a8f4.png)
 
 ## 步骤四：将分支合并到 master
+
+![在这里插入图片描述](https://img-blog.csdnimg.cn/6dcfd5337a184e7c8ddfba65d460b6b0.png)
+
+## 修改已经执行 `git commit` 命令的提交信息，还未执行`git push`命令
+
+`git commit --amend --message `命令后，在执行 `git push --force`，强制推送修改的信息
+
+```
+git commit --amend --author="xx <xx@cc.com>"
+## git commit --amend --author="drunk <000000@qq.com>"
+// 修改最后一次commit提交的信息
+git commit --amend --message="message"
+
+// 强制推送
+git push --force
+```
+
+## 将多次提交信息合并为一次 `git rebase `
+
+[git rebase](https://www.cnblogs.com/yxhblogs/p/10527271.html)
+
+```
+git rebase -i HEAD~2
+git push -f
+```
+
+1. 按住 i -> 第一次修改，将第二个 commit 提示 前面的 pick 改为 s -> 按住 Esc -> 按住 :wq
+2. 按住 i -> 第二次修改，不需要显示的 commit 提示 前面的 pick 前面加#,注释掉 ->按住 Esc -> 按住 :wq
