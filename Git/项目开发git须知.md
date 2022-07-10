@@ -50,9 +50,7 @@
 
    ![在这里插入图片描述](https://img-blog.csdnimg.cn/8eea781f52c74568b36449ef8ae4a8f4.png)
 
-   1. 添加一个或多个文件到暂存区：
-
-   `git add [file1] [file2] ...` 添加指定目录到暂存区，包括子目录
+   1. 添加一个或多个文件到暂存区：`git add [file1] [file2] ...` 添加指定目录到暂存区，包括子目录
 
    2. `git add [dir]` 添加当前目录下的所有文件到暂存区
 
