@@ -46,8 +46,24 @@
 
 ## 步骤三：开发完成，提交代码
 
-1. 本地代码文件夹叫做工作区，先需要把工作区的代码存到暂存区，通过 git add .
+1. 本地代码文件夹叫做工作区，先需要把工作区的代码存到暂存区，通过 `git add .`
 
-2. 然后将暂存区的代码提交到本地的版本库 通过 git commit -m '提交信息'
+   ![在这里插入图片描述](https://img-blog.csdnimg.cn/8eea781f52c74568b36449ef8ae4a8f4.png)
 
-3. 最后将本地版本库提交到 github 仓库
+   1. 添加一个或多个文件到暂存区：
+
+   `git add [file1] [file2] ...` 添加指定目录到暂存区，包括子目录
+
+   2. `git add [dir]` 添加当前目录下的所有文件到暂存区
+
+   3. `git add .`添加所有修改文件到暂存区
+
+2. 然后将暂存区的代码提交到本地的版本库 通过 `git commit -m '提交信息'`
+
+   ![在这里插入图片描述](https://img-blog.csdnimg.cn/30ee24e6236a4feea9ef8b78931a44ad.png)
+
+3. 最后将本地版本库提交到 github 仓库,`git push`
+
+   ![在这里插入图片描述](https://img-blog.csdnimg.cn/8eea781f52c74568b36449ef8ae4a8f4.png)
+
+## 步骤四：将分支合并到 master
