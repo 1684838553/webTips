@@ -81,7 +81,13 @@ git push origin master
 
 ```
 1. 合并最新代码到当前分支
-git rebase master
+git pull --rebase origin master
+
+2. // 在项目中打开git bash
+git rebase --continue
+
+3. 提交
+git push -f
 ```
 
 ## 拉取master分支代码到当前分支
