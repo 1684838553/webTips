@@ -95,3 +95,11 @@ git push -f
 ```
 git pull --rebase origin master
 ```
+
+## 版本回退，已经push的代码
+
+```
+使用git log命令，查看分支提交历史，确认需要回退的版本
+使用git reset --hard commit_id命令，进行版本回退
+git push -f
+```
