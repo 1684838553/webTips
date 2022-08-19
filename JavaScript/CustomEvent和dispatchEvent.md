@@ -1,9 +1,9 @@
 ## [CustomEvent](https://developer.mozilla.org/zh-CN/docs/Web/API/CustomEvent)
 
 ```typescript
-this.targetEmitter.emit('onClose', params);
+this.targetEmitter.emit(eventType, params);
 target.dispatchEvent(
-  new CustomEvent('onClose', {
+  new CustomEvent(eventType, {
       param,
       composed: true
   })
