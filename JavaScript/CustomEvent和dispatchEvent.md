@@ -14,9 +14,8 @@ target.dispatchEvent(
 
 
 ```typescript
-let isClick = false;
 target.addEventListener('click', ()=>{
-   isClick = true;
+   // 回调函数
 })
 // dispatchEvent 派发事件并调用 （同步）
 target.dispatchEvent(new MouseEvent('click', {
