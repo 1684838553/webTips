@@ -10,6 +10,8 @@ git push -f
 1. i -> 第一次修改，第二个commit提示 前面的pick改为s ->  Esc ->  :wq
 2. i -> 第二次修改，不需要显示的commit提示 前面的pick前面加#,注释掉 ->  Esc ->  :wq
 
+## git reset HEAD~ --soft 撤销已经commit的代码，保留原状
+
 ## git commit --amend
 
 ```
