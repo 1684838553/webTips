@@ -3,7 +3,7 @@ const { spawn } = require("child_process");
 const ls = spawn("git", ["init"], {
   shell: true,
   encoding: "utf-8",
-  cwd: "C:\\Users\\16848\\Desktop\\study-project\\demo1111",
+  cwd: "C:\\Users\\***\\Desktop\\study-project\\demo1111",
 });
 
 ls.stdout.on("data", (data) => {
