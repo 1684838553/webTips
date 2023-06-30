@@ -15,6 +15,9 @@ git push -f
 ## git commit --amend
 
 ```
+git config user.name "1684838553" 
+git config user.email "1684838553@qq.com"
+
 git commit --amend --author="xx <xx@cc.com>"
 ## git commit --amend --author="drunk <000000@qq.com>"
 // 修改最后一次commit提交的信息
