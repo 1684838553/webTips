@@ -108,3 +108,10 @@ git pull --rebase origin master
 使用git reset --hard commit_id命令，进行版本回退
 git push -f
 ```
+
+## You have not concluded your merge (MERGE_HEAD exists).
+```
+git merge --abort
+
+git reset --merge
+```
