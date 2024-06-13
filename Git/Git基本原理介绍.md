@@ -3,5 +3,6 @@
 [学习笔记](https://blog.csdn.net/hancoder/article/details/120748968)
 
 **git diff**
-![image](https://github.com/1684838553/webTips/assets/41181666/e87ea328-0388-4c78-ad39-35cc5e1aba60)
+
+![image](https://github.com/1684838553/webTips/assets/41181666/ec96802e-2378-4b02-be61-48f2ddab91db)
 
