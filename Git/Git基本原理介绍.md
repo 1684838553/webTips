@@ -24,9 +24,13 @@
 
   直接执行 `git pull`, 默认不会将子模块的代码一起拉下来，使用以下命令
 
-2. 初始化前 命令 `git submodule update --init --recursive`
+2. 初始化并更新子模块 命令 `git submodule update --init --recursive`
 
-3. 初始化后 命令 `git submodule update --recursive`
+3. 更新子模块 命令 `git submodule update --recursive`
+
+4. 拉取子模块远程代码 命令 `git submodule update --remote`
 
 ![image](https://github.com/1684838553/webTips/assets/41181666/6c212d2a-5f2e-482f-a12f-1222664d2c58)
+
+![image](https://github.com/1684838553/webTips/assets/41181666/a11d6464-0e0e-4d19-b200-cfbd403d8eef)
 
