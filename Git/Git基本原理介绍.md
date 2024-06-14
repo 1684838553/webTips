@@ -20,7 +20,13 @@
 
 **git submodule**
 
-命令 `git submodule add 仓库地址`
+1. 命令 `git submodule add 仓库地址`
+
+  直接执行 `git pull`, 默认不会将子模块的代码一起拉下来，使用以下命令
+
+2. 初始化前 命令 `git submodule update --init --recursive`
+
+3. 初始化后 命令 `git submodule update --recursive`
 
 ![image](https://github.com/1684838553/webTips/assets/41181666/6c212d2a-5f2e-482f-a12f-1222664d2c58)
 
