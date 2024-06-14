@@ -19,5 +19,8 @@
 ```
 
 **git submodule**
+
+命令 `git submodule add 仓库地址`
+
 ![image](https://github.com/1684838553/webTips/assets/41181666/6c212d2a-5f2e-482f-a12f-1222664d2c58)
 
