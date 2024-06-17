@@ -6,6 +6,27 @@
 
 ![image](https://github.com/1684838553/webTips/assets/41181666/ec96802e-2378-4b02-be61-48f2ddab91db)
 
+**git config**
+
+![image](https://github.com/1684838553/webTips/assets/41181666/49759237-7504-458b-b0bf-4d2dad4e5759)
+
+![image](https://github.com/1684838553/webTips/assets/41181666/f40fd1a1-8de8-4bc2-94b4-6ac5ad85ff4f)
+
+![image](https://github.com/1684838553/webTips/assets/41181666/251a75d5-83b1-4af1-a7a7-759f3e7063fb)
+
+![image](https://github.com/1684838553/webTips/assets/41181666/2ab6ba17-7f08-4650-9c33-918f0845ebab)
+
+多用户：
+
+1. 在需要的仓库中设置仓库级别的配置
+2. 设置多个文件
+![image](https://github.com/1684838553/webTips/assets/41181666/d7b75666-f05d-4ff0-b3b9-5b7c0d26d809)
+
+![image](https://github.com/1684838553/webTips/assets/41181666/86cdee6b-200e-49ae-9c50-fdfaabd56ea5)
+
+![image](https://github.com/1684838553/webTips/assets/41181666/1c813a32-595b-4239-b6ee-8f90e7c41548)
+
+
 **删除无用对象**
 
 ```
