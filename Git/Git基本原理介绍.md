@@ -34,3 +34,14 @@
 
 ![image](https://github.com/1684838553/webTips/assets/41181666/a11d6464-0e0e-4d19-b200-cfbd403d8eef)
 
+**git worktree**
+
+用于管理工作目录。工作目录是一个目录，其中包含了 git 项目的所有文件，可以用来编辑和构建项目
+
+1. `git worktree add dirName branchName`  添加新的工作目录
+2. ` git worktree remove dirName` 
+3. `git worktree list`  查看
+
+![image](https://github.com/1684838553/webTips/assets/41181666/4bccea06-410f-4d4a-957e-a19788026222)
+
+![image](https://github.com/1684838553/webTips/assets/41181666/43e2da25-301a-4b41-ac6b-c4e5e072aa22)
