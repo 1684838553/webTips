@@ -45,3 +45,16 @@
 ![image](https://github.com/1684838553/webTips/assets/41181666/4bccea06-410f-4d4a-957e-a19788026222)
 
 ![image](https://github.com/1684838553/webTips/assets/41181666/43e2da25-301a-4b41-ac6b-c4e5e072aa22)
+
+**git format-patch**
+
+1. git format-patch -2  最后两个commit生成patch文件
+
+2. git format-patch commindId   选中的commit生成patch文件
+
+3. git apply patch文件的路径   应用
+
+![image](https://github.com/1684838553/webTips/assets/41181666/985991ab-3df5-48a8-984c-a5f0df4fb6d7)
+
+![image](https://github.com/1684838553/webTips/assets/41181666/bca822a4-9a7d-4d83-a1e2-f6377a2fde8f)
+
