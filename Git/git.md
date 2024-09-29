@@ -82,6 +82,20 @@ git push origin master
 
 ```
 
+## git多用户之间的切换
+
+配置多个用户的git
+```
+1. 新建一个目录，在当前目录下新建一个.my-gitconfig文件，这个文件里面配置用户名和邮箱
+[user]
+	name = 1684838553
+	email = 1684838553@qq.com
+2. 在全局配置中，配置includeif属性
+[includeif "gitdir:D:/Study/"]
+	path = D:/Study/.my-gitconfig
+即，在Study目录下面，用的是1684838553账号提交代码
+```
+
 ## 解决冲突
 
 ```
