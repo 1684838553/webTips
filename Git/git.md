@@ -129,3 +129,14 @@ git merge --abort
 
 git reset --merge
 ```
+
+## git设置大小写敏感和仓库文件共存问题
+
+在Git仓库中，需要将src/Commom改成src/common, 可以先执行下面第一个步骤，git仓库将会检查到文件名的大小写改变。如果不执行第二步直接提交，远程仓库会同时存在修改前后的目录。执行第二部，会将修改前的目录删除。
+
+```
+1、项目中设置git命令`git config core.ignorecase false`
+2、项目中删除同名文件或文件夹git `rm --cached src/Commom -r`
+3、提交
+```
+
