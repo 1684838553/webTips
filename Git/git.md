@@ -5,6 +5,11 @@
 ```
 git rebase -i HEAD~2
 git push -f
+
+# 如果只有2次提交，则不能重定向到第三次-最后一次.起源/掌握为611 e38；起源/主~1为8ae591；起源/主~2不存在。如果要重基所有提交(包括根提交)
+# fatal: invalid upstream 'origin/master~2'
+
+git rebase -i --root (分支名)
 ```
 
 1. i -> 第一次修改，第二个commit提示 前面的pick改为s ->  Esc ->  :wq
